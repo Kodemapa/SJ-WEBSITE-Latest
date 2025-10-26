@@ -1,0 +1,899 @@
+<style>
+@media (max-width: 767px) {
+    header, .sj-mobile-logo {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    #home.p-0.ipad-top-space-margin {
+        margin-top: -24px !important;
+    }
+    .rev_slider_wrapper.fullwidthbanner-container {
+        margin-top: 0 !important;
+    }
+}
+.gradient-about-title {
+  background: -webkit-linear-gradient(0deg, rgb(128,123,105) 15%, rgb(121,92,67) 65%, rgb(85,106,64) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+</style>
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+    <!-- HTMX CDN for dynamic includes -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        <title>SJ-INFRA</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="author" content="ThemeZaa">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <meta name="description" content="Elevate your online presence with Crafto - a modern, versatile, multipurpose Bootstrap 5 responsive HTML5, SCSS template using highly creative 52+ ready demos.">
+        <!-- favicon icon -->
+        <link rel="shortcut icon" href="images/sj-infra-logo.png">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+        <!-- google fonts preconnect -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- slider revolution CSS files -->
+        <link rel="stylesheet" type="text/css" href="revolution/css/settings.css">
+        <link rel="stylesheet" type="text/css" href="revolution/css/layers.css">
+        <link rel="stylesheet" type="text/css" href="revolution/css/navigation.css">
+        <!-- style sheets and font icons  -->
+        <link rel="stylesheet" href="css/vendors.min.css"/>
+        <link rel="stylesheet" href="css/icon.min.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="stylesheet" href="demos/product-showcase/product-showcase.css" />
+    <script src="js/budget-calculator.js"></script>
+        <style>
+            /* Hide any remaining images and unwanted elements */
+            .tp-arr-allwrapper .tp-arr-imgholder,
+            .tp-arr-allwrapper img,
+            .tp-arr-allwrapper .tp-arr-iwrapper,
+            .tp-arr-allwrapper .tp-arr-titleholder,
+            .tp-arr-allwrapper .tp-arr-imgholder div,
+            .tp-arr-allwrapper .tp-arr-iwrapper div,
+            .tp-arr-allwrapper .tp-arr-inner,
+            .tp-bullets,
+            .tp-bullet {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+            }
+            
+            /* Hide any small squares or artifacts above arrows */
+            .tp-leftarrow:before,
+            .tp-rightarrow:before,
+            .tp-leftarrow:after,
+            .tp-rightarrow:after,
+            .tp-arr-allwrapper:before,
+            .tp-arr-allwrapper:after {
+                display: none !important;
+                content: none !important;
+            }
+            
+            /* Ensure arrows are visible and properly positioned */
+            .tp-arr-allwrapper {
+                opacity: 1 !important;
+                visibility: visible !important;
+                background: none !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+            
+            /* Show only our custom arrows */
+            .tp-arr-allwrapper .custom-arrow {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            
+            /* Ensure header stays above slider overlay */
+            header {
+                position: relative;
+                z-index: 1000;
+            }
+            /* Ensure navigation bar is fixed and styled */
+            nav.navbar {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                background-color: white;
+                z-index: 1000;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Add padding to body to prevent content overlap */
+            body {
+                padding-top: 70px; /* Adjust based on navbar height */
+            }
+
+            @media (max-width: 768px) {
+                #slide-1-layer-subtitle1 {
+                    font-size: 40px !important;
+                    line-height: 50px !important;
+                    text-align: center !important;
+                    transform: translateY(-50px) !important;
+                    position: relative;
+                }
+                #slide-1-layer-1 {
+                    letter-spacing: -2px !important;
+                    font-size: 48px !important;
+                    line-height: 1.1 !important;
+                    white-space: nowrap !important;
+                    overflow-x: auto !important;
+                    width: 100vw !important;
+                    max-width: 100vw !important;
+                    box-sizing: border-box !important;
+                    text-align: center !important;
+                    word-break: normal !important;
+                }
+                /* Match index.html hero background image behavior */
+                .rev-slidebg {
+                    object-fit: cover !important;
+                    object-position: center top !important;
+                    width: 100vw !important;
+                    height: 360px !important;
+                    min-height: 220px !important;
+                    max-height: 50vh !important;
+                    margin: 0 auto !important;
+                    display: block !important;
+                    transform: none !important;
+                }
+                #rev_slider_31_1_wrapper {
+                    margin-top: 0 !important;
+                }
+                .rev_slider_wrapper {
+                    height: auto !important;
+                    min-height: unset !important;
+                }
+                #home {
+                    margin-top: 0 !important;
+                }
+            }
+        </style>
+        
+    <!-- start header -->
+    <div hx-get="shared/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
+    <!-- end header -->
+
+       <section id="home" class="p-0 ipad-top-space-margin" style="background-image: url();">
+            <article class="content">
+                <div id="rev_slider_31_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container">
+                    <!-- the ID here will be used in the JavaScript below to initialize the slider -->
+                    <div id="rev_slider_31_1" class="rev_slider fullwidthabanner" data-version="5.4.5" >
+                        <!-- BEGIN SLIDES LIST -->
+                        <ul>
+                            <!-- SLIDE 1 - HOME/OVERVIEW -->
+                            <li data-index="rs-01" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="600" data-rotate="0" data-saveperformance="off" data-title="Home" data-param1="01" data-description="Audio Technology Overview">
+                                <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
+                                <img src="images/bg-about-us.jpg" alt="home background" class="rev-slidebg" data-bgparallax="6">
+                                <span style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1;"></span>
+                                 <!-- start large text layer -->
+                                <div style="width:100%; text-align:center;">
+                                <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2"
+                                     id="slide-1-layer-subtitle1"
+                                     data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                     data-visibility="['on', 'on', 'on', 'on']"
+                                     data-fontsize="['50','40','35','25']"
+                                     data-lineheight="['60','50','45','35']"
+                                     data-fontweight="['700','700','700','700']"
+                                     data-color="['#FFF','#FFF','#FFF','#FFF']"
+                                     data-textAlign="['center','center','center','center']"
+                                     data-letterspacing="['0','0','0','0']"
+                                     data-x="['center','center','center','center']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-hoffset="['-340','-250','-200','-120']"
+                                     data-voffset="['-300','-240','-190','-170']"
+                                     data-width="['auto','auto','auto','auto']"
+                                     data-height="['auto','auto','auto','auto']"
+                                     data-whitespace="['nowrap','nowrap','nowrap','nowrap']"
+                                     data-responsive_offset="off"
+                                     data-responsive="on"
+                                     style="background: linear-gradient(90deg, #ffffff 15%, #ffffff 65%, #ffffff 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;">
+                                </div>
+
+                                <!-- <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1;"></div> -->
+                                <!-- start large text layer -->
+                                <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2" style="background: -webkit-linear-gradient(0deg, #33382d 15%, #443222 65%, #3d4733 100%);-webkit-background-clip: text;background-clip: text;-webkit-text-fill-color: transparent;" 
+                                     id="slide-1-layer-1"
+                                     data-frames='[{"delay":1500,"speed":2000,"frame":"0","from":"sX:1.3;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                                     data-visibility="['on', 'on', 'on', 'on']"
+                                     data-fontsize="['346','250','200','110']"
+                                     data-lineheight="['450','360','300','120']"
+                                     data-fontweight="['700','700', '700','700']"
+                                     data-color="['#FFF','#FFF', '#000', '#000']"
+                                     data-textAlign="['center','center','center','center']"
+                                     data-letterspacing="['-24','-15','-10','-8']"
+                                     data-x="['center','center','center','center']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-voffset="['-140','0','-5','0']"
+                                     data-width="['auto', 'auto', 'auto', 'auto']"
+                                     data-height="['auto', 'auto', 'auto', 'auto']"
+                                     data-whitespace="['nowrap', 'nowrap', 'nowrap', 'nowrap']"
+                                     data-responsive_offset="off"
+                                     data-responsive="on"
+                                     style="background: -webkit-linear-gradient(90deg, #ff7e5f 15%, #feb47b 65%, #ff7e5f 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;">About Us</div>
+                                     <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2"
+                                          id="slide-1-layer-subtitle2"
+                                          data-frames='[{"delay":3500,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                          data-visibility="['on', 'on', 'on', 'on']"
+                                          data-fontsize="['50','40','35','25']"
+                                          data-lineheight="['60','50','45','35']"
+                                          data-fontweight="['700','700','700','700']"
+                                          data-color="['#FFF','#FFF','#FFF','#FFF']"
+                                          data-textAlign="['center','center','center','center']"
+                                          data-letterspacing="['0','0','0','0']"
+                                          data-x="['center','center','center','center']"
+                                          data-y="['middle','middle','middle','middle']"
+                                          data-hoffset="['0','0','0','0']"
+                                          data-voffset="['70','30','20','10']"
+                                          data-width="['auto','auto','auto','auto']"
+                                          data-height="['auto','auto','auto','auto']"
+                                          data-whitespace="['nowrap','nowrap','nowrap','nowrap']"
+                                          data-responsive_offset="off"
+                                          data-responsive="on"
+                                          style="background: -webkit-linear-gradient(90deg, #ff7e5f 15%, #feb47b 65%, #ff7e5f 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;">
+                                     </div>
+                                </div>
+                                <!-- start product image -->
+                                <div class="tp-caption tp-resizeme"
+                                     id="slide-1-layer-2"
+                                     data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"opacity:0;fb:30px;sX:1.5;sY:1.5;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":600,"frame":"999","to":"auto:auto;fb:0;opacity:0;","ease":"Power3.easeInOut"}]'
+                                     data-type="image"
+                                     data-visibility="['on', 'on', 'on', 'on']"
+                                     data-x="['center','center','center','center']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-voffset="['-100','-40','-65','-50']"
+                                     data-width="['775', '580', '500', '300']"
+                                     data-height="['auto', 'auto', 'auto', 'auto']"
+                                     data-responsive_offset="off"
+                                     data-responsive="on"
+                                     style="z-index: 5;"><div class="rs-looped rs-wave" data-speed="8" data-angle="0" data-radius="10px" data-origin="50% 50%">
+                                        <!-- <img src="images/rev-trans-tile.png" data-lazyload="Interior_design/HomePage/Project1.png" class="w-100 h-auto" alt="headphone"> -->
+                                    </div>
+                                </div>
+                                <!-- navigation dots for carousel -->
+                                <div class="tp-caption" 
+                                     id="slide-1-nav-dots"
+                                     data-x="['center','center','center','center']" 
+                                     data-y="['bottom','bottom','bottom','bottom']" 
+                                     data-hoffset="['0','0','0','0']"
+                                     data-voffset="['50','30','30','20']"
+                                     data-width="['auto','auto','auto','auto']"
+                                     data-height="['auto','auto','auto','auto']"
+                                     data-type="text"
+                                     data-responsive_offset="off"
+                                     data-responsive="off"
+                                     data-frames='[{"delay":2000,"speed":1000,"frame":"0","from":"opacity:0;y:30px;","to":"o:1;y:0px;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'>
+                                    <div class="slider-navigation-dots d-flex justify-content-center">
+                                        <span class="dot active" data-slide="0"></span>
+                                        <span class="dot" data-slide="1"></span>
+                                        <span class="dot" data-slide="2"></span>
+                                        <span class="dot" data-slide="3"></span>
+                                        <span class="dot" data-slide="4"></span>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul><!-- END SLIDES LIST -->
+
+                    </div><!-- END SLIDER CONTAINER -->
+                </div>
+            </article>
+        </section>
+         <!-- start section --> 
+        <section>
+            <div class="container">
+                <div class="row justify-content-center align-items-end">
+                    <div class="col-xl-6 col-lg-7 md-mb-20px" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 400, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <!-- <div class="bg-base-color fw-600 lh-30 text-white text-uppercase border-radius-30px ps-20px pe-20px fs-11 mb-25px d-inline-block">Welcome to marketing agency</div> -->
+                        <h3 class="fw-700 text-dark-gray ls-minus-1px mb-0 w-90 md-w-100">Leading Construction and Interior Design Company in Ballari.</h3>
+                    </div> 
+                    <div class="col-lg-5 offset-xl-1 last-paragraph-no-margin" data-anime='{ "el": "lines", "translateY": [30, 0], "opacity": [0,1], "duration": 400, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'> 
+                        <p>Crafting spaces that inspire living and working with purpose. SJ Infra Ballari combines modern design, quality construction, and sustainable layout development to deliver residential and commercial projects that stand the test of time across Karnataka. <span class="text-dark-gray text-decoration-line-bottom fw-500">maintaining long-term relationship.</span></p> 
+                    </div>
+                </div> 
+                <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 justify-content-center mt-4 mb-4 sm-mb-8" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 500, "delay": 0, "staggervalue": 200, "easing": "easeOutQuad" }'>
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-03">
+                        <div class="feature-box p-8 overflow-hidden">
+                            <div class="feature-box-icon mb-25px">
+                                <img src="./images/quality-construction.png" class="h-100px" alt="">
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-block fs-18 fw-600 text-dark-gray mb-5px ls-minus-05px">Quality Construction</span>
+                                <p>We deliver projects built with top-grade materials, expert supervision, and an unwavering focus on safety.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-03">
+                        <div class="feature-box p-8 overflow-hidden">
+                            <div class="feature-box-icon mb-25px">
+                                <img src="./images/innovative-design.png" class="h-100px" alt="">
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-block fs-18 fw-600 text-dark-gray mb-5px ls-minus-05px">Innovative Design</span>
+                                <p>Our architects and designers blend creativity with functionality to craft spaces that are both beautiful and practical.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-03">
+                        <div class="feature-box p-8 overflow-hidden">
+                            <div class="feature-box-icon mb-25px">
+                                <img src="./images/on-time-delivery.png" class="h-100px" alt="">
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-block fs-18 fw-600 text-dark-gray mb-5px ls-minus-05px">On-Time Delivery</span>
+                                <p>With streamlined project management and skilled execution, we ensure every project is completed on schedule.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-03">
+                        <div class="feature-box p-8 overflow-hidden">
+                            <div class="feature-box-icon mb-25px">
+                                <img src="./images/customer-commitment.png" class="h-100px" alt="">
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-block fs-18 fw-600 text-dark-gray mb-5px ls-minus-05px">Customer Commitment </span>
+                                <p>Every client is our partner — we listen, adapt, and provide continuous support even after project completion.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end features box item -->
+                </div>
+                <div class="row justify-content-center" data-anime='{ "translateY": [50, 0], "opacity": [0,1], "duration": 700, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                    <div class="col-auto text-center">
+                        <div class="icon-with-text-style-06">
+                            <div class="feature-box feature-box-left-icon-middle">
+                                <div class="feature-box-icon me-10px">
+                                    <i class="bi bi-patch-check icon-very-medium text-base-color"></i>
+                                </div>
+                                <div class="feature-box-content last-paragraph-no-margin">
+                                    <div class="text-dark-gray fs-20 ls-minus-05px">We provide <span class="fw-600"></span> services to customers.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        <!-- end section -->
+        <!-- start section -->
+        <section class="pt-0 bg-very-light-gray overflow-hidden">
+            <div class="border-bottom border-top border-color-extra-medium-gray bg-white box-shadow-extra-large">
+                <div class="container tab-style-08 text-center">
+                    <ul class="nav nav-tabs border-0 justify-content-center ls-minus-05px fw-500 fs-19 text-dark-gray active-tab-border-bottom" data-anime='{ "el": "childs", "translateX": [50, 0], "opacity": [0,1], "duration": 700, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <li class="nav-item"><a data-bs-toggle="tab" href="#tab_eight1" class="nav-link active">RESIDENTIAL PROJECTS<span class="tab-border bg-dark-gray"></span></a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab_eight2">COMMERCIAL DEVELOPMENTS<span class="tab-border bg-dark-gray"></span></a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab_eight3">LAYOUT AND PLANNING <span class="tab-border bg-dark-gray"></span></a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab_eight4">SMART CONSTRUCTION  <span class="tab-border bg-dark-gray"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row mt-4">
+                    <div class="col-12 tab-style-08"> 
+                        <div class="tab-content">
+                            <!-- start tab content -->
+                            <div class="tab-pane fade in active show" id="tab_eight1">
+                                <div class="row align-items-center g-lg-0">  
+                                    <div class="col-lg-6 col-md-11 offset-lg-0 offset-md-1 position-relative md-mb-20px" data-anime='{ "effect": "slide", "color": "#FFFFFF", "direction":"lr", "easing": "easeOutQuad", "delay":50}'> 
+                                        <figure class="position-relative m-0 text-center">
+                                            <img src="images/residential projects.jpg" alt="" width="580" height="718" style="width:580px; height:718px; object-fit:cover;">
+                                            <figcaption class="position-absolute bottom-80px left-0px" data-anime='{ "translateY": [-50, 0], "opacity": [0,1], "duration": 500, "delay": 1000, "staggervalue": 300, "easing": "easeOutQuad" }'> 
+                                                <!-- <img src="https://placehold.co/306x181" class="animation-float" alt=""> -->
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="col-xl-4 offset-lg-1 col-lg-5" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 400, "delay": 0, "staggervalue":200, "easing": "easeOutQuad" }'> 
+                                        <span class="fs-15 text-uppercase text-base-color fw-600 mb-15px d-block ls-1px">Residential projects </span>
+                                        <h3 class="fw-700 text-dark-gray ls-minus-1px">Building homes that reflect your lifestyle</h3>
+                                        <p>We specialize in creating modern, elegant, and sustainable residential spaces — from cozy family homes to luxurious villas. Each project is built with attention to detail, blending design, comfort, and durability for a truly fulfilling living experience.</p>
+                                        <div class="pt-20px pb-20px ps-30px pe-30px bg-white box-shadow-quadruple-large border-radius-6px mt-30px mb-15px icon-with-text-style-08">
+                                            <div class="feature-box feature-box-left-icon-middle">
+                                                <div class="feature-box-icon me-15px">
+                                                    <i class="bi bi-people icon-medium text-base-color"></i>
+                                                </div>
+                                                <div class="feature-box-content">
+                                                    <span class="fw-600 text-dark-gray d-block lh-26">Personalized planning included.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <p class="fs-13 mb-35px">Get your <span class="fw-600 text-dark-gray text-decoration-line-bottom">first payment today</span> and grow your business.</p> -->
+                                        <a href="service.html" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow me-30px sm-me-20px">
+                                            <span> 
+                                                <span class="btn-text">Explore services</span>
+                                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                            </span>
+                                        </a>
+                                        <a href="contact-us.html" class="btn btn-link btn-hover-animation-switch btn-extra-large text-dark-gray fw-600 p-0">
+                                            <span>
+                                                <span class="btn-text">Quick contact</span>
+                                                <span class="btn-icon"><i class="feather icon-feather-mail"></i></span>
+                                                <span class="btn-icon"><i class="feather icon-feather-mail"></i></span>
+                                            </span> 
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end tab content -->
+                            <!-- start tab content -->
+                            <div class="tab-pane fade in" id="tab_eight2">
+                                <div class="row align-items-center g-lg-0">  
+                                    <div class="col-lg-6 col-md-11 offset-lg-0 offset-md-1 position-relative md-mb-20px"> 
+                                        <figure class="position-relative m-0 text-center">
+                                            <img src="images/commercial developments.jpg" alt="" width="580" height="718" style="width:580px; height:718px; object-fit:cover;">
+                                            <figcaption class="position-absolute bottom-80px left-0px"> 
+                                                <!-- <img src="https://placehold.co/306x181" class="animation-float" alt=""> -->
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="col-xl-4 offset-lg-1 col-lg-5"> 
+                                        <span class="fs-15 text-uppercase text-base-color fw-600 mb-15px d-block ls-1px">Commercial Developments </span>
+                                        <h3 class="fw-700 text-dark-gray ls-minus-1px">Empowering businesses through smart infrastructure</h3>
+                                        <p>We design and construct modern offices, showrooms, and commercial complexes that enhance your brand presence and operational efficiency. Each project is built with superior materials, thoughtful architecture, and advanced planning to support your business growth.</p>
+                                        <div class="pt-20px pb-20px ps-30px pe-30px bg-white box-shadow-quadruple-large border-radius-6px mt-30px mb-15px icon-with-text-style-08">
+                                            <div class="feature-box feature-box-left-icon-middle">
+                                                <div class="feature-box-icon me-15px">
+                                                    <i class="bi bi-briefcase icon-medium text-base-color"></i>
+                                                </div>
+                                                <div class="feature-box-content">
+                                                    <span class="fw-600 text-dark-gray d-block lh-26"> Strategic business spaces included.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <p class="fs-13 mb-35px">Get your <span class="fw-600 text-dark-gray text-decoration-line-bottom">first payment today</span> and grow your business.</p> -->
+                                        <a href="contact-us.html" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow me-30px sm-me-20px">
+                                            <span> 
+                                                <span class="btn-text">Explore services</span>
+                                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                            </span>
+                                        </a>
+                                        <a href="service.html" class="btn btn-link btn-hover-animation-switch btn-extra-large text-dark-gray fw-600 p-0">
+                                            <span>
+                                                <span class="btn-text">Quick contact</span>
+                                                <span class="btn-icon"><i class="feather icon-feather-mail"></i></span>
+                                                <span class="btn-icon"><i class="feather icon-feather-mail"></i></span>
+                                            </span> 
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end tab content -->
+                            <!-- start tab content -->
+                            <div class="tab-pane fade in" id="tab_eight3">
+                                <div class="row align-items-center g-lg-0">  
+                                    <div class="col-lg-6 col-md-11 offset-lg-0 offset-md-1 position-relative md-mb-20px"> 
+                                        <figure class="position-relative m-0 text-center">
+                                            <img src="images/layout and planning expertise.jpg" alt="" width="580" height="718" style="width:580px; height:718px; object-fit:cover;">
+                                            <figcaption class="position-absolute bottom-80px left-0px"> 
+                                                <!-- <img src="https://placehold.co/306x181" class="animation-float" alt=""> -->
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="col-xl-4 offset-lg-1 col-lg-5"> 
+                                        <span class="fs-15 text-uppercase text-base-color fw-600 mb-15px sm-mb-10px d-block ls-1px">Layout & Planning</span>
+                                        <h3 class="fw-700 text-dark-gray ls-minus-1px">Building balanced spaces with purpose and precision</h3>
+                                        <p>We specialize in strategic layout planning and land development that promote efficient use of space, smooth connectivity, and long-term growth. Every project reflects our vision for structured, sustainable, and future-ready communities</p>
+                                        <div class="pt-20px pb-20px ps-30px pe-30px bg-white box-shadow-quadruple-large border-radius-6px mt-30px mb-15px icon-with-text-style-08">
+                                            <div class="feature-box feature-box-left-icon-middle">
+                                                <div class="feature-box-icon me-15px">
+                                                    <i class="bi bi-globe icon-medium text-base-color"></i>
+                                                </div>
+                                                <div class="feature-box-content">
+                                                    <span class="fw-600 text-dark-gray d-block lh-26"> Functional design solutions included</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <p class="fs-13 mb-35px">Get your <span class="fw-600 text-dark-gray text-decoration-line-bottom">first payment today</span> and grow your business.</p> -->
+                                        <a href="service.html" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow me-30px sm-me-20px">
+                                            <span> 
+                                                <span class="btn-text">Explore services</span>
+                                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                            </span>
+                                        </a>
+                                        <a href="contact-us.html" class="btn btn-link btn-hover-animation-switch btn-extra-large text-dark-gray fw-600 p-0">
+                                            <span>
+                                                <span class="btn-text">Quick contact</span>
+                                                <span class="btn-icon"><i class="feather icon-feather-mail"></i></span>
+                                                <span class="btn-icon"><i class="feather icon-feather-mail"></i></span>
+                                            </span> 
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end tab content -->
+                            <!-- start tab content -->
+                            <div class="tab-pane fade in" id="tab_eight4">
+                                <div class="row align-items-center g-lg-0">  
+                                    <div class="col-lg-6 col-md-11 offset-lg-0 offset-md-1 position-relative md-mb-20px"> 
+                                        <figure class="position-relative m-0 text-center">
+                                            <img src="images/smart construction management.jpg" alt="" style="width:580px; height:718px; object-fit:cover;">
+                                            <figcaption class="position-absolute bottom-80px left-0px"> 
+                                                <!-- <img src="https://placehold.co/306x181" class="animation-float" alt=""> -->
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="col-xl-4 offset-lg-1 col-lg-5"> 
+                                        <span class="fs-15 text-uppercase text-base-color fw-600 mb-15px d-block ls-1px">Smart Construction</span>
+                                        <h3 class="fw-700 text-dark-gray ls-minus-1px">SMART CONSTRUCTION MANAGEMENT</h3>
+                                        <p>We specialize in strategic layout planning and land development that promote efficient use of space, smooth connectivity, and long-term growth. Every project reflects our vision for structured, sustainable, and future-ready communities.</p>
+                                        <div class="pt-20px pb-20px ps-30px pe-30px bg-white box-shadow-quadruple-large border-radius-6px mt-30px mb-15px icon-with-text-style-08">
+                                            <div class="feature-box feature-box-left-icon-middle">
+                                                <div class="feature-box-icon me-15px">
+                                                    <i class="bi bi-bar-chart-line icon-medium text-base-color"></i>
+                                                </div>
+                                                <div class="feature-box-content">
+                                                    <span class="fw-600 text-dark-gray d-block lh-26">Real-time project coordination included</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <p class="fs-13 mb-35px">Get your <span class="fw-600 text-dark-gray text-decoration-line-bottom">first payment today</span> and grow your business.</p> -->
+                                        <a href="service.html" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow me-30px sm-me-20px">
+                                            <span> 
+                                                <span class="btn-text">Explore services</span>
+                                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                            </span>
+                                        </a>
+                                        <a href="contact-us.html" class="btn btn-link btn-hover-animation-switch btn-extra-large text-dark-gray fw-600 p-0">
+                                            <span>
+                                                <span class="btn-text">Quick contact</span>
+                                                <span class="btn-icon"><i class="feather icon-feather-mail"></i></span>
+                                                <span class="btn-icon"><i class="feather icon-feather-mail"></i></span>
+                                            </span> 
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end tab content -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+        <!-- start section -->
+        <section class="overlap-height overflow-hidden">
+            <div class="container overlap-gap-section">
+                <div class="row justify-content-center align-items-end mb-7 sm-mb-9">
+                    <div class="col-xl-6 col-lg-7 md-mb-20px" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 500, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <h3 class="fw-700 text-dark-gray ls-minus-1px mb-0 w-90 md-w-100">SJ Infra’s journey of building trust and excellence.</h3>
+                    </div>
+                    <div class="col-lg-5 offset-xl-1 last-paragraph-no-margin" data-anime='{"el": "lines", "translateY": [30, 0], "opacity": [0,1], "duration": 500, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <p>Every year marks a milestone in our story , built on quality, integrity, and customer satisfaction.</p>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 g-0 justify-content-center" data-anime='{ "el": "childs", "translateX": [-50, 0], "opacity": [0,1], "duration": 700, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                    <!-- start process step item -->
+                    <div class="col process-step-style-06 text-center last-paragraph-no-margin hover-box md-mb-50px">
+                        <h4 class="d-block text-dark-gray mb-0 fw-700 ls-minus-2px">2008</h4>
+                        <div class="process-step-icon-box position-relative mt-25px mb-25px">
+                            <span class="progress-step-separator bg-dark-gray w-100 separator-line-1px opacity-1"></span>
+                            <div class="step-box d-flex align-items-center justify-content-center bg-light-red-grey border-radius-100 mx-auto w-30px h-30px">
+                                <span class="w-8px h-8px bg-base-color border-radius-100"></span>
+                            </div>
+                        </div>
+                        <span class="d-inline-block alt-font fw-600 text-dark-gray fs-18 mb-5px ls-minus-05px">Journey Began</span>
+                        <p class="w-75 sm-w-85 d-inline-block">Began operations with focus on sustainable practices.</p>
+                    </div>
+                    <!-- end process step item -->
+                    <!-- start process step item -->
+                    <div class="col process-step-style-06 text-center last-paragraph-no-margin hover-box md-mb-50px">
+                        <h4 class="d-block text-dark-gray mb-0 fw-700 ls-minus-2px">2014</h4>
+                        <div class="process-step-icon-box position-relative mt-25px mb-25px">
+                            <span class="progress-step-separator bg-dark-gray w-100 separator-line-1px opacity-1"></span>
+                            <div class="step-box d-flex align-items-center justify-content-center bg-light-red-grey border-radius-100 mx-auto w-30px h-30px">
+                                <span class="w-8px h-8px bg-base-color border-radius-100"></span>
+                            </div>
+                        </div>
+                        <span class="d-inline-block alt-font fw-600 text-dark-gray fs-18 mb-5px ls-minus-05px">First Layout Project	</span>
+                        <p class="w-75 sm-w-85 d-inline-block">Delivered our first plotted development project.</p>
+                    </div>
+                    <!-- end process step item -->
+                    <!-- start process step item -->
+                    <div class="col process-step-style-06 text-center last-paragraph-no-margin hover-box xs-mb-50px">
+                        <h4 class="d-block text-dark-gray mb-0 fw-700 ls-minus-2px">2018</h4>
+                        <div class="process-step-icon-box position-relative mt-25px mb-25px">
+                            <span class="progress-step-separator bg-dark-gray w-100 separator-line-1px opacity-1"></span>
+                            <div class="step-box d-flex align-items-center justify-content-center bg-light-red-grey border-radius-100 mx-auto w-30px h-30px">
+                                <span class="w-8px h-8px bg-base-color border-radius-100"></span>
+                            </div>
+                        </div>
+                        <span class="d-inline-block alt-font fw-600 text-dark-gray fs-18 mb-5px ls-minus-05px">200+ Projects Completed</span>
+                        <p class="w-75 sm-w-85 d-inline-block">Achieved major client trust milestone across Karnataka.</p>
+                    </div>
+                    <!-- end process step item -->
+                    <!-- start process step item -->
+                    <div class="col process-step-style-06 text-center last-paragraph-no-margin hover-box">
+                        <h4 class="d-block text-dark-gray mb-0 fw-700 ls-minus-2px">2025</h4>
+                        <div class="process-step-icon-box position-relative mt-25px mb-25px">
+                            <span class="progress-step-separator bg-dark-gray w-100 separator-line-1px opacity-1"></span>
+                            <div class="step-box d-flex align-items-center justify-content-center bg-light-red-grey border-radius-100 mx-auto w-30px h-30px">
+                                <span class="w-8px h-8px bg-base-color border-radius-100"></span>
+                            </div>
+                        </div>
+                        <span class="d-inline-block alt-font fw-600 text-dark-gray fs-18 mb-5px ls-minus-05px">Future Vision</span>
+                        <p class="w-75 sm-w-85 d-inline-block">Moving towards smart, sustainable infrastructure for modern living.</p>
+                    </div>
+                    <!-- end process step item -->
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+        <!-- start section --> 
+        <section class="bg-gradient-very-light-gray">
+            <div class="container-fluid overlap-section">
+                <div class="row position-relative mb-4 md-mb-5">
+                    <div class="col swiper swiper-width-auto text-center pb-30px md-pb-20px feather-shadow" data-slider-options='{ "slidesPerView": "auto", "spaceBetween":50, "speed": 10000, "loop": true, "pagination": { "el": ".slider-four-slide-pagination-2", "clickable": false }, "allowTouchMove": false, "autoplay": { "delay":0, "disableOnInteraction": false }, "navigation": { "nextEl": ".slider-four-slide-next-2", "prevEl": ".slider-four-slide-prev-2" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "slide" }'>
+                        <div class="swiper-wrapper marquee-slide">
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <div class="fs-150 lg-fs-130 md-fs-110 sm-fs-90 text-dark-gray fw-600 ls-minus-5px">Interior</div>
+                            </div>
+                            <!-- end client item -->
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <div class="fs-150 lg-fs-130 md-fs-110 sm-fs-90 fw-600 text-outline text-outline-color-extra-medium-gray ls-minus-5px">Exterior</div>
+                            </div>
+                            <!-- end client item -->
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <div class="fs-150 lg-fs-130 md-fs-110 sm-fs-90 text-dark-gray fw-600 ls-minus-5px">Layout</div>
+                            </div>
+                            <!-- end client item --> 
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <div class="fs-150 lg-fs-130 md-fs-110 sm-fs-90 fw-600 text-outline text-outline-color-extra-medium-gray ls-minus-5px">Construction</div>
+                            </div>
+                            <!-- end client item --> 
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <div class="fs-150 lg-fs-130 md-fs-110 sm-fs-90 text-dark-gray fw-600 ls-minus-5px">Interior</div>
+                            </div>
+                            <!-- end client item -->
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <div class="fs-150 lg-fs-130 md-fs-110 sm-fs-90 fw-600 text-outline text-outline-color-extra-medium-gray ls-minus-5px">Exterior</div>
+                            </div>
+                            <!-- end client item -->
+                        </div> 
+                    </div>  
+                </div>
+            </div>
+            <div class="container">
+                <div class="row justify-content-center align-items-end mb-6">
+                    <div class="col-xl-6 col-lg-7 md-mb-20px text-center text-lg-start" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 500, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <h3 class="fw-700 text-dark-gray ls-minus-1px mb-0 w-90 md-w-100">Where your dreams take shape and structures come to life.</h3>
+                    </div> 
+                    <div class="col-lg-5 offset-xl-1 last-paragraph-no-margin text-center text-lg-start" data-anime='{"el": "lines",  "translateX": [30, 0], "opacity": [0,1], "duration": 500, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'> 
+                        <p>We bring together expert engineering, modern design, and trusted craftsmanship to create spaces that inspire confidence and comfort — from homes and villas to commercial layouts, at SJ Infra Ballari.</p> 
+                    </div>
+                </div> 
+                <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center mb-7 md-mb-10 sm-mb-15" data-anime='{"el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 500, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <div class="col md-mb-30px">
+                        <div class="position-relative bg-white overflow-hidden h-100 p-50px lg-p-30px box-shadow-quadruple-large border-radius-6px">
+                            <span class="d-block text-dark-gray fw-600 fs-22 mb-25px position-relative z-index-1 ls-minus-1px w-90 xl-w-100">Crafting spaces with precision and care.</span>
+                            <a href="service.html" class="btn btn-medium btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow">
+                                <span> 
+                                    <span class="btn-text">View Services </span>
+                                    <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                </span>
+                            </a>
+                            <div class="position-absolute bottom-minus-10px right-minus-40px fs-300 lh-100 fw-900 text-dark-gray opacity-1 z-index-0">&lt;</div>
+                        </div>
+                    </div>
+                    <div class="col md-mb-30px">
+                        <div class="position-relative bg-yellow overflow-hidden h-100 p-50px lg-p-30px box-shadow-quadruple-large border-radius-6px">
+                            <span class="d-block text-dark-gray fw-600 fs-22 mb-25px position-relative z-index-1 ls-minus-1px w-90 xl-w-100">Building Ballari’s skyline with passion.</span>
+                            <a href="about-us.html" class="btn btn-medium btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow">
+                                <span> 
+                                    <span class="btn-text">About Us</span>
+                                    <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                </span>
+                            </a>
+                            <div class="position-absolute bottom-minus-10px right-minus-40px fs-300 lh-100 fw-900 text-dark-gray opacity-1 z-index-0 animation-zoom">&lt;</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="position-relative bg-white overflow-hidden h-100 p-50px lg-p-30px box-shadow-quadruple-large border-radius-6px">
+                            <span class="d-block text-dark-gray fw-600 fs-22 mb-25px position-relative z-index-1 ls-minus-1px w-90 xl-w-100">Let’s start your next project together.</span>
+                            <a href="contact-us.html" class="btn btn-medium btn-dark-gray btn-hover-animation-switch btn-round-edge btn-box-shadow">
+                                <span> 
+                                    <span class="btn-text">Contact now</span>
+                                    <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                    <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                </span>
+                            </a>
+                            <div class="position-absolute bottom-minus-10px right-minus-40px fs-300 lh-100 fw-900 text-dark-gray opacity-1 z-index-0">&lt;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row position-relative clients-style-08 mb-9 md-mb-19 sm-mb-3">
+                    <div class="col swiper text-center feather-shadow" data-slider-options='{ "slidesPerView": 2, "spaceBetween":0, "speed": 4000, "loop": true, "pagination": { "el": ".slider-four-slide-pagination-2", "clickable": false }, "allowTouchMove": false, "autoplay": { "delay":0, "disableOnInteraction": false }, "navigation": { "nextEl": ".slider-four-slide-next-2", "prevEl": ".slider-four-slide-prev-2" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1200": { "slidesPerView": 4 }, "992": { "slidesPerView": 3 }, "768": { "slidesPerView": 3 } }, "effect": "slide" }'>
+                        <div class="swiper-wrapper marquee-slide">
+                            <!-- start client item -->
+                            <!-- <div class="swiper-slide">
+                                <a href="#"><img src="images/logo-netflix-dark-gray.svg" class="h-40px xs-h-30px" alt="" /></a>
+                            </div> -->
+                            <!-- end client item -->
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <a href="#"><img src="./images/tata-steel.png" class="h-40px xs-h-30px" alt="" /></a>
+                            </div>
+                            <!-- end client item -->
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <a href="#"><img src="images/Ultratech_Cement.png" class="h-40px xs-h-30px" alt="" /></a>
+                            </div>
+                            <!-- end client item -->
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <a href="#"><img src="images/asian-paints.png" class="h-40px xs-h-30px" alt="" /></a>
+                            </div>
+                            <!-- end client item -->
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <a href="#"><img src="images/finolex.png" class="h-40px xs-h-30px" alt="" /></a>
+                            </div>
+                            <!-- end client item -->
+                            <!-- start client item -->
+                            <!-- <div class="swiper-slide">
+                                <a href="#"><img src="images/logo-logitech-dark-gray.svg" class="h-40px xs-h-30px" alt="" /></a>
+                            </div> -->
+                            <!-- end client item -->
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <a href="#"><img src="images/tata-steel.png" class="h-40px xs-h-30px" alt="" /></a>
+                            </div>
+                            <!-- end client item -->
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <a href="#"><img src="images/Ultratech_Cement.png" class="h-40px xs-h-30px" alt="" /></a>
+                            </div>
+                            <!-- end client item -->
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <a href="#"><img src="images/asian-paints.png" class="h-40px xs-h-30px" alt="" /></a>
+                            </div>
+                            <!-- end client item -->
+                            <div class="swiper-slide">
+                                <a href="#"><img src="images/finolex.png" class="h-40px xs-h-30px" alt="" /></a>
+                            </div>
+                            <!-- end client item -->
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+
+        <!-- start section -->
+        <section class="py-0">
+            <div class="container">
+                <div class="row pb-50px sm-pb-35px justify-content-center align-items-center">
+                    <div class="col-xl-3 col-lg-4 col-sm-6 order-1 text-center text-sm-start xs-mb-20px">
+                        <span class="fs-19 mb-5px d-block">Let's talk with us</span>
+                        <h6 class="fw-700 mb-0 ls-minus-1px"><a href="tel:8123543860" class="text-dark-gray">8123543860</a></h6>
+                    </div>
+                    <div class="col-xl-6 col-lg-4 md-mt-25px order-3 order-lg-2 text-center elements-social social-icon-style-04">
+                        <ul class="large-icon dark">
+                            <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i><span></span></a></li>
+                            <!-- <li><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble"></i><span></span></a></li>
+                            <li><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i><span></span></a></li> -->
+                            <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i><span></span></a></li> 
+                            <li><a class="linkedin" href="http://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i><span></span></a></li> 
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-sm-6 order-2 order-lg-3 text-center text-sm-end">
+                        <span class="fs-19 mb-5px d-block">Get customer care</span>
+                        <h6 class="fw-700 mb-0 ls-minus-1px"><a href="mailto:SJInfra5@gmail.com " class="text-dark-gray">SJInfra5@gmail.com </a></h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section --> 
+         
+        <!-- start footer --> 
+        <div hx-get="shared/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
+        <!-- end footer -->
+         
+        <!-- start scroll progress -->
+        <div class="scroll-progress d-none d-xxl-block">
+            <a href="#" class="scroll-top" aria-label="scroll">
+                <span class="scroll-text">Scroll</span><span class="scroll-line"><span class="scroll-point"></span></span>
+            </a>
+        </div>
+        <!-- end scroll progress -->
+
+        <!-- javascript libraries -->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/vendors.min.js"></script>
+        
+        <!-- slider revolution core javaScript files -->
+        <script type="text/javascript" src="revolution/js/jquery.themepunch.tools.min.js"></script>
+        <script type="text/javascript" src="revolution/js/jquery.themepunch.revolution.min.js"></script>
+        <script type="text/javascript">
+            /* Global variable for carousel navigation */
+            var revapi31;
+
+            /* https://learn.jquery.com/using-jquery-core/document-ready/ */
+            jQuery(document).ready(function () {
+
+                /* initialize the slider based on the Slider's ID attribute from the wrapper above */
+                revapi31 = jQuery('#rev_slider_31_1').show().revolution({
+
+                    /* options are 'auto', 'fullwidth' or 'fullscreen' */
+                    sliderLayout: 'fullwidth',
+                    /* sets the Slider's default timeline */
+                    delay: 9000,
+                    /* options that disable autoplay */
+                    stopLoop: "off",
+                    stopAfterLoops: 0,
+                    stopAtSlide: 1,
+                    /* Lazy Load options are "all", "smart", "single" and "none" */
+                    lazyType: "smart",
+                    spinner: "spinner0",
+                    responsiveLevels: [1240, 1024, 778, 480],
+                    /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+                    gridwidth: [1190, 1024, 778, 480],
+                    /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+                    gridheight: [1250, 920, 1000, 650],
+                    /* Lazy Load options are "all", "smart", "single" and "none" */
+                    lazyType: "none",
+                    parallax: {
+                        type: "mouse+scroll",
+                        origo: "slidercenter",
+                        speed: 400,
+                        speedbg: 1500,
+                        speedls: 1000,
+                        levels: [5, 10, 15, 20, 25, 30, 35, 40, 60, 46, -10, -15, -20, -25, -30, 55],
+                    },
+                    /* Navigation */
+                    navigation: {
+                        onHoverStop: "off",
+                        arrows: {
+                            enable: true,
+                            style: "uranus",
+                            tmp: '<div class="tp-arr-allwrapper"><span class="custom-arrow"></span></div>',
+                            left: {
+                                h_align: "left",
+                                v_align: "center",
+                                h_offset: 30,
+                                v_offset: 0
+                            },
+                            right: {
+                                h_align: "right",
+                                v_align: "center",
+                                h_offset: 30,
+                                v_offset: 0
+                            }
+                        },
+                        bullets: {
+                            enable: false
+                        }
+                    }
+                });
+            });
+
+        </script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>

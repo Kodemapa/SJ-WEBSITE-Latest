@@ -1,0 +1,783 @@
+<!-- Budget Calculator Section with Title for HTMX dynamic load -->
+<section id="pricing" class="bg-gradient-very-light-gray">
+    <div class="container">
+        <div class="row justify-content-center mb-4">
+            <div class="col-xl-7 col-lg-9 text-center">
+                <h2 class="h1 fw-800 text-dark-gray ls-minus-3px">Smart Project Budget Calculator</h2>
+                <p class="fs-18 text-dark-gray">Get an instant estimate for your interior design or construction project in India</p>
+            </div>
+        </div>
+<style>
+            .calculator-form .step {
+                display: none;
+            }
+            .calculator-form .step.active {
+                display: block;
+            }
+            .step-indicators {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin-bottom: 30px;
+            }
+            .step-indicator {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: #e9ecef;
+                color: #6c757d;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 600;
+                transition: all 0.3s ease;
+            }
+            .step-indicator.active {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+            }
+            .custom-radio .form-check-input {
+                display: none;
+            }
+            .custom-radio .form-check-label {
+                cursor: pointer;
+                margin: 0;
+            }
+            .custom-radio .form-check-input:checked + .form-check-label .card {
+                border-color: #667eea;
+                box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+            }
+            .form-check.error .card {
+                border-color: #dc3545;
+            }
+            .progress {
+                height: 8px;
+                background: #e9ecef;
+                border-radius: 4px;
+            }
+            .progress-bar {
+                transition: width 0.3s ease;
+            }
+            #budgetResult {
+                min-height: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+
+            <div class="row justify-content-center">
+            <div class="col-lg-8 budget-calculator-container" id="budget-calculator-container">
+                        <!-- ensure steps show/hide reliably -->
+                        <style>
+                            /* hide steps by default; show when .active is applied */
+                            .step { display: none; }
+                            .step.active { display: block; }
+                            /* make sure the progress bar transitions smoothly */
+                            #progressBar { transition: width 300ms ease; }
+                            /* interactive item card styles */
+                            .item-card { cursor: pointer; border: 1px solid #eef2f6; border-radius: 12px; padding: 12px; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; background: #fff; position:relative; }
+                            .item-card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(33,33,33,0.08); border-color: rgba(130,15,137,0.12); }
+                            .item-card.selected { background: linear-gradient(135deg, rgba(130,15,137,0.06), rgba(255,91,116,0.03)); border-color: rgba(130,15,137,0.28); box-shadow: 0 12px 36px rgba(130,15,137,0.06); }
+                            .item-card .icon-wrap { width:48px; height:48px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:8px; background:#fafafa; }
+                            .item-card .icon-wrap img, .item-card .icon-wrap i { width:28px; height:28px; }
+                            .item-card .item-label { display:block; font-weight:600; color:#333; font-size:14px; }
+                            .item-grid { display:flex; flex-wrap:wrap; gap:12px; }
+                            .item-grid .col-item { width: calc(50% - 6px); }
+                            @media(min-width:768px){ .item-grid .col-item { width: calc(33.333% - 8px); } }
+                            /* small visual for selected checkboxes (hidden inputs are used) */
+                            .item-card .checkmark { display:none; transform: scale(0.6); opacity:0; transition: transform .18s ease, opacity .18s ease; font-weight:700; }
+                            .item-card.selected .checkmark { display:inline-block; position:absolute; right:10px; top:10px; color:#6f2c91; transform: scale(1); opacity:1; }
+
+                            /* Step 5 & 6 spacing fixes to avoid clustered controls */
+                            /* add vertical rhythm for form-check rows */
+                            .calculator-form .step .form-check { margin-bottom: 14px; padding: 6px 0; }
+                            /* ensure form sections have breathing room */
+                            .calculator-form .step h3, .calculator-form .step h5 { margin-bottom: 16px; }
+                            /* make paired columns stack cleanly on small screens */
+                            .calculator-form .step .row > [class*="col-"] { margin-bottom: 12px; }
+                            /* ensure static cards (step 5) have consistent height and centered content */
+                            .calculator-form .step .card.h-100 .card-body { min-height: 200px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
+                            .calculator-form .step .card.h-100 .card-title { font-size: 20px; line-height:1.02; }
+                            /* slightly reduce card body padding for better density */
+                            .calculator-form .step .card.h-100 .card-body p.card-text { margin: 8px 0 0; font-size: 13px; color: #666; }
+                            /* make finish/fitout cards show selected border clearly */
+                            .calculator-form .step .form-check-input:checked + .form-check-label .card.h-100 { box-shadow: 0 12px 36px rgba(130,15,137,0.06); border-color: rgba(130,15,137,0.18); }
+                            /* better spacing for checkbox groups in steps 5/6 */
+                            #step5-residential-construction .form-check,
+                            #step5-commercial-construction .form-check,
+                            #step6-residential-interiors .form-check,
+                            #step6-commercial-interiors .form-check { margin-bottom: 12px; }
+                            /* align checkbox and label horizontally with comfortable gap */
+                            .calculator-form .step .form-check { display: flex; align-items: flex-start; gap: 12px; padding: 6px 0; }
+                            /* let the label take remaining width so long text wraps neatly */
+                            .calculator-form .step .form-check .form-check-label { margin: 0; color: #2f2f2f; font-size: 15px; flex: 1 1 auto; }
+                            /* align checkbox to the top of the label for multi-line text */
+                            .calculator-form .step .form-check .form-check-input { width: 20px; height: 20px; margin: 4px 0 0 0; flex: 0 0 22px; }
+                            /* make checkbox hit area larger */
+                            .calculator-form .step .form-check { padding-left: 6px; padding-right: 6px; }
+                            /* summary content sizing and scroll for long lists */
+                            #summary-content { max-height: 350px; overflow-y: auto; padding: 16px; }
+                            #summary-content ul { margin: 0; padding-left: 18px; }
+                            /* make the contact column inputs breathe */
+                            #step6-summary .col-lg-6 > .row .form-control { margin-bottom: 10px; }
+                            /* selected state for bootstrap-like cards used in options */
+                            .calculator-form .card.selected { background: linear-gradient(135deg, rgba(130,15,137,0.06), rgba(255,91,116,0.03)); border-color: rgba(130,15,137,0.28); box-shadow: 0 12px 36px rgba(130,15,137,0.06); }
+                        </style>
+
+                        <div class="calculator-form bg-white p-8 border-radius-6px box-shadow-large">
+                            <!-- Progress Bar -->
+                            <div class="progress mb-6">
+                                <div class="progress-bar bg-gradient-purple-pink" role="progressbar" style="width: 10%" id="progressBar"></div>
+                            </div>
+                            <div class="step-indicators text-center mb-6">
+                                <span class="step-indicator active" data-step="1">1</span>
+                                <span class="step-indicator" data-step="2">2</span>
+                                <span class="step-indicator" data-step="3">3</span>
+                                <span class="step-indicator" data-step="4">4</span>
+                                <span class="step-indicator" data-step="5">5</span>
+                                <span class="step-indicator" data-step="6">6</span>
+                            </div>
+
+                            <!-- Step 1: Project Type -->
+                            <div class="step active" id="step1">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">What type of project are you planning?</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="projectType" id="interiors" value="interiors">
+                                            <label class="form-check-label" for="interiors">
+                                                <div class="card h-100 border-0 box-shadow-medium">
+                                                    <div class="card-body text-center p-4">
+                                                        <i class="line-icon-Home-Window icon-large text-dark-gray mb-3"></i>
+                                                        <h5 class="card-title fw-600">Home & Office Interiors</h5>
+                                                        <p class="card-text small">For designing or renovating the inside of an existing space</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="projectType" id="construction" value="construction">
+                                            <label class="form-check-label" for="construction">
+                                                <div class="card h-100 border-0 box-shadow-medium">
+                                                    <div class="card-body text-center p-4">
+                                                        <img src="images/construction_icon.png" 
+                                                            alt="New Construction" 
+                                                            class="mb-3" 
+                                                            style="width:60px; height:auto;">
+                                                        <h5 class="card-title fw-600">New Construction</h5>
+                                                        <p class="card-text small">For building a new structure from the ground up</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Property Type (for both paths) -->
+                            <div class="step" id="step2">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4" id="step2-title">What kind of property is this for?</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="propertyType" id="residential" value="residential">
+                                            <label class="form-check-label" for="residential">
+                                                <div class="card h-100 border-0 box-shadow-medium">
+                                                    <div class="card-body text-center p-4">
+                                                        <i class="line-icon-Home icon-large text-dark-gray mb-3"></i>
+                                                        <h5 class="card-title fw-600" id="residential-title">Residential</h5>
+                                                        <p class="card-text small" id="residential-subtitle">Homes, apartments, and personal spaces</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="propertyType" id="commercial" value="commercial">
+                                            <label class="form-check-label" for="commercial">
+                                                <div class="card h-100 border-0 box-shadow-medium">
+                                                    <div class="card-body text-center p-4">
+                                                        <i class="line-icon-Building icon-large text-dark-gray mb-3"></i>
+                                                        <h5 class="card-title fw-600" id="commercial-title">Commercial</h5>
+                                                        <p class="card-text small" id="commercial-subtitle">Offices, shops, and business spaces</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Basic Details (Residential Interiors) -->
+                            <div class="step" id="step3-residential-interiors">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Basic Details</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="bhk" class="form-label fw-600">Property Configuration</label>
+                                        <select class="form-select" id="bhk">
+                                            <option value="">Select BHK</option>
+                                            <option value="1bhk">1 BHK</option>
+                                            <option value="2bhk">2 BHK</option>
+                                            <option value="3bhk">3 BHK</option>
+                                            <option value="4bhk">4 BHK+</option>
+                                            <option value="villa">Villa</option>
+                                            <option value="penthouse">Penthouse</option>
+                                        </select>
+                                        <script>document.getElementById('bhk').setAttribute('required','required');</script>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="area-ri" class="form-label fw-600">Total Carpet Area (sq ft)</label>
+                                        <input type="number" class="form-control" id="area-ri" placeholder="Enter area in sq ft" min="1">
+                                        <input type="number" class="form-control" id="area-ri" placeholder="Enter area in sq ft" min="1" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="scope-ri" class="form-label fw-600">Project Scope</label>
+                                        <select class="form-select" id="scope-ri">
+                                            <option value="">Select Scope</option>
+                                            <option value="full-home">Full Home Interior</option>
+                                            <option value="kitchen-wardrobes">Kitchen & Wardrobes Only</option>
+                                            <option value="living-room">Living Room Only</option>
+                                            <option value="renovation">Renovation</option>
+                                        </select>
+                                        <script>document.getElementById('scope-ri').setAttribute('required','required');</script>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="style-ri" class="form-label fw-600">Design Style (Optional)</label>
+                                        <select class="form-select" id="style-ri">
+                                            <option value="">Select Style</option>
+                                            <option value="modern">Modern</option>
+                                            <option value="minimalist">Minimalist</option>
+                                            <option value="traditional">Traditional</option>
+                                            <option value="industrial">Industrial</option>
+                                            <option value="scandinavian">Scandinavian</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Basic Details (Commercial Interiors) -->
+                            <div class="step" id="step3-commercial-interiors">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Basic Details</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="property-type-ci" class="form-label fw-600">Property Type</label>
+                                        <select class="form-select" id="property-type-ci">
+                                            <option value="">Select Type</option>
+                                            <option value="corporate-office">Corporate Office</option>
+                                            <option value="retail-store">Retail Store</option>
+                                            <option value="restaurant-cafe">Restaurant/Cafe</option>
+                                            <option value="clinic">Clinic</option>
+                                            <option value="showroom">Showroom</option>
+                                        </select>
+                                        <script>document.getElementById('property-type-ci').setAttribute('required','required');</script>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="area-ci" class="form-label fw-600">Total Carpet Area (sq ft)</label>
+                                        <input type="number" class="form-control" id="area-ci" placeholder="Enter area in sq ft" min="1" required>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="scope-ci" class="form-label fw-600">Project Scope</label>
+                                    <select class="form-select" id="scope-ci">
+                                        <option value="">Select Scope</option>
+                                        <option value="full-fitout">Full Office Fit-out</option>
+                                        <option value="reception-cabins">Reception & Cabins Only</option>
+                                        <option value="renovation">Renovation</option>
+                                        <option value="white-label">White-label to Furnished</option>
+                                    </select>
+                                    <script>document.getElementById('scope-ci').setAttribute('required','required');</script>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Plot & Build Details (Residential Construction) -->
+                            <div class="step" id="step3-residential-construction">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Plot & Build Details</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="plot-area-rc" class="form-label fw-600">Plot Area (sq ft)</label>
+                                        <input type="number" class="form-control" id="plot-area-rc" placeholder="Enter plot area in sq ft" min="1" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="floors-rc" class="form-label fw-600">Number of Floors</label>
+                                        <select class="form-select" id="floors-rc">
+                                            <option value="">Select Floors</option>
+                                            <option value="ground">Ground Floor</option>
+                                            <option value="g1">G+1</option>
+                                            <option value="g2">G+2</option>
+                                            <option value="g3">G+3</option>
+                                            <option value="g4">G+4+</option>
+                                        </select>
+                                        <script>document.getElementById('floors-rc').setAttribute('required','required');</script>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="builtup-area-rc" class="form-label fw-600">Total Built-up Area (sq ft)</label>
+                                        <input type="number" class="form-control" id="builtup-area-rc" placeholder="Enter built-up area in sq ft" min="1" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="location-rc" class="form-label fw-600">City/Location</label>
+                                        <select class="form-select" id="location-rc">
+                                            <option value="">Select City</option>
+                                            <option value="mumbai">Mumbai</option>
+                                            <option value="delhi">Delhi</option>
+                                            <option value="bangalore">Bangalore</option>
+                                            <option value="chennai">Chennai</option>
+                                            <option value="kolkata">Kolkata</option>
+                                            <option value="hyderabad">Hyderabad</option>
+                                            <option value="pune">Pune</option>
+                                            <option value="ahmedabad">Ahmedabad</option>
+                                            <option value="jaipur">Jaipur</option>
+                                            <option value="surat">Surat</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <script>document.getElementById('location-rc').setAttribute('required','required');</script>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Building Details (Commercial Construction) -->
+                            <div class="step" id="step3-commercial-construction">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Building Details</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="building-type-cc" class="form-label fw-600">Building Type</label>
+                                        <select class="form-select" id="building-type-cc">
+                                            <option value="">Select Type</option>
+                                            <option value="office-building">Office Building</option>
+                                            <option value="warehouse">Warehouse</option>
+                                            <option value="retail-complex">Retail Complex</option>
+                                            <option value="school">School</option>
+                                            <option value="hospital">Hospital</option>
+                                        </select>
+                                        <script>document.getElementById('building-type-cc').setAttribute('required','required');</script>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="plot-area-cc" class="form-label fw-600">Plot Area (sq ft)</label>
+                                        <input type="number" class="form-control" id="plot-area-cc" placeholder="Enter plot area in sq ft" min="1" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="floors-cc" class="form-label fw-600">Number of Floors</label>
+                                        <input type="number" class="form-control" id="floors-cc" placeholder="Enter number of floors" min="1" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="builtup-area-cc" class="form-label fw-600">Total Built-up Area (sq ft)</label>
+                                        <input type="number" class="form-control" id="builtup-area-cc" placeholder="Enter built-up area in sq ft" min="1" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Room & Item Selection (Residential Interiors) -->
+                            <div class="step" id="step4-residential-interiors">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Room & Item Selection</h3>
+                                <div id="room-selection-ri">
+                                    <!-- Dynamic content will be added here based on BHK selection -->
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Space & Item Selection (Commercial Interiors) -->
+                            <div class="step" id="step4-commercial-interiors">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Space & Item Selection</h3>
+                                <div id="space-selection-ci">
+                                    <!-- Dynamic content will be added here -->
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Package & Quality (Residential Construction) -->
+                            <div class="step" id="step4-residential-construction">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Choose your construction package</h3>
+                                <div class="row">
+                                    <div class="col-md-4 mb-4">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="package-rc" id="basic-rc" value="basic">
+                                            <label class="form-check-label" for="basic-rc">
+                                                <div class="card h-100 border-0 box-shadow-medium">
+                                                    <div class="card-body text-center p-4">
+                                                        <h5 class="card-title fw-600">Basic Package</h5>
+                                                        <p class="card-text small">~₹1500/sq ft - Standard quality materials, basic finishes</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="package-rc" id="standard-rc" value="standard">
+                                            <label class="form-check-label" for="standard-rc">
+                                                <div class="card h-100 border-0 box-shadow-medium">
+                                                    <div class="card-body text-center p-4">
+                                                        <h5 class="card-title fw-600">Standard Package</h5>
+                                                        <p class="card-text small">~₹1800/sq ft - Branded materials, better quality finishes</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="package-rc" id="premium-rc" value="premium">
+                                            <label class="form-check-label" for="premium-rc">
+                                                <div class="card h-100 border-0 box-shadow-medium">
+                                                    <div class="card-body text-center p-4">
+                                                        <h5 class="card-title fw-600">Premium Package</h5>
+                                                        <p class="card-text small">~₹2200+/sq ft - Top-tier branded materials, premium finishes</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 4: Type of Construction (Commercial Construction) -->
+                            <div class="step" id="step4-commercial-construction">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Type of Construction</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="structural-system-cc" class="form-label fw-600">Structural System</label>
+                                        <select class="form-select" id="structural-system-cc">
+                                            <option value="">Select System</option>
+                                            <option value="rcc">RCC Framed Structure</option>
+                                            <option value="steel">Steel Framed Structure</option>
+                                            <option value="peb">Pre-Engineered Building (PEB)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="scope-cc" class="form-label fw-600">Scope of Work</label>
+                                        <select class="form-select" id="scope-cc">
+                                            <option value="">Select Scope</option>
+                                            <option value="core-shell">Core & Shell</option>
+                                            <option value="warm-shell">Warm Shell</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Finish & Material Grade (Residential Interiors) -->
+                            <div class="step" id="step5-residential-interiors">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Choose your preferred finish quality</h3>
+                                <div class="row">
+                                    <div class="col-md-4 mb-4">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="finish-ri" id="essentials-ri" value="essentials">
+                                            <label class="form-check-label" for="essentials-ri">
+                                                <div class="card h-100 border-0 box-shadow-medium">
+                                                    <div class="card-body text-center p-4">
+                                                        <h5 class="card-title fw-600">Essentials (Basic)</h5>
+                                                        <p class="card-text small">Standard Laminates, Basic Hardware. Cost-effective and functional.</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="finish-ri" id="premium-ri" value="premium">
+                                            <label class="form-check-label" for="premium-ri">
+                                                <div class="card h-100 border-0 box-shadow-medium">
+                                                    <div class="card-body text-center p-4">
+                                                        <h5 class="card-title fw-600">Premium (Mid-Range)</h5>
+                                                        <p class="card-text small">High-Gloss Laminates, Acrylic, Soft-close Hardware, Basic Automation.</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="finish-ri" id="luxe-ri" value="luxe">
+                                            <label class="form-check-label" for="luxe-ri">
+                                                <div class="card h-100 border-0 box-shadow-medium">
+                                                    <div class="card-body text-center p-4">
+                                                        <h5 class="card-title fw-600">Luxe (High-End)</h5>
+                                                        <p class="card-text small">Veneers, Lacquered Glass, Premium Branded Hardware, Advanced Automation.</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Grade of Fit-out (Commercial Interiors) -->
+                            <div class="step" id="step5-commercial-interiors">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Choose the grade of your commercial fit-out</h3>
+                                <div class="row">
+                                    <div class="col-md-4 mb-4">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="fitout-ci" id="grade-c-ci" value="grade-c">
+                                            <label class="form-check-label" for="grade-c-ci">
+                                                <div class="card h-100 border-0 box-shadow-medium">
+                                                    <div class="card-body text-center p-4">
+                                                        <h5 class="card-title fw-600">Grade C (Basic)</h5>
+                                                        <p class="card-text small">Standard materials, functional design, ideal for startups.</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="fitout-ci" id="grade-b-ci" value="grade-b">
+                                            <label class="form-check-label" for="grade-b-ci">
+                                                <div class="card h-100 border-0 box-shadow-medium">
+                                                    <div class="card-body text-center p-4">
+                                                        <h5 class="card-title fw-600">Grade B (Mid-Range)</h5>
+                                                        <p class="card-text small">Good quality materials, better aesthetics, suitable for established businesses.</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <div class="form-check custom-radio">
+                                            <input class="form-check-input" type="radio" name="fitout-ci" id="grade-a-ci" value="grade-a">
+                                            <label class="form-check-label" for="grade-a-ci">
+                                                <div class="card h-100 border-0 box-shadow-medium">
+                                                    <div class="card-body text-center p-4">
+                                                        <h5 class="card-title fw-600">Grade A (Premium)</h5>
+                                                        <p class="card-text small">High-end materials, custom branding, superior ergonomics and design.</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Additional Inclusions (Residential Construction) -->
+                            <div class="step" id="step5-residential-construction">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Additional Inclusions</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="basement-rc" value="basement">
+                                            <label class="form-check-label" for="basement-rc">Basement Construction</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="boundary-wall-rc" value="boundary-wall">
+                                            <label class="form-check-label" for="boundary-wall-rc">Boundary Wall / Compound Wall</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="sump-rc" value="sump">
+                                            <label class="form-check-label" for="sump-rc">Underground Sump / Water Tank</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="landscaping-rc" value="landscaping">
+                                            <label class="form-check-label" for="landscaping-rc">Landscaping & Exterior Work</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="solar-rc" value="solar">
+                                            <label class="form-check-label" for="solar-rc">Solar Panels</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="elevator-rc" value="elevator">
+                                            <label class="form-check-label" for="elevator-rc">Elevator / Lift</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 5: Additional Systems & Features (Commercial Construction) -->
+                            <div class="step" id="step5-commercial-construction">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Additional Systems & Features</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="basement-cc" value="basement">
+                                            <label class="form-check-label" for="basement-cc">Basement/Parking Levels</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="facade-cc" value="facade">
+                                            <label class="form-check-label" for="facade-cc">Facade Type (Glass Curtain Wall, Cladding, etc.)</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="elevators-cc" value="elevators">
+                                            <label class="form-check-label" for="elevators-cc">Elevators & Lifts</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="hvac-cc" value="hvac">
+                                            <label class="form-check-label" for="hvac-cc">Large Scale HVAC System</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="fire-safety-cc" value="fire-safety">
+                                            <label class="form-check-label" for="fire-safety-cc">Fire Fighting System</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="site-dev-cc" value="site-dev">
+                                            <label class="form-check-label" for="site-dev-cc">Site Development & Paving</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 6: Additional Services (Residential Interiors) -->
+                            <div class="step" id="step6-residential-interiors">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Additional Services</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="painting-ri" value="painting">
+                                            <label class="form-check-label" for="painting-ri">Full House Painting</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="electrical-ri" value="electrical">
+                                            <label class="form-check-label" for="electrical-ri">Electrical Work (new wiring, fixtures)</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="plumbing-ri" value="plumbing">
+                                            <label class="form-check-label" for="plumbing-ri">Plumbing Work</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="civil-ri" value="civil">
+                                            <label class="form-check-label" for="civil-ri">Civil Work (tiling, wall changes)</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="automation-ri" value="automation">
+                                            <label class="form-check-label" for="automation-ri">Home Automation</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="furniture-ri" value="furniture">
+                                            <label class="form-check-label" for="furniture-ri">Loose Furniture Sourcing</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 6: MEP & Other Services (Commercial Interiors) -->
+                            <div class="step" id="step6-commercial-interiors">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">MEP & Other Services</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="hvac-ci" value="hvac">
+                                            <label class="form-check-label" for="hvac-ci">HVAC (Heating, Ventilation, and Air Conditioning)</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="electrical-ci" value="electrical">
+                                            <label class="form-check-label" for="electrical-ci">Electrical & Lighting</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="networking-ci" value="networking">
+                                            <label class="form-check-label" for="networking-ci">Networking & Data Cabling</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="security-ci" value="security">
+                                            <label class="form-check-label" for="security-ci">Fire Safety & Security Systems (CCTV, Access Control)</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="flooring-ci" value="flooring">
+                                            <label class="form-check-label" for="flooring-ci">Flooring (Carpet, Vinyl, Tile)</label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="signage-ci" value="signage">
+                                            <label class="form-check-label" for="signage-ci">Signage & Branding</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Step 6: Summary & Contact Form -->
+                            <div class="step" id="step6-summary">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Summary & Get Estimate</h3>
+                                <div class="row">
+                                    <div class="col-lg-6 mb-4">
+                                        <h5 class="fw-600 text-dark-gray mb-3">Your Selections</h5>
+                                        <div id="summary-content" class="bg-light p-3 border-radius-4px">
+                                            <!-- Summary will be populated here -->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h5 class="fw-600 text-dark-gray mb-3">Get Your Detailed Estimate Instantly</h5>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" class="form-control" id="contact-name" placeholder="Your Name">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="email" class="form-control" id="contact-email" placeholder="Your Email">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <input type="tel" class="form-control" id="contact-phone" placeholder="Your Phone">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <input type="text" class="form-control" id="contact-city" placeholder="Your City">
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-gradient-purple-pink w-100" id="get-estimate-btn">View My Estimated Cost</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Budget Result -->
+                            <div class="step" id="step7-result">
+                                <h3 class="h4 fw-700 text-dark-gray mb-4">Your Budget Estimate</h3>
+                                <div id="budgetResult" class="text-center p-4 bg-light border-radius-4px">
+                                    <div class="spinner-border text-primary" role="status" id="loadingSpinner">
+                                        <span class="visually-hidden">Calculating...</span>
+                                    </div>
+                                    <div id="resultContent" style="display: none;">
+                                        <h4 class="fw-700 text-gradient-dark-purple-watermelon mb-3" id="estimatedBudget"></h4>
+                                        <p class="mb-3" id="budgetRange"></p>
+                                        <p class="small text-muted">* This is an approximate estimate. Actual costs may vary based on material quality, labor rates, and specific requirements.</p>
+                                        <div class="mt-4">
+                                            <button class="btn btn-outline-dark-gray me-2" onclick="resetCalculator()">Calculate Again</button>
+                                            <button class="btn btn-gradient-purple-pink" onclick="contactUs()">Contact Us</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Navigation Buttons -->
+                            <div class="d-flex justify-content-between mt-6">
+                                <button type="button" class="btn btn-outline-dark-gray" id="prevBtn" style="display: none;">Previous</button>
+                                <button type="button" class="btn btn-gradient-purple-pink" style="border-radius: 12px;" id="nextBtn">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>  
+        <!-- end section -->
+
+<!-- Budget Calculator Script -->
+        <script src="js/budget-calculator.js"></script>
+
+        </div>
+</section>
+<style>
+    /* Reduce spacing above/below calculator and above footer */
+    #pricing { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+    #pricing .container { padding-bottom: 0 !important; }
+    #pricing + section, #pricing + div { margin-top: 0 !important; padding-top: 0 !important; }
+    footer { margin-top: 0 !important; }
+
+    /* Add space below calculator before contact/footer */
+    .budget-calculator-container {
+        margin-bottom: 40px !important;
+    }
+</style>

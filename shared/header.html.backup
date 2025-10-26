@@ -1,0 +1,94 @@
+<header> 
+	<!-- start navigation -->
+	<nav class="navbar navbar-expand-lg header-light bg-transparent header-reverse glass-effect" data-header-hover="light" id="mainNavbar">
+		<div class="container-fluid">
+			<div class="col-auto col-lg-2 me-lg-0 me-auto">
+				<a class="navbar-brand section-link" href="#home">
+					<img src="images/sj-infra-logo.png" alt="SJ Infra Logo" class="default-logo">
+					<img src="images/sj-infra-logo.png" alt="SJ Infra Logo" class="alt-logo">
+					<img src="images/sj-infra-logo.png" alt="SJ Infra Logo" class="mobile-logo"> 
+				</a>
+			</div>
+			<div class="col-auto menu-order position-static">
+				<button class="navbar-toggler float-start" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
+					<span class="navbar-toggler-line"></span>
+					<span class="navbar-toggler-line"></span>
+					<span class="navbar-toggler-line"></span>
+					<span class="navbar-toggler-line"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav"> 
+					<ul class="navbar-nav">
+						 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+						<li class="nav-item"><a href="about-us.html" class="nav-link">About us</a></li>
+						<li class="nav-item"><a href="service.html" class="nav-link">Services</a></li>
+						<li class="nav-item"><a href="blogs.html" class="nav-link">Blogs</a></li>
+						<li class="nav-item"><a href="contact-us.html" class="nav-link">Contact us</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-auto col-lg-2 text-end d-none d-sm-flex">
+				<div class="header-icon"> 
+					<div class="header-button">
+						<a href="#pricing" class="btn btn-very-small left-icon btn-rounded btn-box-shadow btn-switch-text btn-dark-gray section-link">
+							<span>
+								<span class="d-none d-xl-inline-block"><i class="bi bi-bag-check fs-16"></i></span>
+								<span class="btn-double-text" data-text="Contact Us">Contact Us</span>
+							</span>
+						</a>
+					</div>
+				</div>  
+			</div>
+		</div>
+	</nav>
+	<!-- end navigation -->
+</header>
+
+<style>
+	/* Navbar styling */
+	#mainNavbar {
+		min-height: 70px;
+		padding: 10px 0;
+		transition: background-color 0.3s ease;
+	}
+	
+	#mainNavbar .navbar-brand img {
+		height: 50px;
+		width: auto;
+		max-height: 50px;
+	}
+	
+	/* Mobile navbar adjustments */
+	@media (max-width: 991px) {
+		#mainNavbar .default-logo,
+		#mainNavbar .alt-logo {
+			display: none !important;
+		}
+		#mainNavbar .mobile-logo {
+			display: block !important;
+			height: 45px !important;
+		}
+	}
+	
+	/* Desktop - hide mobile logo */
+	@media (min-width: 992px) {
+		#mainNavbar .mobile-logo {
+			display: none !important;
+		}
+	}
+</style>
+
+<script>
+	// Navbar scroll effect - transparent at top, white on scroll
+	window.addEventListener('scroll', function() {
+		const navbar = document.getElementById('mainNavbar');
+		if (window.scrollY > 50) {
+			// When scrolled down - make white
+			navbar.style.backgroundColor = 'white';
+			navbar.classList.remove('bg-transparent');
+		} else {
+			// At the top - make transparent
+			navbar.style.backgroundColor = 'transparent';
+			navbar.classList.add('bg-transparent');
+		}
+	});
+</script>

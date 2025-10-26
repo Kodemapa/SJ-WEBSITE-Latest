@@ -1,0 +1,599 @@
+<style>
+@media (max-width: 767px) {
+    header, .sj-mobile-logo {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    #home.p-0.ipad-top-space-margin {
+        margin-top: -24px !important;
+    }
+    .rev_slider_wrapper.fullwidthbanner-container {
+        margin-top: 0 !important;
+    }
+}
+</style>
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+    <!-- HTMX CDN for dynamic includes -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        <title>SJ-INFRA</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="author" content="ThemeZaa">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <meta name="description" content="Elevate your online presence with Crafto - a modern, versatile, multipurpose Bootstrap 5 responsive HTML5, SCSS template using highly creative 52+ ready demos.">
+        <!-- favicon icon -->
+        <link rel="shortcut icon" href="images/sj-infra-logo.png">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+        <!-- google fonts preconnect -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- slider revolution CSS files -->
+        <link rel="stylesheet" type="text/css" href="revolution/css/settings.css">
+        <link rel="stylesheet" type="text/css" href="revolution/css/layers.css">
+        <link rel="stylesheet" type="text/css" href="revolution/css/navigation.css">
+        <!-- style sheets and font icons  -->
+        <link rel="stylesheet" href="css/vendors.min.css"/>
+        <link rel="stylesheet" href="css/icon.min.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="stylesheet" href="demos/product-showcase/product-showcase.css" />
+    <script src="js/budget-calculator.js"></script>
+        <style>
+            
+            /* Hide any remaining images and unwanted elements */
+            .tp-arr-allwrapper .tp-arr-imgholder,
+            .tp-arr-allwrapper img,
+            .tp-arr-allwrapper .tp-arr-iwrapper,
+            .tp-arr-allwrapper .tp-arr-titleholder,
+            .tp-arr-allwrapper .tp-arr-imgholder div,
+            .tp-arr-allwrapper .tp-arr-iwrapper div,
+            .tp-arr-allwrapper .tp-arr-inner,
+            .tp-bullets,
+            .tp-bullet {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+            }
+            
+            /* Hide any small squares or artifacts above arrows */
+            .tp-leftarrow:before,
+            .tp-rightarrow:before,
+            .tp-leftarrow:after,
+            .tp-rightarrow:after,
+            .tp-arr-allwrapper:before,
+            .tp-arr-allwrapper:after {
+                display: none !important;
+                content: none !important;
+            }
+            
+            /* Ensure arrows are visible and properly positioned */
+            .tp-arr-allwrapper {
+                opacity: 1 !important;
+                visibility: visible !important;
+                background: none !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+            
+            /* Show only our custom arrows */
+            .tp-arr-allwrapper .custom-arrow {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            
+            /* Ensure header stays above slider overlay */
+            header {
+                position: relative;
+                z-index: 1000;
+            }
+            /* Ensure navigation bar is fixed and styled */
+            nav.navbar {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                background-color: white;
+                z-index: 1000;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Add padding to body to prevent content overlap */
+            body {
+                padding-top: 70px; /* Adjust based on navbar height */
+            }
+
+            @media (max-width: 768px) {
+                #slide-1-layer-subtitle1 {
+                    font-size: 40px !important;
+                    line-height: 50px !important;
+                    text-align: center !important;
+                    transform: translateY(-50px) !important;
+                    position: relative;
+                }
+                #slide-1-layer-1 {
+                    letter-spacing: -2px !important;
+                    font-size: 48px !important;
+                    line-height: 1.1 !important;
+                    white-space: nowrap !important;
+                    overflow-x: auto !important;
+                    width: 100vw !important;
+                    max-width: 100vw !important;
+                    box-sizing: border-box !important;
+                    text-align: center !important;
+                    word-break: normal !important;
+                }
+                /* Make hero background fill viewport like about-us */
+                .rev-slidebg {
+                    object-fit: cover !important;
+                    object-position: center top !important;
+                    width: 100vw !important;
+                    height: 100vh !important;
+                    min-height: 100vh !important;
+                    max-height: 100vh !important;
+                    margin: 0 auto !important;
+                    display: block !important;
+                    transform: none !important; /* Keep this line */
+                }
+                #rev_slider_31_1_wrapper,
+                .rev_slider_wrapper,
+                #home.p-0.ipad-top-space-margin {
+                    height: 100vh !important;
+                    min-height: 100vh !important;
+                    margin-top: 0 !important;
+                }
+                
+                /* Adjust background image positioning for mobile */
+                
+                /* Adjust slider container for mobile */
+                
+                /* Ensure slider fills entire viewport */
+                .rev_slider_wrapper {
+                    height: 100vh !important;
+                    min-height: 100vh !important;
+                }
+                
+                /* Remove any top spacing from the section */
+                #home {
+                    margin-top: 0 !important; /* Keep this line */
+                }
+            }
+        </style>
+        
+    <!-- start header -->
+    <div hx-get="shared/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
+    <!-- end header -->
+
+       <section id="home" class="p-0 ipad-top-space-margin" style="background-image: url();">
+            <article class="content">
+                <div id="rev_slider_31_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container">
+                    <!-- the ID here will be used in the JavaScript below to initialize the slider -->
+                    <div id="rev_slider_31_1" class="rev_slider fullwidthabanner" data-version="5.4.5" >
+                        <!-- BEGIN SLIDES LIST -->
+                        <ul>
+                            <!-- SLIDE 1 - HOME/OVERVIEW -->
+                            <li data-index="rs-01" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="600" data-rotate="0" data-saveperformance="off" data-title="Home" data-param1="01" data-description="Audio Technology Overview">
+                                <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
+                                <img src="images/hexa-backgrond.jpg" alt="home background" class="rev-slidebg" data-bgparallax="6">
+                                <span style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1;"></span>
+                                 <!-- start large text layer -->
+                                <div style="width:100%; text-align:center;">
+                                <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2"
+                                     id="slide-1-layer-subtitle1"
+                                     data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                     data-visibility="['on', 'on', 'on', 'on']"
+                                     data-fontsize="['50','40','35','25']"
+                                     data-lineheight="['60','50','45','35']"
+                                     data-fontweight="['700','700','700','700']"
+                                     data-color="['#FFF','#FFF','#FFF','#FFF']"
+                                     data-textAlign="['center','center','center','center']"
+                                     data-letterspacing="['0','0','0','0']"
+                                     data-x="['center','center','center','center']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-hoffset="['-340','-250','-200','-120']"
+                                     data-voffset="['-300','-240','-190','-170']"
+                                     data-width="['auto','auto','auto','auto']"
+                                     data-height="['auto','auto','auto','auto']"
+                                     data-whitespace="['nowrap','nowrap','nowrap','nowrap']"
+                                     data-responsive_offset="off"
+                                     data-responsive="on"
+                                     style="background: linear-gradient(90deg, #ffffff 15%, #ffffff 65%, #ffffff 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;">
+                                    
+                                </div>
+
+                                <!-- <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1;"></div> -->
+                                <!-- start large text layer -->
+                                <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2" style="background: -webkit-linear-gradient(0deg, #713d16 15%, #6f4f31 65%, #3e2b2b 100%);-webkit-background-clip: text;background-clip: text;-webkit-text-fill-color: transparent;" 
+                                     id="slide-1-layer-1"
+                                     data-frames='[{"delay":1500,"speed":2000,"frame":"0","from":"sX:1.3;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                                     data-visibility="['on', 'on', 'on', 'on']"
+                                     data-fontsize="['346','250','200','80']"
+                                     data-lineheight="['450','360','300','100']"
+                                     data-fontweight="['700','700', '700','700']"
+                                     data-color="['#FFF','#FFF', '#000', '#000']"
+                                     data-textAlign="['center','center','center','center']"
+                                     data-letterspacing="['-24','-15','-10','-8']"
+                                     data-x="['center','center','center','center']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-voffset="['-140','0','-100','0']"
+                                     data-width="['auto', 'auto', 'auto', 'auto']"
+                                     data-height="['auto', 'auto', 'auto', 'auto']"
+                                     data-whitespace="['nowrap', 'nowrap', 'nowrap', 'nowrap']"
+                                     data-responsive_offset="off"
+                                     data-responsive="on"
+                                     >Blogs</div>
+                                     <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2"
+                                          id="slide-1-layer-subtitle2"
+                                          data-frames='[{"delay":3500,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                          data-visibility="['on', 'on', 'on', 'on']"
+                                          data-fontsize="['50','40','35','25']"
+                                          data-lineheight="['60','50','45','35']"
+                                          data-fontweight="['700','700','700','700']"
+                                          data-color="['#FFF','#FFF','#FFF','#FFF']"
+                                          data-textAlign="['center','center','center','center']"
+                                          data-letterspacing="['0','0','0','0']"
+                                          data-x="['center','center','center','center']"
+                                          data-y="['middle','middle','middle','middle']"
+                                          data-hoffset="['0','0','0','0']"
+                                          data-voffset="['70','30','20','10']"
+                                          data-width="['auto','auto','auto','auto']"
+                                          data-height="['auto','auto','auto','auto']"
+                                          data-whitespace="['nowrap','nowrap','nowrap','nowrap']"
+                                          data-responsive_offset="off"
+                                          data-responsive="on"
+                                          style="background: linear-gradient(90deg, #ffffff 15%, #ffffff 65%, #ffffff 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;">
+                                     </div>
+                                </div>
+                                <!-- start product image -->
+                                <div class="tp-caption tp-resizeme"
+                                     id="slide-1-layer-2"
+                                     data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"opacity:0;fb:30px;sX:1.5;sY:1.5;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":600,"frame":"999","to":"auto:auto;fb:0;opacity:0;","ease":"Power3.easeInOut"}]'
+                                     data-type="image"
+                                     data-visibility="['on', 'on', 'on', 'on']"
+                                     data-x="['center','center','center','center']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-voffset="['-100','-40','-65','-50']"
+                                     data-width="['775', '580', '500', '300']"
+                                     data-height="['auto', 'auto', 'auto', 'auto']"
+                                     data-responsive_offset="off"
+                                     data-responsive="on"
+                                     style="z-index: 5;"><div class="rs-looped rs-wave" data-speed="8" data-angle="0" data-radius="10px" data-origin="50% 50%">
+                                        <!-- <img src="images/rev-trans-tile.png" data-lazyload="Interior_design/HomePage/Project1.png" class="w-100 h-auto" alt="headphone"> -->
+                                    </div>
+                                </div>
+                                <!-- navigation dots for carousel -->
+                                <div class="tp-caption" 
+                                     id="slide-1-nav-dots"
+                                     data-x="['center','center','center','center']" 
+                                     data-y="['bottom','bottom','bottom','bottom']" 
+                                     data-hoffset="['0','0','0','0']"
+                                     data-voffset="['50','30','30','20']"
+                                     data-width="['auto','auto','auto','auto']"
+                                     data-height="['auto','auto','auto','auto']"
+                                     data-type="text"
+                                     data-responsive_offset="off"
+                                     data-responsive="off"
+                                     data-frames='[{"delay":2000,"speed":1000,"frame":"0","from":"opacity:0;y:30px;","to":"o:1;y:0px;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'>
+                                    <div class="slider-navigation-dots d-flex justify-content-center">
+                                        <span class="dot active" data-slide="0"></span>
+                                        <span class="dot" data-slide="1"></span>
+                                        <span class="dot" data-slide="2"></span>
+                                        <span class="dot" data-slide="3"></span>
+                                        <span class="dot" data-slide="4"></span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul><!-- END SLIDES LIST -->
+
+                    </div><!-- END SLIDER CONTAINER -->
+                </div>
+            </article>
+        </section>
+        <!-- start section -->
+        <section class="top-space-margin right-side-bar">
+        <div class="container">
+        <div class="row justify-content-center">
+
+    <!-- Blog 1 -->
+    <div class="col-12 col-lg-6 blog-standard md-mb-50px sm-mb-40px">
+    <div class="col-12 blog-details mb-12">
+        <h5 class="text-dark-gray fw-600 w-120 sm-w-100 mb-6">
+        Premium Interior Design in Ballari
+        </h5>
+
+        <!-- Image wrapped in anchor for redirection -->
+        <a href="blog-1.html">
+        <img src="images/interior-blog.jpg" alt="Modern Interiors and Exteriors" 
+            class="w-100 border-radius-6px mb-7">
+        </a>
+
+        <p> Experience premium interiors that blend modern design, smart space planning, and superior craftsmanship. From luxury villas and premium apartments to stylish offices and commercial spaces, every project reflects elegance, comfort, and functionality.</p>
+
+        <p>With custom furniture, modular kitchens, exclusive finishes, and innovative lighting, each detail is designed for sophistication and long-lasting durability. Backed by end-to-end project management, interiors are delivered on time, within budget, and completely stress-free.</p>
+
+        <p>Create spaces that inspire, impress, and stand the test of time with SJ Infra Ballari.</p>
+    </div>
+    </div>
+
+      <!-- Blog 2 -->
+      <div class="col-12 col-lg-6 blog-standard md-mb-50px sm-mb-40px">
+        <div class="col-12 blog-details mb-12"> 
+          <h5 class="text-dark-gray fw-600 w-120 sm-w-100 mb-6">
+             Ballari Exterior Design
+          </h5>
+
+          <!-- Image wrapped in anchor for redirection -->
+            <a href="blog-2.html">
+            <img src="images/exterior-blog.jpg" alt="Modern Interiors and Exteriors" 
+                class="w-100 border-radius-6px mb-7">
+            </a>
+
+          <p>Enhance the beauty and value of your property with professional exterior design services in Ballari. From facades, elevations, and landscaping to pathways, outdoor lighting, and garden layouts, every detail is crafted to create a modern, elegant, and durable exterior.</p>
+
+          <p>We use premium materials, modern designs, and skilled craftsmanship to create exteriors that are stylish, durable, and functional—making villas, apartments, and commercial buildings</p>
+
+          <p>With complete project execution, we handle everything from design to installation, delivering exteriors that are customized, timeless, and built to impress.</p>
+        </div>
+      </div>
+
+      <!-- Blog 3 -->
+      <div class="col-12 col-lg-6 blog-standard md-mb-50px sm-mb-40px">
+        <div class="col-12 blog-details mb-12"> 
+          <h5 class="text-dark-gray fw-600 w-120 sm-w-100 mb-6">
+             Expert Construction Ballari 
+          </h5>
+
+          <a href="blog-3.html">
+            <img src="images/construction-blog.jpg" alt="Modern Interiors and Exteriors" 
+                class="w-100 border-radius-6px mb-7">
+         </a>
+
+          <p>Build with confidence through professional construction services in Ballari tailored for residential, commercial, & industrial projects. From planning & design to execution & finishing, every stage is handled with precision & expertise.</p>
+
+          <p>We specialize in structural construction, villas, apartments, offices, & turnkey projects in Ballari, delivering durable, high-quality, & timely results. Using premium materials, advanced techniques, & skilled professionals, we build spaces that are strong, modern, and efficient.</p>
+
+          <p>We ensure on-time delivery, cost-effective execution, and superior workmanship—making us a trusted one in Ballari. </p>
+        </div>
+      </div>
+
+      <!-- Blog 4 -->
+      <div class="col-12 col-lg-6 blog-standard md-mb-50px sm-mb-40px">
+        <div class="col-12 blog-details mb-12"> 
+          <h5 class="text-dark-gray fw-600 w-120 sm-w-100 mb-6">
+             Layout Development Ballari 
+          </h5>
+
+           <a href="blog-4.html">
+            <img src="images/layouts-blog.png" alt="Modern Interiors and Exteriors" 
+                class="w-100 border-radius-6px mb-7">
+            </a>
+
+          <p>We provide layout development services in Ballari for residential, commercial, and industrial projects. Our layouts are well-planned, Vastu-compliant, and investment-friendly, ensuring smart land use and higher property value.</p>
+
+          <p>Each project covers site planning, road design, drainage, and utilities, with attention to green zones and sustainability. Using modern surveying and quality standards, we deliver layouts that are precise and future-ready.</p>
+
+          <p>With a focus on timely delivery and durability, our services create organized and reliable developments. SJ Infra Ballari stands as a trusted choice for professional layout planning and execution.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+        </section>
+        <!-- end section -->
+
+        <!-- start section -->
+        <section class="bg-very-light-gray"> 
+            <div class="container">
+                <div class="row justify-content-center mb-2">
+                    <div class="col-12 col-lg-7 text-center">
+                        <span class="fs-15 fw-500 text-uppercase d-inline-block">You may also like</span>
+                        <h4 class="text-dark-gray fw-600">Related posts</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <ul class="blog-grid blog-wrapper grid-loading grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large">
+                            <li class="grid-sizer"></li>
+                            <!-- start blog item -->
+                            <li class="grid-item">
+                                <div class="card border-0 border-radius-4px box-shadow-extra-large box-shadow-extra-large-hover">
+                                    <div class="blog-image">
+                                        <a href="blog-1.html" class="d-block"><img src="images/interior-blog.jpg" alt="" /></a>
+                                        <div class="blog-categories">
+                                            <a href="blog-classic.html" class="categories-btn bg-white text-dark-gray text-dark-gray-hover text-uppercase alt-font fw-700">Interior</a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-12">
+                                        <a href="blog-1.html" class="card-title mb-15px fw-600 fs-17 lh-26 text-dark-gray text-dark-gray-hover d-inline-block">Premium Interior Design in Ballari
+</a>
+
+                                        <p>Get expert layout services in Ballari with optimized residential & commercial designs, 2D & 3D planning, and compliance.</p>
+                                        <!-- <div class="author d-flex justify-content-center align-items-center position-relative overflow-hidden fs-14 text-uppercase">
+                                            <div class="me-auto">
+                                                <span class="blog-date fw-500 d-inline-block">30 August 2023</span>
+                                                <div class="d-inline-block author-name">By <a href="blog-1.html" class="text-dark-gray text-dark-gray-hover text-decoration-line-bottom fw-600">Den viliamson</a></div>
+                                            </div>
+                                            <div class="like-count">
+                                                <a href="blog-1.html"><i class="fa-regular fa-heart text-red d-inline-block"></i><span class="text-dark-gray align-middle fw-600">65</span></a>
+                                            </div>  
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- end blog item -->
+                            <!-- start blog item -->
+                            <li class="grid-item">
+                                <div class="card border-0 border-radius-4px box-shadow-extra-large box-shadow-extra-large-hover">
+                                    <div class="blog-image">
+                                        <a href="blog-2.html" class="d-block"><img src="images/exterior-blog.jpg" alt="" /></a>
+                                        <div class="blog-categories">
+                                            <a href="blog-classic.html" class="categories-btn bg-white text-dark-gray text-dark-gray-hover text-uppercase alt-font fw-700">Exterior</a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-12">
+                                        <a href="blog-2.html" class="card-title mb-15px fw-600 fs-17 lh-26 text-dark-gray text-dark-gray-hover d-inline-block">Ballari Exterior Design</a>
+
+                                        <p>With premium materials & expert design, we create exteriors that add value & function to villas, apartments, & commercial spaces.</p>
+                                        <!-- <div class="author d-flex justify-content-center align-items-center position-relative overflow-hidden fs-14 text-uppercase">
+                                            <div class="me-auto">
+                                                <span class="blog-date fw-500 d-inline-block">28 August 2023</span>
+                                                <div class="d-inline-block author-name">By <a href="blog-classic.html" class="text-dark-gray text-dark-gray-hover text-decoration-line-bottom fw-600">Hugh macleod</a></div>
+                                            </div>
+                                            <div class="like-count">
+                                                <a href="blog-2.html"><i class="fa-regular fa-heart text-red d-inline-block"></i><span class="text-dark-gray align-middle fw-600">25</span></a>
+                                            </div>  
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- end blog item -->
+                            <!-- start blog item -->
+                            <li class="grid-item">
+                                <div class="card border-0 border-radius-4px box-shadow-extra-large box-shadow-extra-large-hover">
+                                    <div class="blog-image">
+                                        <a href="blog-3.html" class="d-block"><img src="images/construction-blog.jpg" alt="" /></a>
+                                        <div class="blog-categories">
+                                            <a href="blog-classic.html" class="categories-btn bg-white text-dark-gray text-dark-gray-hover text-uppercase alt-font fw-700">Construction</a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-12">
+                                        <a href="blog-3.html" class="card-title mb-15px fw-600 fs-17 lh-26 text-dark-gray text-dark-gray-hover d-inline-block">Expert Construction Ballari</a>
+
+                                        <p>Get high-quality residential and commercial construction with durable materials and timely execution in Ballari.</p>
+                                        <!-- <div class="author d-flex justify-content-center align-items-center position-relative overflow-hidden fs-14 text-uppercase">
+                                            <div class="me-auto">
+                                                <span class="blog-date fw-500 d-inline-block">26 August 2023</span>
+                                                <div class="d-inline-block author-name">By <a href="blog-classic.html" class="text-dark-gray text-dark-gray-hover text-decoration-line-bottom fw-600">Walton smith</a></div>
+                                            </div>
+                                            <div class="like-count">
+                                                <a href="blog-3.html"><i class="fa-regular fa-heart text-red d-inline-block"></i><span class="text-dark-gray align-middle fw-600">30</span></a>
+                                            </div>  
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- end blog item -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+         
+        <!-- start section -->
+        <section class="py-0">
+            <div class="container">
+                <div class="row pb-50px sm-pb-35px justify-content-center align-items-center">
+                    <div class="col-xl-3 col-lg-4 col-sm-6 order-1 text-center text-sm-start xs-mb-20px">
+                        <span class="fs-19 mb-5px d-block">Let's talk with us</span>
+                        <h6 class="fw-700 mb-0 ls-minus-1px"><a href="tel:8123543860" class="text-dark-gray">8123543860</a></h6>
+                    </div>
+                    <div class="col-xl-6 col-lg-4 md-mt-25px order-3 order-lg-2 text-center elements-social social-icon-style-04">
+                        <ul class="large-icon dark">
+                            <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i><span></span></a></li>
+                            <!-- <li><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble"></i><span></span></a></li>
+                            <li><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i><span></span></a></li> -->
+                            <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i><span></span></a></li> 
+                            <li><a class="linkedin" href="http://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i><span></span></a></li> 
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-sm-6 order-2 order-lg-3 text-center text-sm-end">
+                        <span class="fs-19 mb-5px d-block">Get customer care</span>
+                        <h6 class="fw-700 mb-0 ls-minus-1px"><a href="mailto:SJInfra5@gmail.com " class="text-dark-gray">SJInfra5@gmail.com </a></h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section --> 
+         
+        <!-- start footer --> 
+        <div hx-get="shared/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
+        <!-- end footer -->
+         
+        <!-- start scroll progress -->
+        <div class="scroll-progress d-none d-xxl-block">
+            <a href="#" class="scroll-top" aria-label="scroll">
+                <span class="scroll-text">Scroll</span><span class="scroll-line"><span class="scroll-point"></span></span>
+            </a>
+        </div>
+        <!-- end scroll progress -->
+
+        <!-- javascript libraries -->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/vendors.min.js"></script>
+        
+        <!-- slider revolution core javaScript files -->
+        <script type="text/javascript" src="revolution/js/jquery.themepunch.tools.min.js"></script>
+        <script type="text/javascript" src="revolution/js/jquery.themepunch.revolution.min.js"></script>
+        <script type="text/javascript">
+            /* Global variable for carousel navigation */
+            var revapi31;
+
+            /* https://learn.jquery.com/using-jquery-core/document-ready/ */
+            jQuery(document).ready(function () {
+
+                /* initialize the slider based on the Slider's ID attribute from the wrapper above */
+                revapi31 = jQuery('#rev_slider_31_1').show().revolution({
+
+                    /* options are 'auto', 'fullwidth' or 'fullscreen' */
+                    sliderLayout: 'fullwidth',
+                    /* sets the Slider's default timeline */
+                    delay: 9000,
+                    /* options that disable autoplay */
+                    stopLoop: "off",
+                    stopAfterLoops: 0,
+                    stopAtSlide: 1,
+                    /* Lazy Load options are "all", "smart", "single" and "none" */
+                    lazyType: "smart",
+                    spinner: "spinner0",
+                    responsiveLevels: [1240, 1024, 778, 480],
+                    /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+                    gridwidth: [1190, 1024, 778, 480],
+                    /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+                    gridheight: [1250, 920, 1000, 650],
+                    /* Lazy Load options are "all", "smart", "single" and "none" */
+                    lazyType: "none",
+                    parallax: {
+                        type: "mouse+scroll",
+                        origo: "slidercenter",
+                        speed: 400,
+                        speedbg: 1500,
+                        speedls: 1000,
+                        levels: [5, 10, 15, 20, 25, 30, 35, 40, 60, 46, -10, -15, -20, -25, -30, 55],
+                    },
+                    /* Navigation */
+                    navigation: {
+                        onHoverStop: "off",
+                        arrows: {
+                            enable: true,
+                            style: "uranus",
+                            tmp: '<div class="tp-arr-allwrapper"><span class="custom-arrow"></span></div>',
+                            left: {
+                                h_align: "left",
+                                v_align: "center",
+                                h_offset: 30,
+                                v_offset: 0
+                            },
+                            right: {
+                                h_align: "right",
+                                v_align: "center",
+                                h_offset: 30,
+                                v_offset: 0
+                            }
+                        },
+                        bullets: {
+                            enable: false
+                        }
+                    }
+                });
+            });
+
+        </script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>

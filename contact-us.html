@@ -1,0 +1,456 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+    <!-- HTMX CDN for dynamic includes -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        <title>SJ-INFRA</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="author" content="ThemeZaa">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <meta name="description" content="Elevate your online presence with Crafto - a modern, versatile, multipurpose Bootstrap 5 responsive HTML5, SCSS template using highly creative 52+ ready demos.">
+        <!-- favicon icon -->
+        <link rel="shortcut icon" href="images/sj-infra-logo.png">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+        <!-- google fonts preconnect -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- slider revolution CSS files -->
+        <link rel="stylesheet" type="text/css" href="revolution/css/settings.css">
+        <link rel="stylesheet" type="text/css" href="revolution/css/layers.css">
+        <link rel="stylesheet" type="text/css" href="revolution/css/navigation.css">
+        <!-- style sheets and font icons  -->
+        <link rel="stylesheet" href="css/vendors.min.css"/>
+        <link rel="stylesheet" href="css/icon.min.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="stylesheet" href="demos/product-showcase/product-showcase.css" />
+    <script src="js/budget-calculator.js"></script>
+        <style>
+            
+            /* Hide any remaining images and unwanted elements */
+            .tp-arr-allwrapper .tp-arr-imgholder,
+            .tp-arr-allwrapper img,
+            .tp-arr-allwrapper .tp-arr-iwrapper,
+            .tp-arr-allwrapper .tp-arr-titleholder,
+            .tp-arr-allwrapper .tp-arr-imgholder div,
+            .tp-arr-allwrapper .tp-arr-iwrapper div,
+            .tp-arr-allwrapper .tp-arr-inner,
+            .tp-bullets,
+            .tp-bullet {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+            }
+            
+            /* Hide any small squares or artifacts above arrows */
+            .tp-leftarrow:before,
+            .tp-rightarrow:before,
+            .tp-leftarrow:after,
+            .tp-rightarrow:after,
+            .tp-arr-allwrapper:before,
+            .tp-arr-allwrapper:after {
+                display: none !important;
+                content: none !important;
+            }
+            
+            /* Ensure arrows are visible and properly positioned */
+            .tp-arr-allwrapper {
+                opacity: 1 !important;
+                visibility: visible !important;
+                background: none !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+            
+            /* Show only our custom arrows */
+            .tp-arr-allwrapper .custom-arrow {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            
+            /* Ensure header stays above slider overlay */
+            header {
+                position: relative;
+                z-index: 1000;
+            }
+            /* Ensure navigation bar is fixed and styled */
+            nav.navbar {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                background-color: white;
+                z-index: 1000;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Add padding to body to prevent content overlap */
+            body {
+                padding-top: 70px; /* Adjust based on navbar height */
+            }
+
+            @media (max-width: 768px) {
+                #slide-1-layer-subtitle1 {
+                    font-size: 40px !important;
+                    line-height: 50px !important;
+                    text-align: center !important;
+                    transform: translateY(-50px) !important;
+                    position: relative;
+                }
+                
+                /* Adjust background image positioning for mobile */
+                .rev-slidebg {
+                    object-position: center top !important;
+                    transform: translateY(-150px) !important;
+                }
+                
+                /* Adjust slider container for mobile */
+                #rev_slider_31_1_wrapper {
+                    margin-top: -150px !important;
+                }
+                
+                /* Ensure slider fills entire viewport */
+                .rev_slider_wrapper {
+                    height: 100vh !important;
+                    min-height: 100vh !important;
+                }
+                
+                /* Remove any top spacing from the section */
+                #home {
+                    margin-top: -70px !important;
+                }
+            }
+        </style>
+        
+    <!-- start header -->
+    <div hx-get="shared/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
+    <!-- end header -->
+
+       <section id="home" class="p-0 ipad-top-space-margin" style="background-image: url();">
+            <article class="content">
+                <div id="rev_slider_31_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container">
+                    <!-- the ID here will be used in the JavaScript below to initialize the slider -->
+                    <div id="rev_slider_31_1" class="rev_slider fullwidthabanner" data-version="5.4.5" >
+                        <!-- BEGIN SLIDES LIST -->
+                        <ul>
+                            <!-- SLIDE 1 - HOME/OVERVIEW -->
+                            <li data-index="rs-01" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="600" data-rotate="0" data-saveperformance="off" data-title="Home" data-param1="01" data-description="Audio Technology Overview">
+                                <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
+                                <img src="images/blue-background.jpg" alt="home background" class="rev-slidebg" data-bgparallax="6">
+                                <span style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1;"></span>
+                                 <!-- start large text layer -->
+                                <div style="width:100%; text-align:center;">
+                                <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2"
+                                     id="slide-1-layer-subtitle1"
+                                     data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                     data-visibility="['on', 'on', 'on', 'on']"
+                                     data-fontsize="['50','40','35','25']"
+                                     data-lineheight="['60','50','45','35']"
+                                     data-fontweight="['700','700','700','700']"
+                                     data-color="['#FFF','#FFF','#FFF','#FFF']"
+                                     data-textAlign="['center','center','center','center']"
+                                     data-letterspacing="['0','0','0','0']"
+                                     data-x="['center','center','center','center']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-hoffset="['-340','-250','-200','-120']"
+                                     data-voffset="['-300','-240','-190','-170']"
+                                     data-width="['auto','auto','auto','auto']"
+                                     data-height="['auto','auto','auto','auto']"
+                                     data-whitespace="['nowrap','nowrap','nowrap','nowrap']"
+                                     data-responsive_offset="off"
+                                     data-responsive="on"
+                                     style="background: linear-gradient(90deg, #ffffff 15%, #ffffff 65%, #ffffff 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;">
+                                    
+                                </div>
+
+                                <!-- <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1;"></div> -->
+                                <!-- start large text layer -->
+                                <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2" style="background: -webkit-linear-gradient(0deg, #736a63 15%, #6f4f31 65%, #3e2b2b 100%);-webkit-background-clip: text;background-clip: text;-webkit-text-fill-color: transparent;" 
+                                     id="slide-1-layer-1"
+                                     data-frames='[{"delay":1500,"speed":2000,"frame":"0","from":"sX:1.3;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                                     data-visibility="['on', 'on', 'on', 'on']"
+                                     data-fontsize="['346','250','200','70']"
+                                     data-lineheight="['450','360','300','100']"
+                                     data-fontweight="['700','700', '700','700']"
+                                     data-color="['#FFF','#FFF', '#000', '#000']"
+                                     data-textAlign="['center','center','center','center']"
+                                     data-letterspacing="['-24','-15','-10','-8']"
+                                     data-x="['center','center','center','center']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-voffset="['-140','0','-100','100']"
+                                     data-width="['auto', 'auto', 'auto', 'auto']"
+                                     data-height="['auto', 'auto', 'auto', 'auto']"
+                                     data-whitespace="['nowrap', 'nowrap', 'nowrap', 'nowrap']"
+                                     data-responsive_offset="off"
+                                     data-responsive="on"
+                                     >Contact us</div>
+                                     <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2"
+                                          id="slide-1-layer-subtitle2"
+                                          data-frames='[{"delay":3500,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                                          data-visibility="['on', 'on', 'on', 'on']"
+                                          data-fontsize="['346','250','200','130']"
+                                         data-lineheight="['450','360','300','180']"
+                                          data-fontweight="['700','700','700','700']"
+                                          data-color="['#FFF','#FFF','#FFF','#FFF']"
+                                          data-textAlign="['center','center','center','center']"
+                                          data-letterspacing="['0','0','0','0']"
+                                          data-x="['center','center','center','center']"
+                                          data-y="['middle','middle','middle','middle']"
+                                          data-hoffset="['0','0','0','0']"
+                                          data-voffset="['70','30','20','10']"
+                                          data-width="['auto','auto','auto','auto']"
+                                          data-height="['auto','auto','auto','auto']"
+                                          data-whitespace="['nowrap','nowrap','nowrap','nowrap']"
+                                          data-responsive_offset="off"
+                                          data-responsive="on"
+                                          style="background: linear-gradient(90deg, #ffffff 15%, #ffffff 65%, #ffffff 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;">
+                                          
+                                     </div>
+                                </div>
+                                <!-- start product image -->
+                                <div class="tp-caption tp-resizeme"
+                                     id="slide-1-layer-2"
+                                     data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"opacity:0;fb:30px;sX:1.5;sY:1.5;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":600,"frame":"999","to":"auto:auto;fb:0;opacity:0;","ease":"Power3.easeInOut"}]'
+                                     data-type="image"
+                                     data-visibility="['on', 'on', 'on', 'on']"
+                                     data-x="['center','center','center','center']"
+                                     data-y="['middle','middle','middle','middle']"
+                                     data-hoffset="['0','0','0','0']"
+                                     data-voffset="['-100','-40','-65','-50']"
+                                     data-width="['775', '580', '500', '300']"
+                                     data-height="['auto', 'auto', 'auto', 'auto']"
+                                     data-responsive_offset="off"
+                                     data-responsive="on"
+                                     style="z-index: 5;"><div class="rs-looped rs-wave" data-speed="8" data-angle="0" data-radius="10px" data-origin="50% 50%">
+                                        <!-- <img src="images/rev-trans-tile.png" data-lazyload="Interior_design/HomePage/Project1.png" class="w-100 h-auto" alt="headphone"> -->
+                                    </div>
+                                </div>
+                                <!-- navigation dots for carousel -->
+                                <div class="tp-caption" 
+                                     id="slide-1-nav-dots"
+                                     data-x="['center','center','center','center']" 
+                                     data-y="['bottom','bottom','bottom','bottom']" 
+                                     data-hoffset="['0','0','0','0']"
+                                     data-voffset="['50','30','30','20']"
+                                     data-width="['auto','auto','auto','auto']"
+                                     data-height="['auto','auto','auto','auto']"
+                                     data-type="text"
+                                     data-responsive_offset="off"
+                                     data-responsive="off"
+                                     data-frames='[{"delay":2000,"speed":1000,"frame":"0","from":"opacity:0;y:30px;","to":"o:1;y:0px;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'>
+                                    <div class="slider-navigation-dots d-flex justify-content-center">
+                                        <span class="dot active" data-slide="0"></span>
+                                        <span class="dot" data-slide="1"></span>
+                                        <span class="dot" data-slide="2"></span>
+                                        <span class="dot" data-slide="3"></span>
+                                        <span class="dot" data-slide="4"></span>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul><!-- END SLIDES LIST -->
+
+                    </div><!-- END SLIDER CONTAINER -->
+                </div>
+            </article>
+        </section>
+        <!-- start section -->
+        <section class="overflow-hidden">
+            <div class="container">
+                <div class="row justify-content-center align-items-center mb-9 sm-mb-45px"> 
+                    <div class="col-xxl-5 col-lg-6 md-mb-50px" data-anime='{ "el": "childs", "translateX": [-50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'> 
+                        <span class="fs-15 text-uppercase text-base-color fw-600 mb-15px d-block ls-1px">Get in touch with us</span> 
+<h3 class="fw-700 text-dark-gray ls-minus-1px mb-50px sm-mb-35px">Need any assistance? we got you! <br> Contact us now!!</h3>
+                        <!-- start features box item -->
+                        <div class="icon-with-text-style-01 mb-10 md-mb-35px">
+                            <div class="feature-box feature-box-left-icon last-paragraph-no-margin">
+                                <div class="feature-box-icon me-25px">
+                                    <img src="images/location.png" class="h-80px" alt="">
+                                </div>
+                                <div class="feature-box-content last-paragraph-no-margin">
+                                    <span class="d-block text-dark-gray fw-600 fs-18 ls-minus-05px mb-5px">Visit our office today</span>
+                                    <p class="w-60 md-w-100">behind SUCO bank, Gopalaswamy Road, Gandhinagar, Bellary 583103</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end features box item -->
+                        <!-- start features box item -->
+                        <div class="icon-with-text-style-01 mb-10 md-mb-35px">
+                            <div class="feature-box feature-box-left-icon last-paragraph-no-margin">
+                                <div class="feature-box-icon me-25px">
+                                    <img src="images/phone_logo.png" class="h-80px" alt="">
+                                </div>
+                                <div class="feature-box-content">
+                                    <span class="d-block text-dark-gray fw-600 fs-18 ls-minus-05px mb-5px">Call us anytime</span>
+                                    <div class="w-100 d-block">
+                                        <span class="d-block">Phone: <a href="tel:8123543860">8123543860</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end features box item -->
+                        <!-- start features box item -->
+                        <div class="icon-with-text-style-01">
+                            <div class="feature-box feature-box-left-icon last-paragraph-no-margin">
+                                <div class="feature-box-icon me-25px">
+                                    <img src="images/email_logo1.png" class="h-80px" alt="">
+                                </div>
+                                <div class="feature-box-content">
+                                    <span class="d-block text-dark-gray fw-600 fs-18 ls-minus-05px mb-5px">Write To us</span>
+                                    <div class="w-100 d-block">
+                                        <a href="mailto:SJInfra5@gmail.com ">SJInfra5@gmail.com </a><br/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end features box item -->
+                    </div> 
+                    <div class="col-lg-6 offset-xxl-1" data-anime='{ "el": "childs", "translateX": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'> 
+                        <div class="contact-form-style-03 position-relative border-radius-10px bg-white p-14 lg-p-10 box-shadow-double-large overflow-hidden last-paragraph-no-margin">
+                            <h2 class="fw-700 text-dark-gray mb-30px sm-mb-20px fancy-text-style-4 ls-minus-2px">Say  
+                                <span data-fancy-text='{ "effect": "rotate", "string": ["hello!", "hallå!", "salve!"] }'></span> 
+                            </h2> 
+                            <form action="email-templates/contact-form.php" method="post">
+                                <div class="position-relative form-group mb-20px">
+                                    <span class="form-icon text-dark-gray"><i class="bi bi-person icon-extra-medium"></i></span>
+                                    <input class="ps-0 border-radius-0px medium-gray bg-transparent border-color-extra-medium-gray form-control required" type="text" name="name" placeholder="Enter your name*" />
+                                </div>
+                                <div class="position-relative form-group mb-20px">
+                                    <span class="form-icon text-dark-gray"><i class="bi bi-envelope icon-extra-medium"></i></span>
+                                    <input class="ps-0 border-radius-0px medium-gray bg-transparent border-color-extra-medium-gray form-control required" type="email" name="email" placeholder="Enter your email*" />
+                                </div>
+                                <div class="position-relative z-index-1 form-group form-textarea mt-15px mb-0"> 
+                                    <textarea class="ps-0 border-radius-0px medium-gray bg-transparent border-color-extra-medium-gray form-control" name="comment" placeholder="Enter your message" rows="3"></textarea>
+                                    <span class="form-icon text-dark-gray"><i class="bi bi-chat-square-dots icon-extra-medium"></i></span>
+                                    <input type="hidden" name="redirect" value="">
+                                    <button class="btn btn-large btn-dark-gray btn-round-edge btn-box-shadow mb-20px mt-25px submit w-100" type="submit">Send message</button>
+                                    <p class="fs-13 lh-22 w-90 md-w-100">I understand that my data will be hold securely in accordance with the <a class="text-decoration-line-bottom text-dark-gray fw-500" href="#">privacy policy.</a></p>
+                                    <div class="form-results mt-20px d-none"></div>
+                                </div>
+                            </form> 
+                            <div class="position-absolute bottom-0px right-minus-30px fs-350 lh-100 fw-900 text-yellow">&lt;</div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-auto text-center text-md-end sm-mb-20px" data-anime='{ "translateX": [-50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <h6 class="text-dark-gray fw-600 mb-0 ls-minus-1px">Connect with social media </h6>
+                    </div>
+                    <div class="col-2 d-none d-lg-inline-block" data-anime='{ "translateX": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <span class="w-100 h-1px bg-dark-gray opacity-2 d-flex mx-auto"></span>
+                    </div>
+                    <div class="col-md-auto elements-social social-icon-style-04 text-center text-md-start ps-lg-0" data-anime='{ "translateX": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <ul class="large-icon dark">
+                            <li class="m-0"><a class="facebook" href="https://www.facebook.com/Constructionandarchitecturalandinterior/" target="_blank"><i class="fa-brands fa-facebook-f"></i><span></span></a></li>
+                            <li class="m-0"><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble"></i><span></span></a></li>
+                            <li class="m-0"><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i><span></span></a></li>      
+                            <li class="m-0"><a class="instagram" href="https://www.instagram.com/reel/DLeMy3DR6s7/" target="_blank"><i class="fa-brands fa-instagram"></i><span></span></a></li>
+                            <li class="m-0"><a class="linkedin" href="http://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i><span></span></a></li>
+                        </ul>                  
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+        <!-- start section -->
+        <section class="bg-very-light-gray p-0">
+            <div class="container-fluid"> 
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d962.7588346794684!2d76.93660440257464!3d15.15640383038606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb711006d1799f3%3A0x1ed5687d484a646a!2sSJ%20Infra!5e0!3m2!1sen!2sin!4v1758887795286!5m2!1sen!2sin" width="100%" height="650" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div> 
+                </div> 
+            </div>
+        </section>
+        <!-- end section -->
+         
+        <!-- start footer --> 
+        <div hx-get="shared/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
+        <!-- end footer -->
+         
+        <!-- start scroll progress -->
+        <div class="scroll-progress d-none d-xxl-block">
+            <a href="#" class="scroll-top" aria-label="scroll">
+                <span class="scroll-text">Scroll</span><span class="scroll-line"><span class="scroll-point"></span></span>
+            </a>
+        </div>
+        <!-- end scroll progress -->
+
+        <!-- javascript libraries -->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/vendors.min.js"></script>
+        
+        <!-- slider revolution core javaScript files -->
+        <script type="text/javascript" src="revolution/js/jquery.themepunch.tools.min.js"></script>
+        <script type="text/javascript" src="revolution/js/jquery.themepunch.revolution.min.js"></script>
+        <script type="text/javascript">
+            /* Global variable for carousel navigation */
+            var revapi31;
+
+            /* https://learn.jquery.com/using-jquery-core/document-ready/ */
+            jQuery(document).ready(function () {
+
+                /* initialize the slider based on the Slider's ID attribute from the wrapper above */
+                revapi31 = jQuery('#rev_slider_31_1').show().revolution({
+
+                    /* options are 'auto', 'fullwidth' or 'fullscreen' */
+                    sliderLayout: 'fullwidth',
+                    /* sets the Slider's default timeline */
+                    delay: 9000,
+                    /* options that disable autoplay */
+                    stopLoop: "off",
+                    stopAfterLoops: 0,
+                    stopAtSlide: 1,
+                    /* Lazy Load options are "all", "smart", "single" and "none" */
+                    lazyType: "smart",
+                    spinner: "spinner0",
+                    responsiveLevels: [1240, 1024, 778, 480],
+                    /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+                    gridwidth: [1190, 1024, 778, 480],
+                    /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+                    gridheight: [1250, 920, 1000, 650],
+                    /* Lazy Load options are "all", "smart", "single" and "none" */
+                    lazyType: "none",
+                    parallax: {
+                        type: "mouse+scroll",
+                        origo: "slidercenter",
+                        speed: 400,
+                        speedbg: 1500,
+                        speedls: 1000,
+                        levels: [5, 10, 15, 20, 25, 30, 35, 40, 60, 46, -10, -15, -20, -25, -30, 55],
+                    },
+                    /* Navigation */
+                    navigation: {
+                        onHoverStop: "off",
+                        arrows: {
+                            enable: true,
+                            style: "uranus",
+                            tmp: '<div class="tp-arr-allwrapper"><span class="custom-arrow"></span></div>',
+                            left: {
+                                h_align: "left",
+                                v_align: "center",
+                                h_offset: 30,
+                                v_offset: 0
+                            },
+                            right: {
+                                h_align: "right",
+                                v_align: "center",
+                                h_offset: 30,
+                                v_offset: 0
+                            }
+                        },
+                        bullets: {
+                            enable: false
+                        }
+                    }
+                });
+            });
+
+        </script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>
