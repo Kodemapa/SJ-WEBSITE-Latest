@@ -3,7 +3,7 @@
     <head>
     <!-- HTMX CDN for dynamic includes -->
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-        <title>SJ-INFRA</title>
+        <title>SJ-INFRA Contact</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="ThemeZaa">
@@ -30,7 +30,7 @@
     <script src="js/budget-calculator.js"></script>
         <style>
             
-            /* Hide any remaining images and unwanted elements */
+           /* Hide any remaining images and unwanted elements */
             .tp-arr-allwrapper .tp-arr-imgholder,
             .tp-arr-allwrapper img,
             .tp-arr-allwrapper .tp-arr-iwrapper,
@@ -100,17 +100,41 @@
                     transform: translateY(-50px) !important;
                     position: relative;
                 }
+                #slide-1-layer-1 {
+                    letter-spacing: -2px !important;
+                    font-size: 48px !important;
+                    line-height: 1.1 !important;
+                    white-space: nowrap !important;
+                    overflow-x: auto !important;
+                    width: 100vw !important;
+                    max-width: 100vw !important;
+                    box-sizing: border-box !important;
+                    text-align: center !important;
+                    word-break: normal !important;
+                }
+                /* Make hero background fill viewport like about-us */
+                .rev-slidebg {
+                    object-fit: cover !important;
+                    object-position: center top !important;
+                    width: 100vw !important;
+                    height: 100vh !important;
+                    min-height: 100vh !important;
+                    max-height: 100vh !important;
+                    margin: 0 auto !important;
+                    display: block !important;
+                    transform: none !important; /* Keep this line */
+                }
+                #rev_slider_31_1_wrapper,
+                .rev_slider_wrapper,
+                #home.p-0.ipad-top-space-margin {
+                    height: 100vh !important;
+                    min-height: 100vh !important;
+                    margin-top: 0 !important;
+                }
                 
                 /* Adjust background image positioning for mobile */
-                .rev-slidebg {
-                    object-position: center top !important;
-                    transform: translateY(-150px) !important;
-                }
                 
                 /* Adjust slider container for mobile */
-                #rev_slider_31_1_wrapper {
-                    margin-top: -150px !important;
-                }
                 
                 /* Ensure slider fills entire viewport */
                 .rev_slider_wrapper {
@@ -120,7 +144,7 @@
                 
                 /* Remove any top spacing from the section */
                 #home {
-                    margin-top: -70px !important;
+                    margin-top: 0 !important; /* Keep this line */
                 }
             }
         </style>
@@ -137,12 +161,12 @@
                         <!-- BEGIN SLIDES LIST -->
                         <ul>
                             <!-- SLIDE 1 - HOME/OVERVIEW -->
-                            <li data-index="rs-01" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="600" data-rotate="0" data-saveperformance="off" data-title="Home" data-param1="01" data-description="Audio Technology Overview">
+                           <li data-index="rs-01" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="600" data-rotate="0" data-saveperformance="off" data-title="Home" data-param1="01" data-description="Audio Technology Overview">
                                 <!-- SLIDE'S MAIN BACKGROUND IMAGE -->
                                 <img src="images/blue-background.jpg" alt="home background" class="rev-slidebg" data-bgparallax="6">
                                 <span style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1;"></span>
-                                 <!-- start large text layer -->
-                                <div style="width:100%; text-align:center;">
+                                <!-- start large text layer -->
+                                <div style="width:100%; text-align:center;">  
                                 <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2"
                                      id="slide-1-layer-subtitle1"
                                      data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
@@ -163,14 +187,13 @@
                                      data-responsive_offset="off"
                                      data-responsive="on"
                                      style="background: linear-gradient(90deg, #ffffff 15%, #ffffff 65%, #ffffff 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;">
-                                    
                                 </div>
 
                                 <!-- <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1;"></div> -->
                                 <!-- start large text layer -->
-                                <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2" style="background: -webkit-linear-gradient(0deg, #736a63 15%, #6f4f31 65%, #3e2b2b 100%);-webkit-background-clip: text;background-clip: text;-webkit-text-fill-color: transparent;" 
+                                <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2" style="background: -webkit-linear-gradient(0deg,rgb(183 179 177) 15%, rgb(111, 79, 49) 65%, rgb(62, 43, 43) 100%);-webkit-background-clip: text;background-clip: text;-webkit-text-fill-color: transparent;" 
                                      id="slide-1-layer-1"
-                                     data-frames='[{"delay":1500,"speed":2000,"frame":"0","from":"sX:1.3;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                                     data-frames='[{"delay":0,"speed":2000,"frame":"0","from":"sX:1.3;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
                                      data-visibility="['on', 'on', 'on', 'on']"
                                      data-fontsize="['346','250','200','70']"
                                      data-lineheight="['450','360','300','100']"
@@ -187,7 +210,7 @@
                                      data-whitespace="['nowrap', 'nowrap', 'nowrap', 'nowrap']"
                                      data-responsive_offset="off"
                                      data-responsive="on"
-                                     >Contact us</div>
+                                     >Call us</div>
                                      <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2"
                                           id="slide-1-layer-subtitle2"
                                           data-frames='[{"delay":3500,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
@@ -211,7 +234,7 @@
                                           
                                      </div>
                                 </div>
-                                <!-- start product image -->
+                                 <!-- start product image -->
                                 <div class="tp-caption tp-resizeme"
                                      id="slide-1-layer-2"
                                      data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"opacity:0;fb:30px;sX:1.5;sY:1.5;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":600,"frame":"999","to":"auto:auto;fb:0;opacity:0;","ease":"Power3.easeInOut"}]'
@@ -229,7 +252,7 @@
                                         <!-- <img src="images/rev-trans-tile.png" data-lazyload="Interior_design/HomePage/Project1.png" class="w-100 h-auto" alt="headphone"> -->
                                     </div>
                                 </div>
-                                <!-- navigation dots for carousel -->
+                                 <!-- navigation dots for carousel -->
                                 <div class="tp-caption" 
                                      id="slide-1-nav-dots"
                                      data-x="['center','center','center','center']" 
@@ -273,7 +296,7 @@
                                 </div>
                                 <div class="feature-box-content last-paragraph-no-margin">
                                     <span class="d-block text-dark-gray fw-600 fs-18 ls-minus-05px mb-5px">Visit our office today</span>
-                                    <p class="w-60 md-w-100">behind SUCO bank, Gopalaswamy Road, Gandhinagar, Bellary 583103</p>
+                                    <p class="w-60 md-w-100">Behind SUCO bank, Gopalaswamy Road, Gandhinagar, Bellary 583103</p>
                                 </div>
                             </div>
                         </div>
@@ -300,9 +323,9 @@
                                     <img src="images/email_logo1.png" class="h-80px" alt="">
                                 </div>
                                 <div class="feature-box-content">
-                                    <span class="d-block text-dark-gray fw-600 fs-18 ls-minus-05px mb-5px">Write To us</span>
+                                    <span class="d-block text-dark-gray fw-600 fs-18 ls-minus-05px mb-5px">Write to us</span>
                                     <div class="w-100 d-block">
-                                        <a href="mailto:SJInfra5@gmail.com ">SJInfra5@gmail.com </a><br/>
+                                        <a href="mailto:SJInfra5@gmail.com ">sjinfra5@gmail.com </a><br/>
                                     </div>
                                 </div>
                             </div>
@@ -327,8 +350,17 @@
                                     <textarea class="ps-0 border-radius-0px medium-gray bg-transparent border-color-extra-medium-gray form-control" name="comment" placeholder="Enter your message" rows="3"></textarea>
                                     <span class="form-icon text-dark-gray"><i class="bi bi-chat-square-dots icon-extra-medium"></i></span>
                                     <input type="hidden" name="redirect" value="">
-                                    <button class="btn btn-large btn-dark-gray btn-round-edge btn-box-shadow mb-20px mt-25px submit w-100" type="submit">Send message</button>
+                                    <button class="btn btn-large btn-dark-gray btn-round-edge btn-box-shadow mb-20px mt-25px submit w-100" type="button" onclick="sendWhatsAppMessage()">Send message</button>
                                     <p class="fs-13 lh-22 w-90 md-w-100">I understand that my data will be hold securely in accordance with the <a class="text-decoration-line-bottom text-dark-gray fw-500" href="#">privacy policy.</a></p>
+                                    <script>
+                                        function sendWhatsAppMessage() {
+                                            var name = document.querySelector('input[name="name"]').value;
+                                            var email = document.querySelector('input[name="email"]').value;
+                                            var message = document.querySelector('textarea[name="comment"]').value;
+                                            var whatsappMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+                                            window.open(`https://wa.me/918123543860?text=${whatsappMessage}`, '_blank');
+                                        }
+                                    </script>
                                     <div class="form-results mt-20px d-none"></div>
                                 </div>
                             </form> 
@@ -345,11 +377,11 @@
                     </div>
                     <div class="col-md-auto elements-social social-icon-style-04 text-center text-md-start ps-lg-0" data-anime='{ "translateX": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
                         <ul class="large-icon dark">
-                            <li class="m-0"><a class="facebook" href="https://www.facebook.com/Constructionandarchitecturalandinterior/" target="_blank"><i class="fa-brands fa-facebook-f"></i><span></span></a></li>
-                            <li class="m-0"><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble"></i><span></span></a></li>
-                            <li class="m-0"><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i><span></span></a></li>      
+                            <li class="m-0"><a class="facebook" href="https://www.facebook.com/Constructionandarchitecturalandinterior/Constructionandarchitecturalandinterior/" target="_blank"><i class="fa-brands fa-facebook-f"></i><span></span></a></li>
+                            <!-- <li class="m-0"><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble"></i><span></span></a></li>
+                            <li class="m-0"><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i><span></span></a></li>       -->
                             <li class="m-0"><a class="instagram" href="https://www.instagram.com/reel/DLeMy3DR6s7/" target="_blank"><i class="fa-brands fa-instagram"></i><span></span></a></li>
-                            <li class="m-0"><a class="linkedin" href="http://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i><span></span></a></li>
+                            <!-- <li class="m-0"><a class="linkedin" href="http://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i><span></span></a></li> -->
                         </ul>                  
                     </div>
                 </div>
@@ -394,7 +426,7 @@
             /* https://learn.jquery.com/using-jquery-core/document-ready/ */
             jQuery(document).ready(function () {
 
-                /* initialize the slider based on the Slider's ID attribute from the wrapper above */
+                 /* initialize the slider based on the Slider's ID attribute from the wrapper above */
                 revapi31 = jQuery('#rev_slider_31_1').show().revolution({
 
                     /* options are 'auto', 'fullwidth' or 'fullscreen' */
