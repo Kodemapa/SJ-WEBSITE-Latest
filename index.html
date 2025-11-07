@@ -3,7 +3,7 @@
     <head>
     <!-- HTMX CDN for dynamic includes -->
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-        <title>SJ-INFRA Ballari Builders</title>
+        <title>SJ INFRA Ballari's best builders</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="ThemeZaa">
@@ -272,7 +272,7 @@
                                      data-responsive_offset="off"
                                      data-responsive="on"
                                      >Interiors</div>
-                                     <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2"
+                                    <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2"
                                           id="slide-1-layer-subtitle2"
                                           data-frames='[{"delay":1000,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
                                           data-visibility="['on', 'on', 'on', 'on']"
@@ -284,15 +284,15 @@
                                           data-letterspacing="['0','0','0','0']"
                                           data-x="['center','center','center','center']"
                                           data-y="['middle','middle','middle','middle']"
-                                          data-hoffset="['250','130','100','80']"
-                                          data-voffset="['110','70','60','40']"
+                                          data-hoffset="['250','130','100','20']"
+                                          data-voffset="['120','60','40','30']"
                                           data-width="['auto','auto','auto','auto']"
                                           data-height="['auto','auto','auto','auto']"
                                           data-whitespace="['nowrap','nowrap','nowrap','nowrap']"
                                           data-responsive_offset="off"
                                           data-responsive="on"
                                           style="background: linear-gradient(90deg, #ffffff 15%, #ffffff 65%, #ffffff 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;">
-                                        Delivers Aesthetics
+                                          Delivers Aesthetics
                                      </div>
                                 </div>
                                 <!-- start product image -->
@@ -1299,7 +1299,7 @@
                                           data-responsive_offset="off"
                                           data-responsive="on"
                                           style="background: linear-gradient(90deg, #ffffff 15%, #ffffff 65%, #ffffff 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;">
-                                          Fosters Creativity.
+                                          Fosters Creativity
                                      </div>
                                     </div>
                                 <!-- start product image -->
@@ -2159,7 +2159,10 @@
                                             <label class="form-check-label" for="interiors">
                                                 <div class="card h-100 border-0 box-shadow-medium">
                                                     <div class="card-body text-center p-4">
-                                                        <i class="line-icon-Home-Window icon-large text-dark-gray mb-3"></i>
+                                                        <img src="images/office_and_home_interior_1.png" 
+                                                            alt="New Construction" 
+                                                            class="mb-3" 
+                                                            style="width:60px; height:auto;">
                                                         <h5 class="card-title fw-600">Home & Office Interiors</h5>
                                                         <p class="card-text small">For designing or renovating the inside of an existing space</p>
                                                     </div>
@@ -2173,7 +2176,7 @@
                                             <label class="form-check-label" for="construction">
                                                 <div class="card h-100 border-0 box-shadow-medium">
                                                     <div class="card-body text-center p-4">
-                                                        <img src="images/construction_icon.png" 
+                                                        <img src="images/new_construction.png" 
                                                             alt="New Construction" 
                                                             class="mb-3" 
                                                             style="width:60px; height:auto;">
@@ -2197,7 +2200,10 @@
                                             <label class="form-check-label" for="residential">
                                                 <div class="card h-100 border-0 box-shadow-medium">
                                                     <div class="card-body text-center p-4">
-                                                        <i class="line-icon-Home icon-large text-dark-gray mb-3"></i>
+                                                        <img src="images/aiease_1762168350245.png" 
+                                                            alt="New Construction" 
+                                                            class="mb-3" 
+                                                            style="width:60px; height:auto;">
                                                         <h5 class="card-title fw-600" id="residential-title">Residential</h5>
                                                         <p class="card-text small" id="residential-subtitle">Homes, apartments, and personal spaces</p>
                                                     </div>
@@ -2211,7 +2217,10 @@
                                             <label class="form-check-label" for="commercial">
                                                 <div class="card h-100 border-0 box-shadow-medium">
                                                     <div class="card-body text-center p-4">
-                                                        <i class="line-icon-Building icon-large text-dark-gray mb-3"></i>
+                                                        <img src="images/commercial_building_1.png" 
+                                                            alt="New Construction" 
+                                                            class="mb-3" 
+                                                            style="width:60px; height:auto;">
                                                         <h5 class="card-title fw-600" id="commercial-title">Commercial</h5>
                                                         <p class="card-text small" id="commercial-subtitle">Offices, shops, and business spaces</p>
                                                     </div>
@@ -3267,16 +3276,27 @@
                 function getIconForItem(itemName) {
                     // Return a small inline SVG or icon markup per item keyword. Keep simple and generic.
                     const k = itemName.toLowerCase();
-                    if (k.includes('sofa') || k.includes('seating')) return '<img src="images/sofa.png" alt="sofa"/>';
-                    if (k.includes('tv') || k.includes('projector') || k.includes('tv/')) return '<img src="images/plan.png" alt="tv"/>';
-                    if (k.includes('desk') || k.includes('table')) return '<img src="images/table.png" alt="table"/>';
-                    if (k.includes('wardrobe') || k.includes('storage') || k.includes('cabinet')) return '<img src="images/desk.png" alt="storage"/>';
-                    if (k.includes('kitchen') || k.includes('counter')) return '<img src="images/sink.png" alt="kitchen"/>';
-                    if (k.includes('false ceiling') || k.includes('ceiling')) return '<img src="images/light-ceiling.png" alt="ceiling"/>';
-                    if (k.includes('workstations') || k.includes('partitions')) return '<img src="images/blueprint-house.png" alt="table"/>';
-                    if (k.includes('whiteboard') || k.includes('wall')) return '<img src="images/floor-alt.png" alt="bed"/>';
-                    if (k.includes('visitor') || k.includes('backdrop')) return '<img src="images/modernArt.png" alt="wall"/>';
-                    // default
+                    if (k.includes('sofa') || k.includes('seating')) return '<img src="images/sofaaa.png" alt="sofa"/>';
+                    if (k.includes('tv') || k.includes('projector') || k.includes('tv/')) return '<img src="images/TV_unit.png" alt="tv"/>';
+                    if (k.includes('desk') || k.includes('center')) return '<img src="images/table.png" alt="table"/>';
+                    if (k.includes('bed') || k.includes('storage')) return '<img src="images/bed_with_storage_1.png" alt="storage"/>';
+                    if (k.includes('kitchen') || k.includes('kitchen')) return '<img src="images/modular-kitchen.png" alt="kitchen"/>';
+                    if (k.includes('false ceiling') || k.includes('ceiling')) return '<img src="images/false_cielingg.png" alt="ceiling"/>';
+                    if (k.includes('linear')) return '<img src="images/linear-workstation.png" alt="table"/>';
+                    if (k.includes('whiteboard') || k.includes('wall')) return '<img src="images/white_boardwall.png" alt="bed"/>';
+                    if (k.includes('visitor') || k.includes('backdrop')) return '<img src="images/visitor_chair.png" alt="wall"/>';
+                    if (k.includes('wardrobe') || k.includes('sleeping')) return '<img src="images/wardrobe_.png" alt="bed"/>';
+                    if (k.includes('dressing unit') || k.includes('washroom')) return '<img src="images/dressing_unit.png" alt="bathroom"/>';
+                    if (k.includes('loft') || k.includes('workspace')) return '<img src="images/loft_.png" alt="office"/>';
+                    if (k.includes('breakfast') || k.includes('counter')) return '<img src="images/breakfast_counter.png" alt="item"/>';
+                    if (k.includes('study')) return '<img src="images/study_table.png" alt="item"/>';
+                    if (k.includes('dining')) return '<img src="images/dining_table.png" alt="item"/>';
+                    if (k.includes('conference')) return '<img src="images/Conference_table.png" alt="item"/>';
+                    if (k.includes('cubicle')) return '<img src="images/cubicel_workstation.png" alt="item"/>';
+                    if (k.includes('electrical')) return '<img src="images/electrical_raceways.png" alt="item"/>';
+                    if (k.includes('paneling')) return '<img src="images/Acoustic_paneling.png" alt="item"/>';
+                    if (k.includes('partitions')) return '<img src="images/Glass_partition.png" alt="item"/>';
+                    if (k.includes('table')) return '<img src="images/Manager_table.png" alt="item"/>';
                     return '<img src="images/plan.png" alt="item"/>';
                 }
 
