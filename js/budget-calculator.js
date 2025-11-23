@@ -104,13 +104,8 @@ window.budgetCalculatorInit = function() {
             });
 
             // floating badge
+            // optional floating badge removed to avoid stray numeric marker
             let badge = rail.querySelector('.step-badge');
-            if (!badge){
-                badge = document.createElement('div');
-                badge.className = 'step-badge';
-                badge.textContent = '1';
-                rail.appendChild(badge);
-            }
 
             // keep track of visual index so we can reposition on resize
             let currentVisualIndex = 0;
@@ -130,7 +125,7 @@ window.budgetCalculatorInit = function() {
 
                 // move badge to center of target indicator (use left + translateX(-50%))
                 const target = indicators[index];
-                if (target){
+                if (badge && target){
                     const railRect2 = rail.getBoundingClientRect();
                     const targetRect = target.getBoundingClientRect();
                     const centerX = (targetRect.left + targetRect.right)/2 - railRect2.left;
