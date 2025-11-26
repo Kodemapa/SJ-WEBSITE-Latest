@@ -1,0 +1,305 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+    <!-- HTMX CDN for dynamic includes -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        <title>SJ INFRA Find Best project builders in Ballari, Karnataka</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="author" content="ThemeZaa">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <meta name="description" content="SJ Infra — reliable Ballari builders for residential & commercial construction and interior design.">
+        <!-- favicon icon -->
+        <link rel="shortcut icon" href="images/sj-infra-logo.png">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+        <!-- google fonts preconnect -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- slider revolution CSS files -->
+        <link rel="stylesheet" type="text/css" href="revolution/css/settings.css">
+        <link rel="stylesheet" type="text/css" href="revolution/css/layers.css">
+        <link rel="stylesheet" type="text/css" href="revolution/css/navigation.css">
+        <!-- style sheets and font icons  -->
+        <link rel="stylesheet" href="css/vendors.min.css"/>
+        <link rel="stylesheet" href="css/icon.min.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/responsive.css"/>
+    <link rel="stylesheet" href="demos/product-showcase/product-showcase.css" />
+    <script src="js/budget-calculator.js"></script>
+        <style>
+        /* --- Privacy Policy Specific Styles --- */
+        :root { 
+            --policy-primary: #2563eb;
+            --policy-gradient: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+            --text-dark: #1e293b;
+            --text-gray: #475569;
+            --bg-surface: #ffffff;
+            --card-bg: #f8fafc;
+            --card-hover: #ffffff;
+            /* Deeper shadows for a larger window */
+            --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.15); 
+            --shadow-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            background-color: #f9fafb; /* Light clean background */
+        }
+
+        /* Wrapper for the Policy Section 
+           Padding-top adjusted to 140px to ensure it clears the fixed Header 
+        */
+        .policy-section-wrapper {
+            padding-top: 140px; 
+            padding-bottom: 100px;
+            display: flex;
+            justify-content: center;
+            padding-left: 20px;
+            padding-right: 20px;
+            /* Subtle dot pattern background */
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* The Main Window Card */
+        .policy-card-window { 
+            background: var(--bg-surface); 
+            border-radius: 24px; 
+            box-shadow: var(--shadow-card); 
+            width: 100%; 
+            /* Increased Max Width to 1100px for a full-screen feel */
+            max-width: 1100px; 
+            border: 1px solid rgba(255,255,255,0.8);
+            position: relative;
+            overflow: hidden;
+            
+            /* Entrance Animation */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeSlideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header Section inside Card */
+        .policy-header { 
+            padding: 60px 40px 40px; 
+            text-align: center; 
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .policy-header h1 { 
+            font-family: 'Outfit', sans-serif;
+            font-size: 48px; /* Larger Title */
+            font-weight: 800; 
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            background: var(--policy-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .policy-header p.lead { 
+            font-family: 'Inter', sans-serif;
+            color: var(--text-gray); 
+            font-size: 18px; /* Readable Lead Text */
+            line-height: 1.6; 
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .updated-badge {
+            display: inline-block;
+            background: #f1f5f9;
+            color: #64748b;
+            font-family: 'Outfit', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 30px;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* Body Content */
+        .policy-body { 
+            padding: 50px 80px 70px; /* Generous internal spacing */
+            font-family: 'Inter', sans-serif; 
+        }
+
+        .policy-section { margin-bottom: 50px; }
+        
+        .policy-section h3 { 
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark); 
+            font-size: 26px; /* Larger Headings */
+            margin-bottom: 24px; 
+            font-weight: 700; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+        
+        .policy-section h3::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--policy-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 5px #eff6ff;
+        }
+
+        .policy-section p {
+            font-size: 17px; 
+            line-height: 1.7;
+            color: var(--text-gray);
+            margin-bottom: 24px;
+        }
+
+        /* List Styling */
+        .policy-list { 
+            padding: 0; 
+            list-style: none; 
+            display: grid; 
+            grid-template-columns: 1fr; /* Stacked layout */
+            gap: 16px;
+        }
+
+        .policy-list li {
+            background-color: var(--card-bg);
+            padding: 24px 30px;
+            border-radius: 16px; 
+            font-size: 17px; 
+            line-height: 1.6;
+            color: var(--text-dark);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            border: 1px solid transparent;
+            transition: all 0.25s ease;
+        }
+
+        .policy-list li:hover {
+            background-color: var(--card-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: #e2e8f0;
+        }
+
+        .policy-list li .icon {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: #dbeafe;
+            color: var(--policy-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+        }
+        .policy-list li .icon svg { width: 18px; height: 18px; stroke-width: 2.5; }
+
+        .policy-meta {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px dashed #cbd5e1;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 991px) {
+            .policy-section-wrapper { padding-top: 100px; }
+            .policy-card-window { max-width: 100%; border-radius: 0; box-shadow: none; border: none; background: transparent; }
+            .policy-body { padding: 30px 20px; }
+            .policy-header { padding: 40px 20px; }
+            .policy-header h1 { font-size: 36px; }
+            .policy-list li { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div hx-get="shared/header.html" hx-trigger="load" hx-swap="outerHTML"></div>
+    
+    <section class="policy-section-wrapper">
+        <div class="policy-card-window">
+            
+            <div class="policy-header">
+                <h1 id="privacy-title">Privacy Policy</h1>
+                <p class="lead">We are committed to protecting your personal data and ensuring transparency in how we operate.</p>
+                
+            </div>
+
+            <div class="policy-body">
+                
+                <div class="policy-section">
+                    <h3>Information We Collect</h3>
+                    <p>We collect information to provide better services to all our users. This includes:</p>
+                    <ul class="policy-list">
+                        <li>
+                            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                            <div><strong>Account Details</strong><br><span style="color:var(--text-gray)">Your name, email address, and preferences provided during sign-up.</span></div>
+                        </li>
+                        <li>
+                            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                            <div><strong>Device Data</strong><br><span style="color:var(--text-gray)">Information about your device, browser, and IP address for security.</span></div>
+                        </li>
+                        <li>
+                            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                            <div><strong>Usage Logs</strong><br><span style="color:var(--text-gray)">Data on how you interact with our services to help us improve performance.</span></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3>How We Use Your Data</h3>
+                    <ul class="policy-list">
+                        <li>
+                            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                            <span>To provide, maintain, and improve our core services.</span>
+                        </li>
+                        <li>
+                            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                            <span>To communicate with you regarding updates and support.</span>
+                        </li>
+                        <li>
+                            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 13l4 4L19 7"/></svg></div>
+                            <span>To detect, prevent, and address technical issues or fraud.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Data Sharing & Security</h3>
+                    <p>We do not sell your personal data. We only share information with third parties when necessary to provide our services (e.g., hosting providers) who are bound by strict confidentiality agreements. We utilize industry-standard encryption to keep your data safe.</p>
+                </div>
+
+                <div class="policy-section">
+                    <h3>Your Rights</h3>
+                    <p>Depending on your location, you may have the right to access, correct, or delete your personal data. You can exercise these rights by contacting our support team directly.</p>
+                </div>
+
+                <div class="policy-meta">
+                    © 2025 SJ INFRA. All rights reserved.
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div hx-get="shared/footer.html" hx-trigger="load" hx-swap="outerHTML"></div>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/vendors.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>
