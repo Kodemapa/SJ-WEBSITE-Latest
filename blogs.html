@@ -126,23 +126,23 @@
                     text-align: center !important;
                     word-break: normal !important;
                 }
-                /* Make hero background fill viewport like about-us */
+                /* Allow the slider to size naturally on small screens instead
+                   of forcing a full viewport height which can create blank space. */
                 .rev-slidebg {
                     object-fit: cover !important;
                     object-position: center top !important;
-                    width: 100vw !important;
-                    height: 100vh !important;
-                    min-height: 100vh !important;
-                    max-height: 100vh !important;
+                    width: 100% !important;
+                    height: auto !important;
+                    max-height: 60vh !important;
                     margin: 0 auto !important;
                     display: block !important;
-                    transform: none !important; /* Keep this line */
+                    transform: none !important;
                 }
                 #rev_slider_31_1_wrapper,
                 .rev_slider_wrapper,
                 #home.p-0.ipad-top-space-margin {
-                    height: 100vh !important;
-                    min-height: 100vh !important;
+                    height: auto !important;
+                    min-height: auto !important;
                     margin-top: 0 !important;
                 }
                 
@@ -150,10 +150,22 @@
                 
                 /* Adjust slider container for mobile */
                 
-                /* Ensure slider fills entire viewport */
+                /* Ensure slider doesn't force extra vertical space on mobile */
                 .rev_slider_wrapper {
-                    height: 100vh !important;
-                    min-height: 100vh !important;
+                    height: auto !important;
+                    min-height: auto !important;
+                }
+
+                /* Remove default top padding on mobile so slider uses full viewport
+                   and there is no white gap between header image and content */
+                body {
+                    padding-top: 0 !important;
+                }
+
+                /* Override global top spacing utility on small screens */
+                .top-space-margin,
+                .ipad-top-space-margin {
+                    margin-top: 0 !important;
                 }
                 
                 /* Remove any top spacing from the section */

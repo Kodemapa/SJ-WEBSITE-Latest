@@ -1,6 +1,8 @@
 <!-- Budget Calculator Section with Title for HTMX dynamic load -->
 <section id="pricing" class="bg-gradient-very-light-gray">
     <div class="container">
+        <!-- Budget calculator styles (keeps visual consistent with site) -->
+        <link rel="stylesheet" href="css/budget-calculator.css">
         <div class="row justify-content-center mb-4">
             <div class="col-xl-7 col-lg-9 text-center">
                 <h2 class="h1 fw-800 text-dark-gray ls-minus-3px">Smart Project Budget Calculator</h2>
@@ -15,27 +17,67 @@
                 display: block;
             }
             .step-indicators {
-                display: flex;
-                justify-content: center;
-                gap: 10px;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                gap:18px;
+                position:relative;
+                padding: 14px 6px;
             }
-            .step-indicator {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                background: #e9ecef;
-                color: #6c757d;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-weight: 600;
-                transition: all 0.3s ease;
+            .step-indicators::before{
+                content:'';
+                position:absolute;
+                left:6%;
+                right:6%;
+                top:50%;
+                transform:translateY(-50%);
+                height:8px;
+                background:#f1f3f5;
+                border-radius:8px;
+                z-index:1;
             }
-            .step-indicator.active {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
+            .step-indicators::after{
+                content:'';
+                position:absolute;
+                left:6%;
+                top:50%;
+                transform:translateY(-50%);
+                height:8px;
+                width: calc(var(--progress, 10%));
+                background: linear-gradient(90deg, #667eea, #ff5b74);
+                border-radius:8px;
+                z-index:2;
+                transition: width .42s cubic-bezier(.2,.9,.2,1);
             }
+            .step-indicator{
+                position:relative;
+                z-index:3;
+                width:54px;
+                height:54px;
+                border-radius:12px;
+                display:inline-flex;
+                align-items:center;
+                justify-content:center;
+                background:transparent;
+                cursor:pointer;
+                transition: transform .22s ease, box-shadow .22s ease;
+            }
+            .step-indicator .num{
+                display:inline-flex;
+                align-items:center;
+                justify-content:center;
+                width:40px;
+                height:40px;
+                border-radius:50%;
+                background:#f6f7f8;
+                color:#6c757d;
+                font-weight:700;
+                box-shadow: 0 8px 20px rgba(21,21,21,0.03);
+                transition: background .22s ease, transform .22s ease, box-shadow .22s ease;
+            }
+            .step-indicator:hover .num{ transform: scale(1.06); box-shadow: 0 18px 40px rgba(21,21,21,0.06); }
+            .step-indicator.active .num{ background: linear-gradient(135deg,#667eea,#ff5b74); color: #fff; transform: scale(1.1); box-shadow: 0 22px 48px rgba(102,126,234,0.14); }
             .custom-radio .form-check-input {
                 display: none;
             }
