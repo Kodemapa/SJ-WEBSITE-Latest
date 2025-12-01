@@ -43,6 +43,73 @@
     <link rel="stylesheet" href="demos/product-showcase/product-showcase.css" />
     <script src="js/budget-calculator.js"></script>
         <style>
+            /* --- GLOBAL FIXES --- */
+            html, body {
+                max-width: 100%;
+                position: relative;
+            }
+
+            /* 2. Navbar: Use 100% instead of 100vw to avoid scrollbar conflict */
+            nav.navbar {
+                width: 100% !important;
+                max-width: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+                position: fixed !important;
+                z-index: 9999 !important;
+            }
+
+            /* --- MOBILE SPECIFIC FIXES (Max-width: 767px) --- */
+            @media (max-width: 767px) {
+                /* 1. Apply overflow hidden ONLY on mobile to fix the zoom-out issue */
+                html, body {
+                    overflow-x: hidden !important;
+                }
+
+                /* 2. Header & Slider Alignment */
+                header, .sj-mobile-logo {
+                    margin-bottom: 0 !important;
+                    padding-bottom: 0 !important;
+                }
+                #home.p-0.ipad-top-space-margin {
+                    margin-top: -24px !important;
+                }
+                .rev_slider_wrapper.fullwidthbanner-container {
+                    margin-top: 0 !important;
+                }
+                
+                /* 3. Body padding for fixed header */
+                body {
+                    padding-top: 70px !important;
+                }
+
+                /* 4. Shrink Budget Calculator (The root cause of the width issue) */
+                .step-indicators {
+                    gap: 5px !important;
+                    padding: 10px 0 !important;
+                }
+                .step-indicator {
+                    width: 35px !important;
+                    height: 35px !important;
+                    font-size: 14px !important;
+                    border-radius: 8px !important;
+                }
+                .step-indicator .num {
+                    width: 28px !important;
+                    height: 28px !important;
+                    font-size: 12px !important;
+                }
+                
+                /* 5. Contain the calculator form */
+                .budget-calculator-container, 
+                .calculator-form {
+                    width: 100% !important;
+                    padding-left: 10px !important;
+                    padding-right: 10px !important;
+                    overflow-x: hidden;
+                }
+            }
+
             /* Custom arrow styles for Revolution Slider */
             .tp-arr-allwrapper .custom-arrow {
                 font-size: 20px;
@@ -139,13 +206,21 @@
 
             @media (max-width: 768px) {
                 #slide-1-layer-subtitle1 {
-                    font-size: 40px !important;
+                    font-size: 30px !important;
                     line-height: 50px !important;
                     text-align: center !important;
                     transform: translateY(-50px) !important;
                     position: relative;
                 }
             }
+            @media (max-width: 767px) {
+                #slide-1-layer-subtitle0 {
+                font-size: 25px !important;
+                transform: translateY(-30px) !important;
+                z-index: 9999 !important;
+                }
+            }
+
         </style>
         <!-- Budget Calculator Styles -->
         <style>
@@ -362,7 +437,7 @@
                                      data-responsive_offset="off"
                                      data-responsive="on"
                                      style="background: linear-gradient(90deg, #ffffff 15%, #ffffff 65%, #ffffff 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;"
-                                                                     >Premium 
+                                    >Premium 
                                 </div>
                                 <!-- <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1;"></div> -->
                                 <!-- start large text layer -->
@@ -637,14 +712,14 @@
                             <!-- SLIDE 3 - TECHNOLOGY -->
                             <li data-index="rs-03" data-transition="slidehorizontal" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="600" data-rotate="0" data-saveperformance="off" data-title="Technology" data-param1="03" data-description="Advanced Technology">
                                 <img src="images/bg_header_3.jpg" alt="technology background" class="rev-slidebg" data-bgparallax="6">
-                                <span style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1;"></span>
+                               <span style="position:absolute; top:0; left:0; width:100%; height:100%;  background:rgba(0,0,0,0.5); z-index:1;"></span>
                                  <!-- start large text layer -->
-                                 <div style="width:100%; text-align:center;">
+                                <div style="width:100%; text-align:center; ">
                                 <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2"
-                                     id="slide-1-layer-subtitle1"
+                                     id="slide-1-layer-subtitle0"
                                      data-frames='[{"delay":500,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
                                      data-visibility="['on', 'on', 'on', 'on']"
-                                     data-fontsize="['50','40','35','40']"
+                                     data-fontsize="['50','40','35','25']"
                                      data-lineheight="['60','50','45','35']"
                                      data-fontweight="['700','700','700','700']"
                                      data-color="['#FFF','#FFF','#FFF','#FFF']"
@@ -653,19 +728,19 @@
                                      data-x="['center','center','center','center']"
                                      data-y="['middle','middle','middle','middle']"
                                      data-hoffset="['-340','-250','-200','0']"
-                                     data-voffset="['-320','-220','-170','-120']"
+                                     data-voffset="['-320','-220','-170','-80']"
                                      data-width="['auto','auto','auto','auto']"
                                      data-height="['auto','auto','auto','auto']"
                                      data-whitespace="['nowrap','nowrap','nowrap','nowrap']"
                                      data-responsive_offset="off"
                                      data-responsive="on"
                                      style="background: linear-gradient(90deg, #ffffff 15%, #ffffff 65%, #ffffff 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;">
-                                     Elegant 
+                                    Elegant
                                 </div>
                                 <!-- <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1;"></div> -->
                                 <!-- start large text layer -->
-                                <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2" style="background: -webkit-linear-gradient(0deg, #769977 0%, #8ec297 50%, #d8ffd7 100%);-webkit-background-clip: text;background-clip: text;-webkit-text-fill-color: transparent;" 
-                                     id="slide-3-layer-1"
+                                <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2" style="background: -webkit-linear-gradient(0deg, #736a63 15%, #6f4f31 65%, #3e2b2b 100%);-webkit-background-clip: text;background-clip: text;-webkit-text-fill-color: transparent;" 
+                                     id="slide-1-layer-1"
                                      data-frames='[{"delay":1000,"speed":1000,"frame":"0","from":"sX:1.3;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
                                      data-visibility="['on', 'on', 'on', 'on']"
                                      data-fontsize="['346','250','200','120']"
@@ -684,7 +759,7 @@
                                      data-responsive_offset="off"
                                      data-responsive="on"
                                      >Design</div>
-                                      <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2"
+                                    <div class="tp-caption tp-resizeme alt-font rs-parallaxlevel-2"
                                           id="slide-1-layer-subtitle2"
                                           data-frames='[{"delay":1000,"speed":1000,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
                                           data-visibility="['on', 'on', 'on', 'on']"
@@ -696,7 +771,7 @@
                                           data-letterspacing="['0','0','0','0']"
                                           data-x="['center','center','center','center']"
                                           data-y="['middle','middle','middle','middle']"
-                                          data-hoffset="['250','130','100',30']"
+                                          data-hoffset="['250','130','100','20']"
                                           data-voffset="['120','60','40','30']"
                                           data-width="['auto','auto','auto','auto']"
                                           data-height="['auto','auto','auto','auto']"
@@ -706,7 +781,7 @@
                                           style="background: linear-gradient(90deg, #ffffff 15%, #ffffff 65%, #ffffff 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap;">
                                           Inspires Lasting Impressions
                                      </div>
-                                    </div>
+                                </div>
                                 <!-- start product image -->
                                 <div class="tp-caption tp-resizeme"
                                      id="slide-3-layer-2"
@@ -1514,562 +1589,12 @@
                 </div>
             </article>
         </section>
-        <!-- start section -->  
-        <section id="overview" class="background-position-center-top position-relative" style="background-image: url('images/vertical-line-bg-medium-gray.svg')">
-            <div id="particles-01" data-particle="true" data-particle-options='{"particles": {"number": {"value": 3,"density": {"enable": true,"value_area": 1000}},"color":{"value":["#ff5b74", "#820f89"]},"shape": {"type": "circle","stroke":{"width":0,"color":"#000000"}},"opacity": {"value": 0.7,"random": false,"anim": {"enable": false,"speed": 2,"sync": false}},"size": {"value": 7,"random": true,"anim": {"enable": false,"sync": true}},"move": {"enable": true,"speed":2,"direction": "right","random": false,"straight": false}},"interactivity": {"detect_on": "canvas","events": {"onhover": {"enable": false,"mode": "repulse"},"onclick": {"enable": false,"mode": "push"},"resize": true}},"retina_detect": false}' class="position-absolute top-0px left-0px w-100 z-index-minus-1"></div>
-            <div class="container">
-                <div class="row justify-content-center align-items-center mb-5">
-                    <div class="col-12 text-center last-paragraph-no-margin" data-anime='{ "translateY": [30, 0], "opacity": [0,1], "duration": 1200, "delay": 50, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                        <!-- <div class="text-center bg-golden-yellow text-white fs-16 lh-36 border-radius-30px d-inline-block ps-20px pe-20px align-middle me-10px"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div> -->
-                        <span class="text-dark-gray fs-26 d-inline-block align-middle ls-minus-05px">Recognized for premium quality <a href="" target="_blank" class="fw-700 text-decoration-line-bottom text-dark-gray text-dark-gray-hover">SJ Infra.com</a></span>
-                    </div>
-                </div>
-                <div class="row align-items-center mb-6 md-mb-10"> 
-                    <div class="col-md-6 position-relative sm-mb-30px" data-anime='{ "translateX": [-50, 0], "opacity": [0,1], "duration": 1500, "delay": 100, "staggervalue": 150, "easing": "easeOutQuad" }'> 
-                        <div class="outside-box-left-20 lg-outside-box-left-30" style="padding-left: 100px;">
-                            <img src="Interior_design/HomePage/ProectSection.png" alt=""> 
-                        </div>
-                    </div>
-                    <div class="col-md-6 ps-5 md-ps-15px" data-anime='{ "el": "childs", "translateX": [50, 0], "opacity": [0,1], "duration": 1000, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                        <!--<i class="line-icon-Hipster-Headphones align-middle icon-double-large mb-30px md-mb-20px opacity-6"></i>-->
-                        <img src="images/lamp.jpg" alt="Headphones" class="align-middle icon-double-large mb-30px md-mb-20px opacity-6" />
-                        <h2 class="fw-800 ls-minus-3px text-dark-gray mb-30px fancy-text-style-4">Modern interiors with classic luxury</h2>
-                        <p class="w-90 lg-w-100 mb-35px">Experience the perfect blend of comfort, elegance, and design</p>
-                        <a href="#features" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-box-shadow btn-round-edge section-link">
-                            <span>
-                                <span class="btn-text">Discover interiors</span>
-                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
-                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
-                            </span> 
-                        </a>
-                    </div> 
-                </div> 
-                <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 200, "easing": "easeOutQuad" }'>
-                    <!-- start process step item -->
-                    <div class="col process-step-style-05 position-relative hover-box md-mb-30px">
-                        <div class="process-step-item d-flex align-items-center">
-                            <div class="process-step-icon-wrap position-relative">
-                                <div class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle h-90px w-90px bg-white fs-22 box-shadow-medium-bottom fw-600 position-relative">
-                                    <span class="number position-relative z-index-1 text-dark-gray">01</span>
-                                    <div class="box-overlay bg-dark-gray rounded-circle"></div>
-                                </div>  
-                            </div>
-                            <div class="process-content ps-25px">
-                                <span class="d-block fw-500 text-dark-gray fs-22 lh-30 ls-minus-05px w-60 xl-w-90">Begin with a vision of <strong>Luxury</strong></span> 
-                            </div>
-                        </div> 
-                    </div>
-                    <!-- end process step item --> 
-                    <!-- start process step item -->
-                    <div class="col process-step-style-05 position-relative hover-box md-mb-30px">
-                        <div class="process-step-item d-flex align-items-center">
-                            <div class="process-step-icon-wrap position-relative">
-                                <div class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle h-90px w-90px bg-white fs-22 box-shadow-medium-bottom fw-600 position-relative">
-                                    <span class="number position-relative z-index-1 text-dark-gray">02</span>
-                                    <div class="box-overlay bg-dark-gray rounded-circle"></div>
-                                </div>  
-                            </div>
-                            <div class="process-content ps-25px last-paragraph-no-margin">
-                                <span class="d-block fw-500 text-dark-gray fs-22 lh-30 ls-minus-05px w-60 xl-w-90">Build with precise <strong>Detail</strong></span> 
-                            </div>
-                        </div> 
-                    </div>
-                    <!-- end process step item -->
-                    <!-- start process step item -->
-                    <div class="col process-step-style-05 position-relative hover-box">
-                        <div class="process-step-item d-flex align-items-center">
-                            <div class="process-step-icon-wrap position-relative">
-                                <div class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle h-90px w-90px bg-white fs-22 box-shadow-medium-bottom fw-600 position-relative">
-                                    <span class="number position-relative z-index-1 text-dark-gray">03</span>
-                                    <div class="box-overlay bg-dark-gray rounded-circle"></div>
-                                </div>  
-                            </div>
-                            <div class="process-content ps-25px last-paragraph-no-margin">
-                                <span class="d-block fw-500 text-dark-gray fs-22 lh-30 ls-minus-05px w-60 xl-w-90">Live beautifully <strong>Every Day</strong></span> 
-                            </div>
-                        </div> 
-                    </div>
-                    <!-- end process step item -->
-                </div> 
-            </div>
-        </section>
-        <!-- end section -->
 
-        <!-- start section -->  
-       <section id="features" class="bg-gradient-very-light-gray position-relative pb-2"
-         style="min-height: 100vh; position: relative;">
-
-        <!-- Background layer -->
-        <div style="position:absolute; inset:0;
-                    background: url('images/compressed_image.jpg') center/cover no-repeat;
-                    opacity: 0.2;
-                    z-index:0;"></div>
-        <!-- Content layer -->
-        <div class="container position-relative" style="z-index:1;">
-                <div class="row justify-content-center mb-2">
-                    <div class="col-auto col-xxl-5 col-lg-7 col-sm-9 d-flex align-items-center justify-content-center">
-                        <span class="fs-180 text-gradient-dark-purple-watermelon flex-shrink-0 fw-800 me-35px ls-minus-10px sm-ls-minus-5px" data-bottom-top="transform:scale(1.4, 1.4);" data-top-bottom="transform:scale(1, 1);">6</span>
-                        <h2 class="text-dark-gray fw-800 ls-minus-2px m-0">Exclusive Services</h2>
-                    </div>
-                </div>
-                <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center mb-4" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>                  
-                    <!-- start features box item -->
-                    <div class="col icon-with-text-style-03">
-                        <div class="feature-box p-8">
-                            <div class="feature-box-icon">
-                               <!--<i class="line-icon-Microphone-4 icon-double-large text-dark-gray mb-20px"></i>-->
-                                <img src="images/sofa.png" alt="Sofa" class="icon-double-large mb-20px" />
-                            </div>
-                            <div class="feature-box-content last-paragraph-no-margin">
-                                <span class="d-inline-block fw-700 text-dark-gray mb-5px fs-19 ls-minus-05px">Redefining Comfort</span>
-                                <p class="w-85 lg-w-100 mx-auto text-dark-gray">Plush seating for every space</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end features box item -->
-                    <!-- start features box item -->
-                    <div class="col icon-with-text-style-03">
-                        <div class="feature-box p-8">
-                            <div class="feature-box-icon">
-                               <!--<i class="line-icon-No-Drop icon-double-large text-dark-gray mb-20px"></i>-->
-                                <img src="images/table.png" alt="Table" class="icon-double-large mb-20px" />
-                            </div>
-                            <div class="feature-box-content last-paragraph-no-margin">
-                                <span class="d-inline-block fw-700 text-dark-gray mb-5px fs-19 ls-minus-05px">Functional & Elegance</span>
-                                <p class="w-85 lg-w-100 mx-auto text-dark-gray">Perfect blends of seating and dining</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end features box item -->
-                    <!-- start features box item -->
-                    <div class="col icon-with-text-style-03">
-                        <div class="feature-box p-8">
-                            <div class="feature-box-icon">
-                                <!--<i class="line-icon-Signal icon-double-large text-dark-gray mb-20px"></i>-->
-                                 <img src="images/desk.png" alt="Desk" class="icon-double-large mb-20px" />
-                            </div>
-                            <div class="feature-box-content last-paragraph-no-margin">
-                                <span class="d-inline-block fw-700 text-dark-gray mb-5px fs-19 ls-minus-05px">Smart Workspaces</span>
-                                <p class="w-85 lg-w-100 mx-auto text-dark-gray">Ergonomic and modern workspaces</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end features box item -->
-                    <!-- start features box item -->
-                    <div class="col icon-with-text-style-03">
-                        <div class="feature-box p-8">
-                            <div class="feature-box-icon">
-                                <!--<i class="line-icon-Sound icon-double-large text-dark-gray mb-20px"></i>-->
-                                <img src="images/flrlamp.png" alt="Floor Lamp" class="icon-double-large mb-20px" />
-                            </div>
-                            <div class="feature-box-content last-paragraph-no-margin">
-                                <span class="d-inline-block fw-700 text-dark-gray mb-5px fs-19 ls-minus-05px">Mood Lighting</span>
-                                <p class="w-85 lg-w-100 mx-auto text-dark-gray">Set the mood with design focused lamps</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end features box item -->
-                    <!-- start features box item -->
-                    <div class="col icon-with-text-style-03">
-                        <div class="feature-box p-8">
-                            <div class="feature-box-icon">
-                                <!--<i class="line-icon-Environmental-3 icon-double-large text-dark-gray mb-20px"></i>-->
-                                <img src="images/modernArt.png" alt="Floor Lamp" class="icon-double-large mb-20px" />
-                            </div>
-                            <div class="feature-box-content last-paragraph-no-margin">
-                                <span class="d-inline-block fw-700 text-dark-gray mb-5px fs-19 ls-minus-05px">Modern living</span>
-                                <p class="w-85 lg-w-100 mx-auto text-dark-gray">Walls that speak style and creativity</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end features box item -->
-                    <!-- start features box item -->
-                    <div class="col icon-with-text-style-03">
-                        <div class="feature-box p-8">
-                            <div class="feature-box-icon">
-                                <!--<i class="line-icon-Headphones icon-double-large text-dark-gray mb-20px"></i>-->
-                                <img src="images/plan.png" alt="Plan" class="icon-double-large mb-20px" />
-                            </div>
-                            <div class="feature-box-content last-paragraph-no-margin">
-                                <span class="d-inline-block fw-700 text-dark-gray mb-5px fs-19 ls-minus-05px">Precise Blueprint</span>
-                                <p class="w-85 lg-w-100 mx-auto text-dark-gray">Designs tailored to perfection</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end features box item -->
-                </div>
-                <div class="row justify-content-center align-items-center" data-anime='{ "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                    <div class="col-12 text-center">
-                        <div class="d-inline-block align-middle fs-12 ls-05px fw-600 text-white text-uppercase bg-green border-radius-50px ps-20px pe-20px me-10px sm-m-5px">Interior</div> 
-                        <div class="d-inline-block align-middle text-dark-gray fw-500 fs-20 ls-minus-05px">At SJ Infra Ballari, we believe your home should reflect your<span class="text-decoration-line-bottom fw-700"> Lifestyle, Personality & Comfort</span></div>
-                    </div> 
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-
-        <!-- start section --> 
-        <section id="technology" class="background-position-center-top position-relative" style="background-image: url('images/vertical-line-bg-medium-gray.svg')">
+         <!-- start section -->
+            <section id="pricing" class="background-position-center-top position-relative" style="background-image: url('images/vertical-line-bg-medium-gray.svg')">
             <div id="particles-02" data-particle="true" data-particle-options='{"particles": {"number": {"value": 3,"density": {"enable": true,"value_area": 1000}},"color":{"value":["#ff5b74", "#820f89"]},"shape": {"type": "circle","stroke":{"width":0,"color":"#000000"}},"opacity": {"value": 0.7,"random": false,"anim": {"enable": false,"speed": 2,"sync": false}},"size": {"value": 7,"random": true,"anim": {"enable": false,"sync": true}},"move": {"enable": true,"speed":2,"direction": "right","random": false,"straight": false}},"interactivity": {"detect_on": "canvas","events": {"onhover": {"enable": false,"mode": "repulse"},"onclick": {"enable": false,"mode": "push"},"resize": true}},"retina_detect": false}' class="position-absolute top-0px left-0px w-100 z-index-minus-1"></div>
-            <div class="container overlap-gap-section">
-                <div class="row">
-                    <!-- start sticky column -->
-                    <div class="col-lg-6 text-center">
-                        <div class="outside-box-left-25 lg-outside-box-left-20 md-outside-box-left-30 position-sticky top-140px">
-                            <img src="images/circle_image.png" alt="" data-bottom-top="transform: rotate(0deg) translateY(0)" data-top-bottom="transform:rotate(-35deg) translateY(0)"> 
-                            <span class="fs-350 xxl-fs-300 lg-fs-200 md-fs-275 xs-fs-200 text-gradient-dark-purple-watermelon fw-700 ls-minus-20px position-absolute top-100px d-block z-index-minus-1" data-bottom-top="transform:scale(1, 1) translate3d(0px, 0px, 0px);" data-top-bottom="transform:scale(1, 1) translate3d(-300px, 0px, 0px);"></span>
-                        </div>
-                    </div>
-                    <!-- end sticky column -->
-                    <div class="col-lg-5 offset-lg-1 text-center text-lg-start" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 50, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                        <div class="mb-15 mt-25 md-mb-5 md-mt-10">
-                            <i class="line-icon-Livejournal align-middle icon-double-large mb-25px opacity-6"></i>
-                            <span class="fs-70 lg-fs-80 xs-fs-60 fw-800 text-dark-gray ls-minus-4px xs-ls-minus-2px d-block mb-25px">Envision your Dream</span> 
-                            <p class="w-80 xl-w-90 lg-w-100 mb-35px"> From layouts to interiors and construction, every plan begins with precision</p>   
-                            <!-- <a href="https://www.youtube.com/watch?v=cfXHhfNy7tU" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-box-shadow btn-round-edge popup-youtube">
-                                <span>
-                                    <span class="btn-text">Watch technology</span>
-                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
-                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
-                                </span> 
-                            </a> -->
-                        </div>
-                        <div class="d-flex"></div>
-                        <div class="mb-15 mt-25 md-mb-5 md-mt-10">
-                            <i class="line-icon-Livejournal align-middle icon-double-large mb-25px opacity-6"></i>
-                            <span class="fs-70 lg-fs-80 xs-fs-60 fw-800 text-dark-gray ls-minus-4px xs-ls-minus-2px d-block mb-25px">Browse Our Design Collection</span> 
-                            <p class="w-80 xl-w-90 lg-w-100 mb-35px"> From classic elegance to modern trends, find designs that define creativity</p>   
-                            <!-- <a href="https://www.youtube.com/watch?v=cfXHhfNy7tU" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-box-shadow btn-round-edge popup-youtube">
-                                <span>
-                                    <span class="btn-text">Watch technology</span>
-                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
-                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
-                                </span> 
-                            </a> -->
-                        </div>
-                        <div class="d-flex"></div>
-                        <div class="mb-15 mt-25 md-mb-5 md-mt-10">
-                            <i class="line-icon-Livejournal align-middle icon-double-large mb-25px opacity-6"></i>
-                            <span class="fs-70 lg-fs-80 xs-fs-60 fw-800 text-dark-gray ls-minus-4px xs-ls-minus-2px d-block mb-25px">Schedule a project consultation</span> 
-                            <p class="w-80 xl-w-90 lg-w-100 mb-35px">Get clarity on expenses by using our Smart Budget Calculator before consultation</p>   
-                            <!-- <a href="https://www.youtube.com/watch?v=cfXHhfNy7tU" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-box-shadow btn-round-edge popup-youtube">
-                                <span>
-                                    <span class="btn-text">Watch technology</span>
-                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
-                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
-                                </span> 
-                            </a> -->
-                        </div>
-                        <div class="mb-15 mt-25 md-mb-5 md-mt-10">
-                            <i class="line-icon-Livejournal align-middle icon-double-large mb-25px opacity-6"></i>
-                            <span class="fs-70 lg-fs-80 xs-fs-60 fw-800 text-dark-gray ls-minus-4px xs-ls-minus-2px d-block mb-25px">Connect with experts to shape your dream living</span> 
-                            <p class="w-80 xl-w-90 lg-w-100 mb-35px">From dream interiors to full scale construction projects, we shape elegant, functional, and lasting spaces</p>   
-                            <!-- <a href="https://www.youtube.com/watch?v=cfXHhfNy7tU" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-box-shadow btn-round-edge popup-youtube">
-                                <span>
-                                    <span class="btn-text">Watch technology</span>
-                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
-                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
-                                </span> 
-                            </a> -->
-                        </div>
-                    </div> 
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-
-        <!-- start section -->
-        <section class="background-position-center-top pt-0" style="background-image: url('images/vertical-line-bg-medium-gray.svg')">
-            <div class="container-fluid">
-                <div class="row position-relative">
-                    <div class="col swiper swiper-width-auto text-center pb-20px md-pb-20px feather-shadow" data-slider-options='{ "slidesPerView": "auto", "spaceBetween":70, "speed": 14000, "loop": true, "allowTouchMove": false, "autoplay": { "delay":0, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "slide" }'>
-                        <div class="swiper-wrapper marquee-slide">
-                            <!-- start client item -->
-                            <div class="swiper-slide">
-                                <div class="fs-90 text-dark-gray fw-700 ls-minus-4px alt-font">Envision your Dream</div>
-                            </div>
-                            <!-- end client item -->
-                            <!-- start client item -->
-                            <div class="swiper-slide">
-                                <div class="fs-90 text-dark-gray opacity-5 fw-700 ls-minus-4px alt-font">Explore Interiors</div>
-                            </div>
-                            <!-- end client item --> 
-                            <!-- start client item -->
-                            <div class="swiper-slide">
-                                <div class="fs-90 text-dark-gray fw-700 ls-minus-4px alt-font">Elegant Spaces</div>
-                            </div>
-                            <!-- end client item --> 
-                            <!-- start client item -->
-                            <div class="swiper-slide">
-                                <div class="fs-90 text-dark-gray opacity-5 fw-700 ls-minus-4px alt-font">Modern Living</div>
-                            </div>
-                            <!-- end client item -->
-                            <!-- start client item -->
-                            <div class="swiper-slide">
-                                <div class="fs-90 text-dark-gray fw-700 ls-minus-4px alt-font">Premium Design</div>
-                            </div>
-                            <!-- end client item --> 
-                            <!-- start client item -->
-                            <div class="swiper-slide">
-                                <div class="fs-90 text-dark-gray opacity-5 fw-700 ls-minus-4px alt-font">Perfect Finish</div>
-                            </div>
-                            <!-- end client item --> 
-                        </div> 
-                    </div>  
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-
-        <!-- start section -->   
-        <section id="design" class="overflow-hidden bg-black background-position-center-top background-no-repeat pt-15 sm-pt-50px position-relative" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/Bg_above_footer.jpg');">
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-xl-8 text-center position-relative sm-mb-40px" data-top-bottom="transform: scale(1); filter: opacity(1)" data-bottom-top="transform: scale(1.3); filter: opacity(0)">
-                        <span class="fs-110 md-fs-90 xs-fs-80 text-white fw-700 ls-minus-5px">Where strong construction meets inspiring interiors</span> 
-                    </div>
-                </div>
-                <div class="mt-13">
-                    <div class="row row-cols-1 justify-content-center">
-                        <!-- start carousal -->
-                        <div class="col" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 50, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                            <div class="swiper magic-cursor drag-cursor light" data-slider-options='{ "slidesPerView": 1, "spaceBetween": 70, "loopedSlides": true, "autoplay": { "delay": 3000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1400": { "slidesPerView":7 }, "992": { "slidesPerView": 4, "spaceBetween": 80  }, "768": { "slidesPerView": 3, "spaceBetween": 60 }, "576": { "slidesPerView": 2, "spaceBetween": 45 } }, "effect": "slide" }'>
-                                <div class="swiper-wrapper text-center">
-                                    <!-- start carousal item -->
-                                    <div class="swiper-slide d-none d-lg-block"></div>
-                                    <!-- end carousal item -->
-                                    <!-- start carousal item -->
-                                    <div class="swiper-slide"> 
-                                        <div class="overflow-hidden position-relative">
-                                            <img class="border-radius-100" src="images/aluminium.png" alt="" /> 
-                                        </div>
-                                        <div class="mt-25px">
-                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Interior</span>
-                                            <span>Durable Finishing</span>
-                                        </div>  
-                                    </div>
-                                    <!-- end carousal item -->
-                                    <!-- start carousal item -->
-                                    <div class="swiper-slide"> 
-                                        <div class="overflow-hidden position-relative">
-                                            <img class="border-radius-100" src="images/Construction.png" alt="" /> 
-                                        </div>  
-                                        <div class="mt-25px">
-                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Construction</span>
-                                            <span>Premium Finish</span>
-                                        </div> 
-                                    </div>
-                                    <!-- end carousal item -->
-                                    <!-- start carousal item -->
-                                    <div class="swiper-slide"> 
-                                        <div class="overflow-hidden position-relative">
-                                            <img class="border-radius-100" src="images/layouts.png" alt="" /> 
-                                        </div>  
-                                        <div class="mt-25px">
-                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Layouts</span>
-                                            <span>Smart space Planning</span>
-                                        </div>
-                                    </div>
-                                    <!-- end carousal item -->
-                                    <!-- start carousal item -->
-                                    <div class="swiper-slide"> 
-                                        <div class="overflow-hidden position-relative">
-                                            <img class="border-radius-100" src="images/mesh.png" alt="" /> 
-                                        </div> 
-                                        <div class="mt-25px">
-                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Mesh</span>
-                                            <span>Strength</span>
-                                        </div> 
-                                    </div>
-                                    <!-- end carousal item -->
-                                    <!-- start carousal item -->
-                                    <div class="swiper-slide"> 
-                                        <div class="overflow-hidden position-relative">
-                                            <img class="border-radius-100" src="images/Buildings.png" alt="" /> 
-                                        </div> 
-                                        <div class="mt-25px">
-                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Structural</span>
-                                            <span>Smart Engineering</span>
-                                        </div> 
-                                    </div>
-                                    <!-- end carousal item -->
-                                    <!-- start carousal item -->
-                                    <div class="swiper-slide"> 
-                                        <div class="overflow-hidden position-relative">
-                                            <img class="border-radius-100" src="images/Blueprints.png" alt="" /> 
-                                        </div>  
-                                        <div class="mt-25px">
-                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Blueprint</span>
-                                            <span>Detailing</span>
-                                        </div>
-                                    </div>
-                                    <!-- end carousal item -->
-                                    <!-- start carousal item -->
-                                    <div class="swiper-slide"> 
-                                        <div class="overflow-hidden position-relative">
-                                            <img class="border-radius-100" src="images/railing.png" alt="" /> 
-                                        </div> 
-                                        <div class="mt-25px">
-                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Railing</span>
-                                            <span>Modern Designs</span>
-                                        </div> 
-                                    </div>
-                                    <!-- end carousal item -->
-                                    <!-- start carousal item -->
-                                    <div class="swiper-slide"> 
-                                        <div class="overflow-hidden position-relative">
-                                            <img class="border-radius-100" src="images/plumbing.png" alt="" /> 
-                                        </div> 
-                                        <div class="mt-25px">
-                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Plumbing</span>
-                                            <span>Efficient Water System</span>
-                                        </div> 
-                                    </div>
-                                    <!-- end carousal item -->
-                                    <!-- start carousal item -->
-                                    <div class="swiper-slide"> 
-                                        <div class="overflow-hidden position-relative">
-                                            <img class="border-radius-100" src="images/Balcony.png" alt="" /> 
-                                        </div> 
-                                        <div class="mt-25px">
-                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Balcony</span>
-                                            <span>Outdoor Spaces</span>
-                                        </div> 
-                                    </div>
-                                    <!-- end carousal item -->
-                                    <!-- start carousal item -->
-                                    <div class="swiper-slide"> 
-                                        <div class="overflow-hidden position-relative">
-                                            <img class="border-radius-100" src="images/modernized.png" alt="" /> 
-                                        </div> 
-                                        <div class="mt-25px">
-                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Modernized</span>
-                                            <span>Comfort</span>
-                                        </div> 
-                                    </div>
-                                    <!-- end carousal item -->
-                                    <!-- start carousal item -->
-                                    <div class="swiper-slide d-none d-lg-block"></div>
-                                    <!-- end carousal item -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end carousal -->
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-
-        <!-- start section -->
-        <section class="bg-dark-gray-01 p-35px"> 
             <div class="container">
-                <div class="row justify-content-center align-items-center" data-anime='{ "el": "childs", "translateX": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                    <!-- <div class="col-lg-1 p-0">
-                        <div class="divider-style-03 divider-style-03-01 border-color-transparent-white-very-light md-mb-15px"></div>
-                    </div>
-                    <div class="col-xl-7 col-lg-9 position-relative text-center last-paragraph-no-margin">
-                        <i class="line-icon-Hipster-Headphones align-middle icon-medium me-10px sm-me-0 sm-mb-10px"></i>
-                        <p class="fs-16 fw-600 text-uppercase ls-1px d-inline-block align-middle lh-normal">“Award-winning construction and interior design in Ballari, crafted for modern living.”</p> 
-                    </div>  -->
-                    <div class="col-lg-1 p-0">
-                        <div class="divider-style-03 divider-style-03-01 border-color-transparent-white-very-light md-mt-15px"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-
-        <!-- start section -->
-        <section id="review" class="background-position-center-top" style="background-image: url('images/vertical-line-bg-medium-gray.svg')">
-            <div class="container">
-                <div class="row justify-content-center mb-1">
-                    <div class="col-xl-7 col-lg-9 col-md-10 text-center" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                        <h2 class="h1 fw-800 text-dark-gray ls-minus-3px">Loved by most valuable customers</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 text-center" data-anime='{ "rotateX": [-40, 0], "opacity": [0,1], "duration": 1200, "delay": 100, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                        <div class="swiper swiper-horizontal-3d pt-8 pb-5 lg-pt-10 lg-pb-10 md-pt-12 sm-pt-21 sm-pb-11 swiper-pagination-bottom testimonials-style-04" data-slider-options='{ "loop": true, "slidesPerView": 1,"centeredSlides":true,"effect":"coverflow","coverflowEffect":{"rotate":0,"stretch":100,"depth":150,"modifier":1.5,"slideShadows":true}, "navigation": { "nextEl": ".swiper-button-next-nav.slider-navigation-style-04", "prevEl": ".swiper-button-previous-nav.slider-navigation-style-04" }, "autoplay": { "delay": 5000, "disableOnInteraction": false }, "pagination": { "el": ".swiper-pagination-04", "clickable": true, "dynamicBullets": true }, "breakpoints": { "768": { "slidesPerView": 2 } } }'>
-                            <div class="swiper-wrapper">
-                                <!-- start testimonial item -->
-                                <div class="swiper-slide bg-white border-radius-4px">
-                                    <div class="position-relative ps-13 pe-13 md-ps-10 md-pe-10 sm-ps-7 sm-pe-7 pt-20 pb-10 lg-pt-22 md-pt-30 sm-pt-20">
-                                        <!-- <img alt="" class="absolute-middle-center top-0px rounded-circle w-150px xs-w-100px border border-color-white box-shadow-extra-large border-8"> -->
-                                        <div class="testimonials-content">
-                                            <span class="text-dark-gray fs-18 lh-30 fw-600 mb-5px d-block">Strong Foundation, Smooth Process!</span>
-                                            <p class="mb-25px">What I loved most about SJ Infra is their commitment to timelines and transparency. The foundation work was solid, and the site supervisors were always available to answer queries.</p>
-                                        </div>
-                                        <div class="testimonials-author fs-19 mb-5px text-gradient-dark-purple-watermelon fw-700 d-inline-block">Abhiram Reddy</div>
-                                        <!-- <div class="testimonials-position fs-15 lh-20">Themezaa Design</div>  -->
-                                    </div>
-                                </div>
-                                <!-- end testimonial item -->
-                                <!-- start testimonial item -->
-                                <div class="swiper-slide bg-white border-radius-4px">
-                                    <div class="position-relative ps-13 pe-13 md-ps-10 md-pe-10 sm-ps-7 sm-pe-7 pt-20 pb-10 lg-pt-22 md-pt-30 sm-pt-20">
-                                        <!-- <img alt="" class="absolute-middle-center top-0px rounded-circle w-150px xs-w-100px border border-color-white box-shadow-extra-large border-8"> -->
-                                        <div class="testimonials-content">
-                                            <span class="text-dark-gray fs-18 lh-30 fw-600 mb-5px d-block">Excellent Customer Commitment!</span>
-                                            <p class="mb-25px">What stands out about SJ Infra is their customer-first attitude. They patiently discussed every small detail and ensured complete satisfaction before final handover.</p>
-                                        </div>
-                                        <div class="testimonials-author fs-19 mb-5px text-gradient-dark-purple-watermelon fw-700 d-inline-block">Jagannatha K</div>
-                                        <!-- <div class="testimonials-position fs-15 lh-20">Google Design</div>  -->
-                                    </div>
-                                </div>
-                                <!-- end testimonial item -->
-                                <!-- start testimonial item -->
-                                <div class="swiper-slide bg-white border-radius-4px">
-                                    <div class="position-relative ps-13 pe-13 md-ps-10 md-pe-10 sm-ps-7 sm-pe-7 pt-20 pb-10 lg-pt-22 md-pt-30 sm-pt-20">
-                                        <!-- <img alt="" class="absolute-middle-center top-0px rounded-circle w-150px xs-w-100px border border-color-white box-shadow-extra-large border-8"> -->
-                                        <div class="testimonials-content">
-                                            <span class="text-dark-gray fs-18 lh-30 fw-600 mb-5px d-block">Impressed by Their Work Ethics!</span>
-                                            <p class="mb-25px">I liked how punctual and organized the team was. Every milestone was completed as planned, and their engineers regularly shared progress updates. Great experience overall.</p>
-                                        </div>
-                                        <div class="testimonials-author fs-19 mb-5px text-gradient-dark-purple-watermelon fw-700 d-inline-block">Bheemshankar G</div>
-                                        <!-- <div class="testimonials-position fs-15 lh-20">Apple Design</div>  -->
-                                    </div>
-                                </div>
-                                <!-- end testimonial item -->
-                                <!-- start testimonial item -->
-                                <div class="swiper-slide bg-white border-radius-4px">
-                                    <div class="position-relative ps-13 pe-13 md-ps-10 md-pe-10 sm-ps-7 sm-pe-7 pt-20 pb-10 lg-pt-22 md-pt-30 sm-pt-20">
-                                        <!-- <img alt="" class="absolute-middle-center top-0px rounded-circle w-150px xs-w-100px border border-color-white box-shadow-extra-large border-8"> -->
-                                        <div class="testimonials-content">
-                                            <span class="text-dark-gray fs-18 lh-30 fw-600 mb-5px d-block">Modern Designs with Excellent Execution!</span>
-                                            <p class="mb-25px">Their modern architectural ideas gave our house a beautiful and luxurious look. SJ Infra’s work speaks for itself elegant, durable, and perfectly aligned with our taste.</p>
-                                        </div>
-                                        <div class="testimonials-author fs-19 mb-5px text-gradient-dark-purple-watermelon fw-700 d-inline-block">Sagar Madli</div>
-                                        <!-- <div class="testimonials-position fs-15 lh-20">Google Design</div>  -->
-                                    </div>
-                                </div>
-                                <!-- end testimonial item -->
-                            </div>
-                            <!-- start slider pagination -->
-                            <!-- <div class="swiper-pagination slider-four-slide-pagination-1 swiper-pagination-style-4 swiper-pagination-clickable swiper-pagination-bullets"></div>-->
-                            <!-- end slider pagination -->
-                            <!-- start slider navigation --> 
-                            <!-- <div class="swiper-button-previous-nav swiper-button-prev icon-extra-medium slider-navigation-style-04 rounded-circle"><i class="icon feather icon-feather-arrow-left"></i></div>
-                                 <div class="swiper-button-next-nav swiper-button-next icon-extra-medium slider-navigation-style-04 rounded-circle"><i class="icon feather icon-feather-arrow-right"></i></div>-->
-                            <!-- end slider navigation -->
-                        </div>
-                    </div>
-                </div>
-                <!-- start reviews -->
-                <div class="row">
-                    <div class="col-12 text-center" data-anime='{ "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
-                        <!-- <div class="text-center bg-dark-gray text-white fs-16 lh-36 border-radius-30px d-inline-block ps-20px pe-20px align-middle me-10px mt-10px mb-10px"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div> -->
-                        <!-- <h6 class="text-dark-gray fw-400 mb-0 d-inline-block align-middle ls-minus-1px">Check all <span class="fw-700">3,583</span> readers reviews <a href="https://www.amazon.com/" target="_blank"></a></h6> -->
-                    </div>
-                </div>
-                <!-- end reviews -->
-            </div>
-        </section>
-        <!-- end section -->
-
-        <!-- start section -->
-        <section id="pricing" class="bg-gradient-very-light-gray">
-            <div class="container">
+                <link rel="stylesheet" href="css/budget-calculator.css">
                 <div class="row justify-content-center mb-4">
                     <div class="col-xl-7 col-lg-9 text-center" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
                         <h2 class="h1 fw-800 text-dark-gray ls-minus-3px">Smart Project Budget Calculator</h2>
@@ -2077,14 +1602,76 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-lg-8">
+                    <div class="col-lg-8 budget-calculator-container" id="budget-calculator-container">
                         <!-- ensure steps show/hide reliably -->
                         <style>
-                            /* hide steps by default; show when .active is applied */
-                            .step { display: none; }
-                            .step.active { display: block; }
-                            /* make sure the progress bar transitions smoothly */
-                            #progressBar { transition: width 300ms ease; }
+                                /* hide steps by default; show when .active is applied */
+                                .step { display: none; }
+                                .step.active { display: block; }
+                                /* make sure the progress bar transitions smoothly */
+                                #progressBar { transition: width 300ms ease; }
+                                .step-indicators {
+                                    margin-bottom: 20px;
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    gap:18px;
+                                    position:relative;
+                                    padding: 14px 6px;
+                                }
+                                .step-indicators::before{
+                                    content:'';
+                                    position:absolute;
+                                    left:6%;
+                                    right:6%;
+                                    top:50%;
+                                    transform:translateY(-50%);
+                                    height:8px;
+                                    background:#f1f3f5;
+                                    border-radius:8px;
+                                    z-index:1;
+                                }
+                                .step-indicators::after{
+                                    content:'';
+                                    position:absolute;
+                                    left:6%;
+                                    top:50%;
+                                    transform:translateY(-50%);
+                                    height:8px;
+                                    width: calc(var(--progress, 10%));
+                                    background: linear-gradient(90deg, #667eea, #ff5b74);
+                                    border-radius:8px;
+                                    z-index:2;
+                                    transition: width .42s cubic-bezier(.2,.9,.2,1);
+                                }
+                                .step-indicator{
+                                    position:relative;
+                                    z-index:3;
+                                    width:54px;
+                                    height:54px;
+                                    border-radius:12px;
+                                    display:inline-flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    background:transparent;
+                                    cursor:pointer;
+                                    transition: transform .22s ease, box-shadow .22s ease;
+                                }
+                                .step-indicator .num{
+                                    display:inline-flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                    width:40px;
+                                    height:40px;
+                                    border-radius:50%;
+                                    background:#f6f7f8;
+                                    color:#6c757d;
+                                    font-weight:700;
+                                    box-shadow: 0 8px 20px rgba(21,21,21,0.03);
+                                    transition: background .22s ease, transform .22s ease, box-shadow .22s ease;
+                                }
+                                .step-indicator:hover .num{ transform: scale(1.06); box-shadow: 0 18px 40px rgba(21,21,21,0.06); }
+                                .step-indicator.active .num{ background: linear-gradient(135deg,#667eea,#ff5b74); color: #fff; transform: scale(1.1); box-shadow: 0 22px 48px rgba(102,126,234,0.14); }
                             /* interactive item card styles */
                             .item-card { cursor: pointer; border: 1px solid #eef2f6; border-radius: 12px; padding: 12px; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; background: #fff; position:relative; }
                             .item-card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(33,33,33,0.08); border-color: rgba(130,15,137,0.12); }
@@ -2780,6 +2367,559 @@
                 </div>
             </div>
         </section>  
+
+        <!-- start section -->  
+       <section id="features" class="bg-gradient-very-light-gray position-relative pb-2"
+         style="min-height: 100vh; position: relative;">
+
+        <!-- Background layer -->
+        <div style="position:absolute; inset:0;
+                    background: url('images/compressed_image.jpg') center/cover no-repeat;
+                    opacity: 0.2;
+                    z-index:0;"></div>
+        <!-- Content layer -->
+        <div class="container position-relative" style="z-index:1;">
+                <div class="row justify-content-center mb-2">
+                    <div class="col-auto col-xxl-5 col-lg-7 col-sm-9 d-flex align-items-center justify-content-center">
+                        <span class="fs-180 text-gradient-dark-purple-watermelon flex-shrink-0 fw-800 me-35px ls-minus-10px sm-ls-minus-5px" data-bottom-top="transform:scale(1.4, 1.4);" data-top-bottom="transform:scale(1, 1);">6</span>
+                        <h2 class="text-dark-gray fw-800 ls-minus-2px m-0">Exclusive Services</h2>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center mb-4" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>                  
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-03">
+                        <div class="feature-box p-8">
+                            <div class="feature-box-icon">
+                               <!--<i class="line-icon-Microphone-4 icon-double-large text-dark-gray mb-20px"></i>-->
+                                <img src="images/sofa.png" alt="Sofa" class="icon-double-large mb-20px" />
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-inline-block fw-700 text-dark-gray mb-5px fs-19 ls-minus-05px">Redefining Comfort</span>
+                                <p class="w-85 lg-w-100 mx-auto text-dark-gray">Plush seating for every space</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-03">
+                        <div class="feature-box p-8">
+                            <div class="feature-box-icon">
+                               <!--<i class="line-icon-No-Drop icon-double-large text-dark-gray mb-20px"></i>-->
+                                <img src="images/table.png" alt="Table" class="icon-double-large mb-20px" />
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-inline-block fw-700 text-dark-gray mb-5px fs-19 ls-minus-05px">Functional & Elegance</span>
+                                <p class="w-85 lg-w-100 mx-auto text-dark-gray">Perfect blends of seating and dining</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-03">
+                        <div class="feature-box p-8">
+                            <div class="feature-box-icon">
+                                <!--<i class="line-icon-Signal icon-double-large text-dark-gray mb-20px"></i>-->
+                                 <img src="images/desk.png" alt="Desk" class="icon-double-large mb-20px" />
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-inline-block fw-700 text-dark-gray mb-5px fs-19 ls-minus-05px">Smart Workspaces</span>
+                                <p class="w-85 lg-w-100 mx-auto text-dark-gray">Ergonomic and modern workspaces</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-03">
+                        <div class="feature-box p-8">
+                            <div class="feature-box-icon">
+                                <!--<i class="line-icon-Sound icon-double-large text-dark-gray mb-20px"></i>-->
+                                <img src="images/flrlamp.png" alt="Floor Lamp" class="icon-double-large mb-20px" />
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-inline-block fw-700 text-dark-gray mb-5px fs-19 ls-minus-05px">Mood Lighting</span>
+                                <p class="w-85 lg-w-100 mx-auto text-dark-gray">Set the mood with design focused lamps</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-03">
+                        <div class="feature-box p-8">
+                            <div class="feature-box-icon">
+                                <!--<i class="line-icon-Environmental-3 icon-double-large text-dark-gray mb-20px"></i>-->
+                                <img src="images/modernArt.png" alt="Floor Lamp" class="icon-double-large mb-20px" />
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-inline-block fw-700 text-dark-gray mb-5px fs-19 ls-minus-05px">Modern living</span>
+                                <p class="w-85 lg-w-100 mx-auto text-dark-gray">Walls that speak style and creativity</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end features box item -->
+                    <!-- start features box item -->
+                    <div class="col icon-with-text-style-03">
+                        <div class="feature-box p-8">
+                            <div class="feature-box-icon">
+                                <!--<i class="line-icon-Headphones icon-double-large text-dark-gray mb-20px"></i>-->
+                                <img src="images/plan.png" alt="Plan" class="icon-double-large mb-20px" />
+                            </div>
+                            <div class="feature-box-content last-paragraph-no-margin">
+                                <span class="d-inline-block fw-700 text-dark-gray mb-5px fs-19 ls-minus-05px">Precise Blueprint</span>
+                                <p class="w-85 lg-w-100 mx-auto text-dark-gray">Designs tailored to perfection</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end features box item -->
+                </div>
+                <div class="row justify-content-center align-items-center" data-anime='{ "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                    <div class="col-12 text-center">
+                        <div class="d-inline-block align-middle fs-12 ls-05px fw-600 text-white text-uppercase bg-green border-radius-50px ps-20px pe-20px me-10px sm-m-5px">Interior</div> 
+                        <div class="d-inline-block align-middle text-dark-gray fw-500 fs-20 ls-minus-05px">At SJ Infra Ballari, we believe your home should reflect your<span class="text-decoration-line-bottom fw-700"> Lifestyle, Personality & Comfort</span></div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+
+        <!-- start section --> 
+        <section id="technology" class="background-position-center-top position-relative" style="background-image: url('images/vertical-line-bg-medium-gray.svg')">
+            <div id="particles-02" data-particle="true" data-particle-options='{"particles": {"number": {"value": 3,"density": {"enable": true,"value_area": 1000}},"color":{"value":["#ff5b74", "#820f89"]},"shape": {"type": "circle","stroke":{"width":0,"color":"#000000"}},"opacity": {"value": 0.7,"random": false,"anim": {"enable": false,"speed": 2,"sync": false}},"size": {"value": 7,"random": true,"anim": {"enable": false,"sync": true}},"move": {"enable": true,"speed":2,"direction": "right","random": false,"straight": false}},"interactivity": {"detect_on": "canvas","events": {"onhover": {"enable": false,"mode": "repulse"},"onclick": {"enable": false,"mode": "push"},"resize": true}},"retina_detect": false}' class="position-absolute top-0px left-0px w-100 z-index-minus-1"></div>
+            <div class="container overlap-gap-section">
+                <div class="row">
+                    <!-- start sticky column -->
+                    <div class="col-lg-6 text-center">
+                        <div class="outside-box-left-25 lg-outside-box-left-20 md-outside-box-left-30 position-sticky top-140px">
+                            <img src="images/circle_image.png" alt="" data-bottom-top="transform: rotate(0deg) translateY(0)" data-top-bottom="transform:rotate(-35deg) translateY(0)"> 
+                            <span class="fs-350 xxl-fs-300 lg-fs-200 md-fs-275 xs-fs-200 text-gradient-dark-purple-watermelon fw-700 ls-minus-20px position-absolute top-100px d-block z-index-minus-1" data-bottom-top="transform:scale(1, 1) translate3d(0px, 0px, 0px);" data-top-bottom="transform:scale(1, 1) translate3d(-300px, 0px, 0px);"></span>
+                        </div>
+                    </div>
+                    <!-- end sticky column -->
+                    <div class="col-lg-5 offset-lg-1 text-center text-lg-start" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 50, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <div class="mb-15 mt-25 md-mb-5 md-mt-10">
+                            <i class="line-icon-Livejournal align-middle icon-double-large mb-25px opacity-6"></i>
+                            <span class="fs-70 lg-fs-80 xs-fs-60 fw-800 text-dark-gray ls-minus-4px xs-ls-minus-2px d-block mb-25px">Envision your Dream</span> 
+                            <p class="w-80 xl-w-90 lg-w-100 mb-35px"> From layouts to interiors and construction, every plan begins with precision</p>   
+                            <!-- <a href="https://www.youtube.com/watch?v=cfXHhfNy7tU" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-box-shadow btn-round-edge popup-youtube">
+                                <span>
+                                    <span class="btn-text">Watch technology</span>
+                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
+                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
+                                </span> 
+                            </a> -->
+                        </div>
+                        <div class="d-flex"></div>
+                        <div class="mb-15 mt-25 md-mb-5 md-mt-10">
+                            <i class="line-icon-Livejournal align-middle icon-double-large mb-25px opacity-6"></i>
+                            <span class="fs-70 lg-fs-80 xs-fs-60 fw-800 text-dark-gray ls-minus-4px xs-ls-minus-2px d-block mb-25px">Browse Our Design Collection</span> 
+                            <p class="w-80 xl-w-90 lg-w-100 mb-35px"> From classic elegance to modern trends, find designs that define creativity</p>   
+                            <!-- <a href="https://www.youtube.com/watch?v=cfXHhfNy7tU" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-box-shadow btn-round-edge popup-youtube">
+                                <span>
+                                    <span class="btn-text">Watch technology</span>
+                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
+                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
+                                </span> 
+                            </a> -->
+                        </div>
+                        <div class="d-flex"></div>
+                        <div class="mb-15 mt-25 md-mb-5 md-mt-10">
+                            <i class="line-icon-Livejournal align-middle icon-double-large mb-25px opacity-6"></i>
+                            <span class="fs-70 lg-fs-80 xs-fs-60 fw-800 text-dark-gray ls-minus-4px xs-ls-minus-2px d-block mb-25px">Schedule a project consultation</span> 
+                            <p class="w-80 xl-w-90 lg-w-100 mb-35px">Get clarity on expenses by using our Smart Budget Calculator before consultation</p>   
+                            <!-- <a href="https://www.youtube.com/watch?v=cfXHhfNy7tU" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-box-shadow btn-round-edge popup-youtube">
+                                <span>
+                                    <span class="btn-text">Watch technology</span>
+                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
+                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
+                                </span> 
+                            </a> -->
+                        </div>
+                        <div class="mb-15 mt-25 md-mb-5 md-mt-10">
+                            <i class="line-icon-Livejournal align-middle icon-double-large mb-25px opacity-6"></i>
+                            <span class="fs-70 lg-fs-80 xs-fs-60 fw-800 text-dark-gray ls-minus-4px xs-ls-minus-2px d-block mb-25px">Connect with experts to shape your dream living</span> 
+                            <p class="w-80 xl-w-90 lg-w-100 mb-35px">From dream interiors to full scale construction projects, we shape elegant, functional, and lasting spaces</p>   
+                            <!-- <a href="https://www.youtube.com/watch?v=cfXHhfNy7tU" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-box-shadow btn-round-edge popup-youtube">
+                                <span>
+                                    <span class="btn-text">Watch technology</span>
+                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
+                                    <span class="btn-icon"><i class="feather icon-feather-youtube"></i></span>
+                                </span> 
+                            </a> -->
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+
+        <!-- start section -->
+        <section class="background-position-center-top pt-0" style="background-image: url('images/vertical-line-bg-medium-gray.svg')">
+            <div class="container-fluid">
+                <div class="row position-relative">
+                    <div class="col swiper swiper-width-auto text-center pb-20px md-pb-20px feather-shadow" data-slider-options='{ "slidesPerView": "auto", "spaceBetween":70, "speed": 14000, "loop": true, "allowTouchMove": false, "autoplay": { "delay":0, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "slide" }'>
+                        <div class="swiper-wrapper marquee-slide">
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <div class="fs-90 text-dark-gray fw-700 ls-minus-4px alt-font">Envision your Dream</div>
+                            </div>
+                            <!-- end client item -->
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <div class="fs-90 text-dark-gray opacity-5 fw-700 ls-minus-4px alt-font">Explore Interiors</div>
+                            </div>
+                            <!-- end client item --> 
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <div class="fs-90 text-dark-gray fw-700 ls-minus-4px alt-font">Elegant Spaces</div>
+                            </div>
+                            <!-- end client item --> 
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <div class="fs-90 text-dark-gray opacity-5 fw-700 ls-minus-4px alt-font">Modern Living</div>
+                            </div>
+                            <!-- end client item -->
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <div class="fs-90 text-dark-gray fw-700 ls-minus-4px alt-font">Premium Design</div>
+                            </div>
+                            <!-- end client item --> 
+                            <!-- start client item -->
+                            <div class="swiper-slide">
+                                <div class="fs-90 text-dark-gray opacity-5 fw-700 ls-minus-4px alt-font">Perfect Finish</div>
+                            </div>
+                            <!-- end client item --> 
+                        </div> 
+                    </div>  
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+
+        <!-- start section -->   
+        <section id="design" class="overflow-hidden bg-black background-position-center-top background-no-repeat pt-15 sm-pt-50px position-relative" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/Bg_above_footer.jpg');">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 text-center position-relative sm-mb-40px" data-top-bottom="transform: scale(1); filter: opacity(1)" data-bottom-top="transform: scale(1.3); filter: opacity(0)">
+                        <span class="fs-110 md-fs-90 xs-fs-80 text-white fw-700 ls-minus-5px">Where strong construction meets inspiring interiors</span> 
+                    </div>
+                </div>
+                <div class="mt-13">
+                    <div class="row row-cols-1 justify-content-center">
+                        <!-- start carousal -->
+                        <div class="col" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 50, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                            <div class="swiper magic-cursor drag-cursor light" data-slider-options='{ "slidesPerView": 1, "spaceBetween": 70, "loopedSlides": true, "autoplay": { "delay": 3000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1400": { "slidesPerView":7 }, "992": { "slidesPerView": 4, "spaceBetween": 80  }, "768": { "slidesPerView": 3, "spaceBetween": 60 }, "576": { "slidesPerView": 2, "spaceBetween": 45 } }, "effect": "slide" }'>
+                                <div class="swiper-wrapper text-center">
+                                    <!-- start carousal item -->
+                                    <div class="swiper-slide d-none d-lg-block"></div>
+                                    <!-- end carousal item -->
+                                    <!-- start carousal item -->
+                                    <div class="swiper-slide"> 
+                                        <div class="overflow-hidden position-relative">
+                                            <img class="border-radius-100" src="images/aluminium.png" alt="" /> 
+                                        </div>
+                                        <div class="mt-25px">
+                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Interior</span>
+                                            <span>Durable Finishing</span>
+                                        </div>  
+                                    </div>
+                                    <!-- end carousal item -->
+                                    <!-- start carousal item -->
+                                    <div class="swiper-slide"> 
+                                        <div class="overflow-hidden position-relative">
+                                            <img class="border-radius-100" src="images/Construction.png" alt="" /> 
+                                        </div>  
+                                        <div class="mt-25px">
+                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Construction</span>
+                                            <span>Premium Finish</span>
+                                        </div> 
+                                    </div>
+                                    <!-- end carousal item -->
+                                    <!-- start carousal item -->
+                                    <div class="swiper-slide"> 
+                                        <div class="overflow-hidden position-relative">
+                                            <img class="border-radius-100" src="images/layouts.png" alt="" /> 
+                                        </div>  
+                                        <div class="mt-25px">
+                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Layouts</span>
+                                            <span>Smart space Planning</span>
+                                        </div>
+                                    </div>
+                                    <!-- end carousal item -->
+                                    <!-- start carousal item -->
+                                    <div class="swiper-slide"> 
+                                        <div class="overflow-hidden position-relative">
+                                            <img class="border-radius-100" src="images/mesh.png" alt="" /> 
+                                        </div> 
+                                        <div class="mt-25px">
+                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Mesh</span>
+                                            <span>Strength</span>
+                                        </div> 
+                                    </div>
+                                    <!-- end carousal item -->
+                                    <!-- start carousal item -->
+                                    <div class="swiper-slide"> 
+                                        <div class="overflow-hidden position-relative">
+                                            <img class="border-radius-100" src="images/Buildings.png" alt="" /> 
+                                        </div> 
+                                        <div class="mt-25px">
+                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Structural</span>
+                                            <span>Smart Engineering</span>
+                                        </div> 
+                                    </div>
+                                    <!-- end carousal item -->
+                                    <!-- start carousal item -->
+                                    <div class="swiper-slide"> 
+                                        <div class="overflow-hidden position-relative">
+                                            <img class="border-radius-100" src="images/Blueprints.png" alt="" /> 
+                                        </div>  
+                                        <div class="mt-25px">
+                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Blueprint</span>
+                                            <span>Detailing</span>
+                                        </div>
+                                    </div>
+                                    <!-- end carousal item -->
+                                    <!-- start carousal item -->
+                                    <div class="swiper-slide"> 
+                                        <div class="overflow-hidden position-relative">
+                                            <img class="border-radius-100" src="images/railing.png" alt="" /> 
+                                        </div> 
+                                        <div class="mt-25px">
+                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Railing</span>
+                                            <span>Modern Designs</span>
+                                        </div> 
+                                    </div>
+                                    <!-- end carousal item -->
+                                    <!-- start carousal item -->
+                                    <div class="swiper-slide"> 
+                                        <div class="overflow-hidden position-relative">
+                                            <img class="border-radius-100" src="images/plumbing.png" alt="" /> 
+                                        </div> 
+                                        <div class="mt-25px">
+                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Plumbing</span>
+                                            <span>Efficient Water System</span>
+                                        </div> 
+                                    </div>
+                                    <!-- end carousal item -->
+                                    <!-- start carousal item -->
+                                    <div class="swiper-slide"> 
+                                        <div class="overflow-hidden position-relative">
+                                            <img class="border-radius-100" src="images/Balcony.png" alt="" /> 
+                                        </div> 
+                                        <div class="mt-25px">
+                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Balcony</span>
+                                            <span>Outdoor Spaces</span>
+                                        </div> 
+                                    </div>
+                                    <!-- end carousal item -->
+                                    <!-- start carousal item -->
+                                    <div class="swiper-slide"> 
+                                        <div class="overflow-hidden position-relative">
+                                            <img class="border-radius-100" src="images/modernized.png" alt="" /> 
+                                        </div> 
+                                        <div class="mt-25px">
+                                            <span class="text-white fs-20 lh-24 fw-600 d-block">Modernized</span>
+                                            <span>Comfort</span>
+                                        </div> 
+                                    </div>
+                                    <!-- end carousal item -->
+                                    <!-- start carousal item -->
+                                    <div class="swiper-slide d-none d-lg-block"></div>
+                                    <!-- end carousal item -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end carousal -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+
+        <!-- start section -->
+        <section class="bg-dark-gray-01 p-35px"> 
+            <div class="container">
+                <div class="row justify-content-center align-items-center" data-anime='{ "el": "childs", "translateX": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                    <!-- <div class="col-lg-1 p-0">
+                        <div class="divider-style-03 divider-style-03-01 border-color-transparent-white-very-light md-mb-15px"></div>
+                    </div>
+                    <div class="col-xl-7 col-lg-9 position-relative text-center last-paragraph-no-margin">
+                        <i class="line-icon-Hipster-Headphones align-middle icon-medium me-10px sm-me-0 sm-mb-10px"></i>
+                        <p class="fs-16 fw-600 text-uppercase ls-1px d-inline-block align-middle lh-normal">“Award-winning construction and interior design in Ballari, crafted for modern living.”</p> 
+                    </div>  -->
+                    <div class="col-lg-1 p-0">
+                        <div class="divider-style-03 divider-style-03-01 border-color-transparent-white-very-light md-mt-15px"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+
+        <!-- start section -->
+        <section id="review" class="background-position-center-top" style="background-image: url('images/vertical-line-bg-medium-gray.svg')">
+            <div class="container">
+                <div class="row justify-content-center mb-1">
+                    <div class="col-xl-7 col-lg-9 col-md-10 text-center" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <h2 class="h1 fw-800 text-dark-gray ls-minus-3px">Loved by most valuable customers</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center" data-anime='{ "rotateX": [-40, 0], "opacity": [0,1], "duration": 1200, "delay": 100, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <div class="swiper swiper-horizontal-3d pt-8 pb-5 lg-pt-10 lg-pb-10 md-pt-12 sm-pt-21 sm-pb-11 swiper-pagination-bottom testimonials-style-04" data-slider-options='{ "loop": true, "slidesPerView": 1,"centeredSlides":true,"effect":"coverflow","coverflowEffect":{"rotate":0,"stretch":100,"depth":150,"modifier":1.5,"slideShadows":true}, "navigation": { "nextEl": ".swiper-button-next-nav.slider-navigation-style-04", "prevEl": ".swiper-button-previous-nav.slider-navigation-style-04" }, "autoplay": { "delay": 5000, "disableOnInteraction": false }, "pagination": { "el": ".swiper-pagination-04", "clickable": true, "dynamicBullets": true }, "breakpoints": { "768": { "slidesPerView": 2 } } }'>
+                            <div class="swiper-wrapper">
+                                <!-- start testimonial item -->
+                                <div class="swiper-slide bg-white border-radius-4px">
+                                    <div class="position-relative ps-13 pe-13 md-ps-10 md-pe-10 sm-ps-7 sm-pe-7 pt-20 pb-10 lg-pt-22 md-pt-30 sm-pt-20">
+                                        <!-- <img alt="" class="absolute-middle-center top-0px rounded-circle w-150px xs-w-100px border border-color-white box-shadow-extra-large border-8"> -->
+                                        <div class="testimonials-content">
+                                            <span class="text-dark-gray fs-18 lh-30 fw-600 mb-5px d-block">Strong Foundation, Smooth Process!</span>
+                                            <p class="mb-25px">What I loved most about SJ Infra is their commitment to timelines and transparency. The foundation work was solid, and the site supervisors were always available to answer queries.</p>
+                                        </div>
+                                        <div class="testimonials-author fs-19 mb-5px text-gradient-dark-purple-watermelon fw-700 d-inline-block">Abhiram Reddy</div>
+                                        <!-- <div class="testimonials-position fs-15 lh-20">Themezaa Design</div>  -->
+                                    </div>
+                                </div>
+                                <!-- end testimonial item -->
+                                <!-- start testimonial item -->
+                                <div class="swiper-slide bg-white border-radius-4px">
+                                    <div class="position-relative ps-13 pe-13 md-ps-10 md-pe-10 sm-ps-7 sm-pe-7 pt-20 pb-10 lg-pt-22 md-pt-30 sm-pt-20">
+                                        <!-- <img alt="" class="absolute-middle-center top-0px rounded-circle w-150px xs-w-100px border border-color-white box-shadow-extra-large border-8"> -->
+                                        <div class="testimonials-content">
+                                            <span class="text-dark-gray fs-18 lh-30 fw-600 mb-5px d-block">Excellent Customer Commitment!</span>
+                                            <p class="mb-25px">What stands out about SJ Infra is their customer-first attitude. They patiently discussed every small detail and ensured complete satisfaction before final handover.</p>
+                                        </div>
+                                        <div class="testimonials-author fs-19 mb-5px text-gradient-dark-purple-watermelon fw-700 d-inline-block">Jagannatha K</div>
+                                        <!-- <div class="testimonials-position fs-15 lh-20">Google Design</div>  -->
+                                    </div>
+                                </div>
+                                <!-- end testimonial item -->
+                                <!-- start testimonial item -->
+                                <div class="swiper-slide bg-white border-radius-4px">
+                                    <div class="position-relative ps-13 pe-13 md-ps-10 md-pe-10 sm-ps-7 sm-pe-7 pt-20 pb-10 lg-pt-22 md-pt-30 sm-pt-20">
+                                        <!-- <img alt="" class="absolute-middle-center top-0px rounded-circle w-150px xs-w-100px border border-color-white box-shadow-extra-large border-8"> -->
+                                        <div class="testimonials-content">
+                                            <span class="text-dark-gray fs-18 lh-30 fw-600 mb-5px d-block">Impressed by Their Work Ethics!</span>
+                                            <p class="mb-25px">I liked how punctual and organized the team was. Every milestone was completed as planned, and their engineers regularly shared progress updates. Great experience overall.</p>
+                                        </div>
+                                        <div class="testimonials-author fs-19 mb-5px text-gradient-dark-purple-watermelon fw-700 d-inline-block">Bheemshankar G</div>
+                                        <!-- <div class="testimonials-position fs-15 lh-20">Apple Design</div>  -->
+                                    </div>
+                                </div>
+                                <!-- end testimonial item -->
+                                <!-- start testimonial item -->
+                                <div class="swiper-slide bg-white border-radius-4px">
+                                    <div class="position-relative ps-13 pe-13 md-ps-10 md-pe-10 sm-ps-7 sm-pe-7 pt-20 pb-10 lg-pt-22 md-pt-30 sm-pt-20">
+                                        <!-- <img alt="" class="absolute-middle-center top-0px rounded-circle w-150px xs-w-100px border border-color-white box-shadow-extra-large border-8"> -->
+                                        <div class="testimonials-content">
+                                            <span class="text-dark-gray fs-18 lh-30 fw-600 mb-5px d-block">Modern Designs with Excellent Execution!</span>
+                                            <p class="mb-25px">Their modern architectural ideas gave our house a beautiful and luxurious look. SJ Infra’s work speaks for itself elegant, durable, and perfectly aligned with our taste.</p>
+                                        </div>
+                                        <div class="testimonials-author fs-19 mb-5px text-gradient-dark-purple-watermelon fw-700 d-inline-block">Sagar Madli</div>
+                                        <!-- <div class="testimonials-position fs-15 lh-20">Google Design</div>  -->
+                                    </div>
+                                </div>
+                                <!-- end testimonial item -->
+                            </div>
+                            <!-- start slider pagination -->
+                            <!-- <div class="swiper-pagination slider-four-slide-pagination-1 swiper-pagination-style-4 swiper-pagination-clickable swiper-pagination-bullets"></div>-->
+                            <!-- end slider pagination -->
+                            <!-- start slider navigation --> 
+                            <!-- <div class="swiper-button-previous-nav swiper-button-prev icon-extra-medium slider-navigation-style-04 rounded-circle"><i class="icon feather icon-feather-arrow-left"></i></div>
+                                 <div class="swiper-button-next-nav swiper-button-next icon-extra-medium slider-navigation-style-04 rounded-circle"><i class="icon feather icon-feather-arrow-right"></i></div>-->
+                            <!-- end slider navigation -->
+                        </div>
+                    </div>
+                </div>
+                <!-- start reviews -->
+                <div class="row">
+                    <div class="col-12 text-center" data-anime='{ "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <!-- <div class="text-center bg-dark-gray text-white fs-16 lh-36 border-radius-30px d-inline-block ps-20px pe-20px align-middle me-10px mt-10px mb-10px"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div> -->
+                        <!-- <h6 class="text-dark-gray fw-400 mb-0 d-inline-block align-middle ls-minus-1px">Check all <span class="fw-700">3,583</span> readers reviews <a href="https://www.amazon.com/" target="_blank"></a></h6> -->
+                    </div>
+                </div>
+                <!-- end reviews -->
+            </div>
+        </section>
+        <!-- end section -->
+
+         <!-- start section -->  
+        <section id="overview" class="background-position-center-top position-relative" style="background-image: url('images/vertical-line-bg-medium-gray.svg')">
+            <div id="particles-01" data-particle="true" data-particle-options='{"particles": {"number": {"value": 3,"density": {"enable": true,"value_area": 1000}},"color":{"value":["#ff5b74", "#820f89"]},"shape": {"type": "circle","stroke":{"width":0,"color":"#000000"}},"opacity": {"value": 0.7,"random": false,"anim": {"enable": false,"speed": 2,"sync": false}},"size": {"value": 7,"random": true,"anim": {"enable": false,"sync": true}},"move": {"enable": true,"speed":2,"direction": "right","random": false,"straight": false}},"interactivity": {"detect_on": "canvas","events": {"onhover": {"enable": false,"mode": "repulse"},"onclick": {"enable": false,"mode": "push"},"resize": true}},"retina_detect": false}' class="position-absolute top-0px left-0px w-100 z-index-minus-1"></div>
+            <div class="container">
+                <div class="row justify-content-center align-items-center mb-5">
+                    <div class="col-12 text-center last-paragraph-no-margin" data-anime='{ "translateY": [30, 0], "opacity": [0,1], "duration": 1200, "delay": 50, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <!-- <div class="text-center bg-golden-yellow text-white fs-16 lh-36 border-radius-30px d-inline-block ps-20px pe-20px align-middle me-10px"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div> -->
+                        <span class="text-dark-gray fs-26 d-inline-block align-middle ls-minus-05px">Recognized for premium quality <a href="" target="_blank" class="fw-700 text-decoration-line-bottom text-dark-gray text-dark-gray-hover">SJ Infra.com</a></span>
+                    </div>
+                </div>
+                <div class="row align-items-center mb-6 md-mb-10"> 
+                    <div class="col-md-6 position-relative sm-mb-30px" data-anime='{ "translateX": [-50, 0], "opacity": [0,1], "duration": 1500, "delay": 100, "staggervalue": 150, "easing": "easeOutQuad" }'> 
+                        <div class="outside-box-left-20 lg-outside-box-left-30" style="padding-left: 100px;">
+                            <img src="Interior_design/HomePage/ProectSection.png" alt=""> 
+                        </div>
+                    </div>
+                    <div class="col-md-6 ps-5 md-ps-15px" data-anime='{ "el": "childs", "translateX": [50, 0], "opacity": [0,1], "duration": 1000, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        <!--<i class="line-icon-Hipster-Headphones align-middle icon-double-large mb-30px md-mb-20px opacity-6"></i>-->
+                        <img src="images/lamp.jpg" alt="Headphones" class="align-middle icon-double-large mb-30px md-mb-20px opacity-6" />
+                        <h2 class="fw-800 ls-minus-3px text-dark-gray mb-30px fancy-text-style-4">Modern interiors with classic luxury</h2>
+                        <p class="w-90 lg-w-100 mb-35px">Experience the perfect blend of comfort, elegance, and design</p>
+                        <a href="#features" class="btn btn-large btn-dark-gray btn-hover-animation-switch btn-box-shadow btn-round-edge section-link">
+                            <span>
+                                <span class="btn-text">Discover interiors</span>
+                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                            </span> 
+                        </a>
+                    </div> 
+                </div> 
+                <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 200, "easing": "easeOutQuad" }'>
+                    <!-- start process step item -->
+                    <div class="col process-step-style-05 position-relative hover-box md-mb-30px">
+                        <div class="process-step-item d-flex align-items-center">
+                            <div class="process-step-icon-wrap position-relative">
+                                <div class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle h-90px w-90px bg-white fs-22 box-shadow-medium-bottom fw-600 position-relative">
+                                    <span class="number position-relative z-index-1 text-dark-gray">01</span>
+                                    <div class="box-overlay bg-dark-gray rounded-circle"></div>
+                                </div>  
+                            </div>
+                            <div class="process-content ps-25px">
+                                <span class="d-block fw-500 text-dark-gray fs-22 lh-30 ls-minus-05px w-60 xl-w-90">Begin with a vision of <strong>Luxury</strong></span> 
+                            </div>
+                        </div> 
+                    </div>
+                    <!-- end process step item --> 
+                    <!-- start process step item -->
+                    <div class="col process-step-style-05 position-relative hover-box md-mb-30px">
+                        <div class="process-step-item d-flex align-items-center">
+                            <div class="process-step-icon-wrap position-relative">
+                                <div class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle h-90px w-90px bg-white fs-22 box-shadow-medium-bottom fw-600 position-relative">
+                                    <span class="number position-relative z-index-1 text-dark-gray">02</span>
+                                    <div class="box-overlay bg-dark-gray rounded-circle"></div>
+                                </div>  
+                            </div>
+                            <div class="process-content ps-25px last-paragraph-no-margin">
+                                <span class="d-block fw-500 text-dark-gray fs-22 lh-30 ls-minus-05px w-60 xl-w-90">Build with precise <strong>Detail</strong></span> 
+                            </div>
+                        </div> 
+                    </div>
+                    <!-- end process step item -->
+                    <!-- start process step item -->
+                    <div class="col process-step-style-05 position-relative hover-box">
+                        <div class="process-step-item d-flex align-items-center">
+                            <div class="process-step-icon-wrap position-relative">
+                                <div class="process-step-icon d-flex justify-content-center align-items-center mx-auto rounded-circle h-90px w-90px bg-white fs-22 box-shadow-medium-bottom fw-600 position-relative">
+                                    <span class="number position-relative z-index-1 text-dark-gray">03</span>
+                                    <div class="box-overlay bg-dark-gray rounded-circle"></div>
+                                </div>  
+                            </div>
+                            <div class="process-content ps-25px last-paragraph-no-margin">
+                                <span class="d-block fw-500 text-dark-gray fs-22 lh-30 ls-minus-05px w-60 xl-w-90">Live beautifully <strong>Every Day</strong></span> 
+                            </div>
+                        </div> 
+                    </div>
+                    <!-- end process step item -->
+                </div> 
+            </div>
+        </section>
+        <!-- end section -->
 
 
         <!-- start section -->
