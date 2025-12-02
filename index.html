@@ -1607,26 +1607,40 @@
                     <div class="col-lg-8 budget-calculator-container" id="budget-calculator-container">
                         <!-- ensure steps show/hide reliably -->
     <style>
-    html, body, .budget-calculator-container, .calculator-form, .step, .card-body, #summary-content {
-        height: auto !important;
-        max-height: none !important;
-        overflow-y: visible !important;
-        scrollbar-width: none !important; 
-        -ms-overflow-style: none !important; 
+        
+    html, body {
+        overflow-x: hidden; 
+        width: 100%;
+        position: relative;
     }
 
-    /* Chrome/Safari Hide */
+    .budget-calculator-container, 
+    .calculator-form, 
+    .step, 
+    .card-body, 
+    #summary-content {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important; /* Lets content grow out naturally */
+    }
+
+    /* Hide scrollbars visually if any try to appear inside the component */
     .calculator-form::-webkit-scrollbar, 
-    #summary-content::-webkit-scrollbar,
-    body::-webkit-scrollbar {
+    #summary-content::-webkit-scrollbar {
         display: none !important;
         width: 0 !important;
         height: 0 !important;
-        background: transparent !important;
+    }
+    
+    /* Firefox & IE hide */
+    .calculator-form, #summary-content {
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
     }
 
-    html, body { overflow-x: hidden; width: 100%; }
+    /* Fix Bootstrap rows causing side-scroll */
     .calculator-form .row { margin-right: 0 !important; margin-left: 0 !important; }
+    .calculator-form [class*="col-"] { padding-left: 8px; padding-right: 8px; }
 
     .form-check-input:checked + .form-check-label .card {
         background: linear-gradient(135deg, rgba(130, 15, 137, 0.06), rgba(255, 91, 116, 0.03)) !important;
@@ -1641,31 +1655,30 @@
     }
 
     @media (max-width: 991px) {
-        /* Override the large p-8 padding which causes the bottom gap */
+        /* Reduce padding to remove the large empty space */
         .calculator-form.p-8, .calculator-form { 
             padding: 20px 15px !important; 
         }
 
-        /* Shrink internal vertical spacing */
+        /* Compact vertical spacing */
         .mb-6 { margin-bottom: 20px !important; }
         .mt-6 { margin-top: 20px !important; }
         .mb-4 { margin-bottom: 15px !important; }
 
-        /* Make title compact */
+        /* Compact Title */
         .calculator-form h3 { 
             font-size: 1.4rem !important; 
             margin-bottom: 15px !important; 
             line-height: 1.3;
         }
 
-        /* Tweak Step Indicators */
+        /* Stack Indicators Cleanly */
         .step-indicators { gap: 8px; padding-bottom: 5px; margin-bottom: 15px; }
         .step-indicators::before, .step-indicators::after { display: none; }
 
-        /* Compact cards */
+        /* Compact Cards */
         .item-card { padding: 10px; }
         .card-body { padding: 15px !important; }
-        .card-title { font-size: 1rem !important; }
     }
 
     .step { display: none; }
@@ -1736,7 +1749,6 @@
     #summary-content { padding: 16px; }
     #summary-content ul { margin: 0; padding-left: 18px; }
 </style>
-
 
                         <div class="calculator-form bg-white p-8 border-radius-6px box-shadow-large">
                             <!-- Progress Bar -->
