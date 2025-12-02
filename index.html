@@ -1606,123 +1606,116 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 budget-calculator-container" id="budget-calculator-container">
                         <!-- ensure steps show/hide reliably -->
-                        <style>
-                                /* hide steps by default; show when .active is applied */
-                                .step { display: none; }
-                                .step.active { display: block; }
-                                /* make sure the progress bar transitions smoothly */
-                                #progressBar { transition: width 300ms ease; }
-                                .step-indicators {
-                                    margin-bottom: 20px;
-                                    display:flex;
-                                    align-items:center;
-                                    justify-content:center;
-                                    gap:18px;
-                                    position:relative;
-                                    padding: 14px 6px;
-                                }
-                                .step-indicators::before{
-                                    content:'';
-                                    position:absolute;
-                                    left:6%;
-                                    right:6%;
-                                    top:50%;
-                                    transform:translateY(-50%);
-                                    height:8px;
-                                    background:#f1f3f5;
-                                    border-radius:8px;
-                                    z-index:1;
-                                }
-                                .step-indicators::after{
-                                    content:'';
-                                    position:absolute;
-                                    left:6%;
-                                    top:50%;
-                                    transform:translateY(-50%);
-                                    height:8px;
-                                    width: calc(var(--progress, 10%));
-                                    background: linear-gradient(90deg, #667eea, #ff5b74);
-                                    border-radius:8px;
-                                    z-index:2;
-                                    transition: width .42s cubic-bezier(.2,.9,.2,1);
-                                }
-                                .step-indicator{
-                                    position:relative;
-                                    z-index:3;
-                                    width:54px;
-                                    height:54px;
-                                    border-radius:12px;
-                                    display:inline-flex;
-                                    align-items:center;
-                                    justify-content:center;
-                                    background:transparent;
-                                    cursor:pointer;
-                                    transition: transform .22s ease, box-shadow .22s ease;
-                                }
-                                .step-indicator .num{
-                                    display:inline-flex;
-                                    align-items:center;
-                                    justify-content:center;
-                                    width:40px;
-                                    height:40px;
-                                    border-radius:50%;
-                                    background:#f6f7f8;
-                                    color:#6c757d;
-                                    font-weight:700;
-                                    box-shadow: 0 8px 20px rgba(21,21,21,0.03);
-                                    transition: background .22s ease, transform .22s ease, box-shadow .22s ease;
-                                }
-                                .step-indicator:hover .num{ transform: scale(1.06); box-shadow: 0 18px 40px rgba(21,21,21,0.06); }
-                                .step-indicator.active .num{ background: linear-gradient(135deg,#667eea,#ff5b74); color: #fff; transform: scale(1.1); box-shadow: 0 22px 48px rgba(102,126,234,0.14); }
-                            /* interactive item card styles */
-                            .item-card { cursor: pointer; border: 1px solid #eef2f6; border-radius: 12px; padding: 12px; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; background: #fff; position:relative; }
-                            .item-card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(33,33,33,0.08); border-color: rgba(130,15,137,0.12); }
-                            .item-card.selected { background: linear-gradient(135deg, rgba(130,15,137,0.06), rgba(255,91,116,0.03)); border-color: rgba(130,15,137,0.28); box-shadow: 0 12px 36px rgba(130,15,137,0.06); }
-                            .item-card .icon-wrap { width:48px; height:48px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:8px; background:#fafafa; }
-                            .item-card .icon-wrap img, .item-card .icon-wrap i { width:28px; height:28px; }
-                            .item-card .item-label { display:block; font-weight:600; color:#333; font-size:14px; }
-                            .item-grid { display:flex; flex-wrap:wrap; gap:12px; }
-                            .item-grid .col-item { width: calc(50% - 6px); }
-                            @media(min-width:768px){ .item-grid .col-item { width: calc(33.333% - 8px); } }
-                            /* small visual for selected checkboxes (hidden inputs are used) */
-                            .item-card .checkmark { display:none; transform: scale(0.6); opacity:0; transition: transform .18s ease, opacity .18s ease; font-weight:700; }
-                            .item-card.selected .checkmark { display:inline-block; position:absolute; right:10px; top:10px; color:#6f2c91; transform: scale(1); opacity:1; }
+                   <style>
+    /* =========================================
+       1. MAIN CONTAINER: NO SCROLL & AUTO HEIGHT
+       ========================================= */
+    .calculator-form {
+        /* Standard padding so it doesn't look crushed inside */
+        padding: 30px !important; 
+        
+        /* CRITICAL: Force the box to grow with content (No Scrollbar) */
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        display: block !important;
+    }
 
-                            /* Step 5 & 6 spacing fixes to avoid clustered controls */
-                            /* add vertical rhythm for form-check rows */
-                            .calculator-form .step .form-check { margin-bottom: 14px; padding: 6px 0; }
-                            /* ensure form sections have breathing room */
-                            .calculator-form .step h3, .calculator-form .step h5 { margin-bottom: 16px; }
-                            /* make paired columns stack cleanly on small screens */
-                            .calculator-form .step .row > [class*="col-"] { margin-bottom: 12px; }
-                            /* ensure static cards (step 5) have consistent height and centered content */
-                            .calculator-form .step .card.h-100 .card-body { min-height: 200px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
-                            .calculator-form .step .card.h-100 .card-title { font-size: 20px; line-height:1.02; }
-                            /* slightly reduce card body padding for better density */
-                            .calculator-form .step .card.h-100 .card-body p.card-text { margin: 8px 0 0; font-size: 13px; color: #666; }
-                            /* make finish/fitout cards show selected border clearly */
-                            .calculator-form .step .form-check-input:checked + .form-check-label .card.h-100 { box-shadow: 0 12px 36px rgba(130,15,137,0.06); border-color: rgba(130,15,137,0.18); }
-                            /* better spacing for checkbox groups in steps 5/6 */
-                            #step5-residential-construction .form-check,
-                            #step5-commercial-construction .form-check,
-                            #step6-residential-interiors .form-check,
-                            #step6-commercial-interiors .form-check { margin-bottom: 12px; }
-                            /* align checkbox and label horizontally with comfortable gap */
-                            .calculator-form .step .form-check { display: flex; align-items: flex-start; gap: 12px; padding: 6px 0; }
-                            /* let the label take remaining width so long text wraps neatly */
-                            .calculator-form .step .form-check .form-check-label { margin: 0; color: #2f2f2f; font-size: 15px; flex: 1 1 auto; }
-                            /* align checkbox to the top of the label for multi-line text */
-                            .calculator-form .step .form-check .form-check-input { width: 20px; height: 20px; margin: 4px 0 0 0; flex: 0 0 22px; }
-                            /* make checkbox hit area larger */
-                            .calculator-form .step .form-check { padding-left: 6px; padding-right: 6px; }
-                            /* summary content sizing and scroll for long lists */
-                            #summary-content { max-height: 350px; overflow-y: auto; padding: 16px; }
-                            #summary-content ul { margin: 0; padding-left: 18px; }
-                            /* make the contact column inputs breathe */
-                            #step6-summary .col-lg-6 > .row .form-control { margin-bottom: 10px; }
-                            /* selected state for bootstrap-like cards used in options */
-                            .calculator-form .card.selected { background: linear-gradient(135deg, rgba(130,15,137,0.06), rgba(255,91,116,0.03)); border-color: rgba(130,15,137,0.28); box-shadow: 0 12px 36px rgba(130,15,137,0.06); }
-                        </style>
+    /* =========================================
+       2. REMOVE EXTRA SPACE BETWEEN ITEMS
+       ========================================= */
+    /* Reduce gap between the "Step 1" title and the cards */
+    .calculator-form h3 { 
+        font-size: 1.35rem !important; 
+        margin-bottom: 15px !important; 
+        margin-top: 0 !important;
+    }
+    
+    /* Reduce gap below the progress bar/indicators */
+    .step-indicators {
+        margin-bottom: 20px !important;
+    }
+
+    /* Reduce Bootstrap default margins */
+    .mb-4 { margin-bottom: 15px !important; }
+    .row { --bs-gutter-y: 10px; } /* Tighter vertical rows */
+
+    /* =========================================
+       3. CARD STYLING (Spacious but Compact)
+       ========================================= */
+    /* Remove any fixed height constraints */
+    .calculator-form .card.h-100 {
+        min-height: 0 !important;
+        height: auto !important;
+    }
+
+    .calculator-form .card-body {
+        padding: 1.25rem !important;
+    }
+
+    .calculator-form .card img {
+        width: 50px !important; 
+        height: auto;
+        margin-bottom: 10px !important;
+    }
+
+    .calculator-form .card-title {
+        font-size: 16px !important;
+        font-weight: 700;
+        margin-bottom: 5px !important;
+    }
+
+    .calculator-form .card-text {
+        font-size: 13px !important;
+        color: #666;
+        margin: 0 !important;
+    }
+
+    /* Selected State */
+    .calculator-form .form-check-input:checked + .form-check-label .card {
+        background: linear-gradient(135deg, rgba(130,15,137,0.04), rgba(255,91,116,0.02));
+        border-color: rgba(130,15,137,0.3) !important;
+        box-shadow: 0 8px 20px rgba(130,15,137,0.08);
+    }
+    .calculator-form .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        border-color: rgba(130,15,137,0.15);
+        transition: all 0.2s ease;
+    }
+
+    /* =========================================
+       4. STANDARD INPUTS & UTILS
+       ========================================= */
+    .calculator-form .form-control, 
+    .calculator-form .form-select {
+        padding: 10px;
+        font-size: 14px;
+        margin-bottom: 5px; /* Minimal gap below inputs */
+    }
+    
+    .step { display: none; }
+    .step.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* Progress Bar logic */
+    #progressBar { transition: width 300ms ease; }
+    
+    /* Step Indicators Styling */
+    .step-indicators { display: flex; align-items: center; justify-content: center; gap: 12px; position: relative; padding: 5px 0; }
+    .step-indicators::before { content: ''; position: absolute; left: 5%; right: 5%; top: 50%; transform: translateY(-50%); height: 3px; background: #f1f3f5; border-radius: 4px; z-index: 1; }
+    .step-indicators::after { content: ''; position: absolute; left: 5%; top: 50%; transform: translateY(-50%); height: 3px; width: calc(var(--progress, 0%)); background: linear-gradient(90deg, #667eea, #ff5b74); border-radius: 4px; z-index: 2; transition: width .42s cubic-bezier(.2,.9,.2,1); }
+    .step-indicator { position: relative; z-index: 3; width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; }
+    .step-indicator .num { width: 30px; height: 30px; border-radius: 50%; background: #f6f7f8; color: #6c757d; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(21,21,21,0.03); transition: all .2s ease; }
+    .step-indicator.active .num { background: linear-gradient(135deg,#667eea,#ff5b74); color: #fff; transform: scale(1.1); box-shadow: 0 6px 15px rgba(102,126,234,0.2); }
+    
+    /* Form Checks (Checkbox lists) */
+    .calculator-form .form-check { min-height: auto; margin-bottom: 8px; padding-left: 24px; }
+    .calculator-form .form-check-label { font-size: 14px; cursor: pointer; }
+    
+    /* Ensure summary doesn't break height */
+    #summary-content { height: auto; overflow: visible; padding: 10px; }
+</style>
 
                         <div class="calculator-form bg-white p-8 border-radius-6px box-shadow-large">
                             <!-- Progress Bar -->
