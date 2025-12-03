@@ -2379,7 +2379,8 @@
                                         <p class="small text-muted">* This is an approximate estimate. Actual costs may vary based on material quality, labor rates, and specific requirements.</p>
                                         <div class="mt-4">
                                             <!-- <button class="btn btn-outline-dark-gray me-2" onclick="resetCalculator()">Calculate Again</button> -->
-                                            <button class="btn btn-gradient-purple-pink" onclick="contactUs()">Contact Us</button>
+                                            <a href="/contact-us.html">
+                                            <button class="btn btn-gradient-purple-pink" >Contact Us</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -3573,7 +3574,9 @@
                     document.querySelectorAll('.form-check').forEach(el => el.classList.remove('error'));
                 }
 
-                function contactUs() { alert('Thank you! Our team will contact you shortly with a detailed estimate.'); }
+                function contactUs() {
+                    window.location.href = "/contact-us.html";
+                 }
 
                 // Event listeners (safe wiring)
                 if (nextBtn) nextBtn.addEventListener('click', function(e) {
