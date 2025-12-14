@@ -1,0 +1,84 @@
+# robots.txt for sjinfraballari.com
+# Optimized for SEO and Generative Engine Optimization (GEO)
+
+# Allow all well-behaved bots
+User-agent: *
+Allow: /
+
+# Optimize crawl efficiency - block unnecessary resources
+Disallow: /css/
+Disallow: /js/
+Disallow: /fonts/
+Disallow: /revolution/
+Disallow: /email-templates/
+Disallow: /demos/
+
+# Allow image crawling for better SEO
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /webp/
+Allow: /Interior_design/
+
+# Specific rules for AI/LLM crawlers (GEO Optimization)
+# OpenAI GPT
+User-agent: GPTBot
+Allow: /
+Disallow: /email-templates/
+Disallow: /revolution/
+Crawl-delay: 1
+
+# Google Bard/Gemini
+User-agent: Google-Extended
+Allow: /
+Disallow: /email-templates/
+Disallow: /revolution/
+Crawl-delay: 1
+
+# Anthropic Claude
+User-agent: anthropic-ai
+Allow: /
+Disallow: /email-templates/
+Disallow: /revolution/
+Crawl-delay: 1
+
+# Common Crawl (used by many AI models)
+User-agent: CCBot
+Allow: /
+Disallow: /email-templates/
+Disallow: /revolution/
+Crawl-delay: 2
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+Crawl-delay: 1
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+# Bing AI
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://sjinfraballari.com/sitemap.xml
+
+# Additional SEO optimization
+# Cache directive for better crawl efficiency
+# Crawl-delay for general bots is not set to allow maximum crawling
